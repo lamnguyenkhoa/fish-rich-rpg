@@ -1,0 +1,171 @@
+[gd_scene load_steps=6 format=3 uid="uid://dq1lf15wa51dl"]
+
+[ext_resource type="Script" path="res://ui/company_work.gd" id="1_knpi5"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="1_nvde1"]
+[ext_resource type="Texture2D" uid="uid://yme5jd66ngrp" path="res://asset/sprite/building/fishcorp_background.png" id="2_3hw1k"]
+[ext_resource type="Texture2D" uid="uid://p73ulmivegfh" path="res://asset/sprite/ui/square.png" id="3_lorkx"]
+[ext_resource type="PackedScene" uid="uid://ccta77b8vbyr1" path="res://ui/WorkButton.tscn" id="5_nhnt8"]
+
+[node name="SharkSolutionWork" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_knpi5")
+xp_per_level = Array[int]([100, 200, 300, 400])
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.85098)
+
+[node name="WorkLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -210.0
+offset_top = 16.0
+offset_right = 210.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_nvde1")
+theme_override_font_sizes/font_size = 30
+text = "Working at Shark Solution Corp..."
+
+[node name="EnvironmentImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -192.0
+offset_right = 609.0
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3hw1k")
+
+[node name="ReputationLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -619.0
+offset_top = 64.0
+offset_right = -171.0
+offset_bottom = 97.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_nvde1")
+theme_override_font_sizes/font_size = 24
+text = "Reputation - 1"
+
+[node name="ReputationProgress" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 112.0
+offset_right = 640.0
+offset_bottom = 136.0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_lorkx")
+texture_progress = ExtResource("3_lorkx")
+tint_under = Color(0.529412, 0.529412, 0.529412, 1)
+tint_progress = Color(1, 0.972549, 0.596078, 1)
+
+[node name="JobLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -619.0
+offset_top = 176.0
+offset_right = -171.0
+offset_bottom = 209.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_nvde1")
+theme_override_font_sizes/font_size = 24
+text = "Work as..."
+
+[node name="JobBox" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 216.0
+offset_right = 640.0
+offset_bottom = 623.0
+theme_override_constants/separation = 15
+
+[node name="WorkButton" parent="JobBox" node_paths=PackedStringArray("company") instance=ExtResource("5_nhnt8")]
+layout_mode = 2
+job_name = "Janitor"
+job_pay = 20
+reputation_xp = null
+company = NodePath("../..")
+
+[node name="WorkButton2" parent="JobBox" node_paths=PackedStringArray("company") instance=ExtResource("5_nhnt8")]
+layout_mode = 2
+job_name = "IT Support"
+job_pay = 50
+reputation_xp = 5
+company = NodePath("../..")
+need_int_stat = 10
+
+[node name="WorkButton3" parent="JobBox" node_paths=PackedStringArray("company") instance=ExtResource("5_nhnt8")]
+layout_mode = 2
+job_name = "Web Developer"
+job_pay = 220
+job_time_needed = 2
+reputation_xp = 10
+company = NodePath("../..")
+need_int_stat = 20
+
+[node name="WorkButton4" parent="JobBox" node_paths=PackedStringArray("company") instance=ExtResource("5_nhnt8")]
+layout_mode = 2
+job_name = "Database Admin"
+job_pay = 390
+job_time_needed = 2
+reputation_xp = 20
+company = NodePath("../..")
+
+[node name="WorkButton5" parent="JobBox" node_paths=PackedStringArray("company") instance=ExtResource("5_nhnt8")]
+layout_mode = 2
+job_name = "Project Manager"
+job_pay = 800
+job_time_needed = 3
+reputation_xp = 30
+company = NodePath("../..")
+
+[node name="WorkButton6" parent="JobBox" node_paths=PackedStringArray("company") instance=ExtResource("5_nhnt8")]
+layout_mode = 2
+job_name = "Director"
+job_pay = 1200
+job_time_needed = 3
+reputation_xp = 40
+company = NodePath("../..")
+
+[node name="WorkButton7" parent="JobBox" node_paths=PackedStringArray("company") instance=ExtResource("5_nhnt8")]
+layout_mode = 2
+job_name = "CEO"
+job_pay = 3000
+job_time_needed = 4
+reputation_xp = 50
+company = NodePath("../..")
+
+[node name="LeaveButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 624.0
+offset_right = 389.0
+offset_bottom = 665.0
+theme_override_fonts/font = ExtResource("1_nvde1")
+theme_override_font_sizes/font_size = 25
+text = "Leave"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://blp8w10pslvk8"]
+
+[ext_resource type="Script" path="res://item/item_resource.gd" id="1_d5udv"]
+
+[resource]
+script = ExtResource("1_d5udv")
+item_id = 1001
+name = "Octo-Bento"
+description = "Bento made by the Octopus Restaurant. There are lots of goodness inside.
+Restore 20% SP."
+type = 1
+recover_hp = 0
+recover_sp = 0
+recover_hp_percentage = 0
+recover_sp_percentage = 20
+special_case = ""

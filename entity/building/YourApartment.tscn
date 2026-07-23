@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://cuo5yqknjvw01"]
+
+[ext_resource type="Script" path="res://entity/building/company_building.gd" id="1_jurqn"]
+[ext_resource type="Shader" path="res://shader/topdown_shadow.gdshader" id="2_vdgmj"]
+[ext_resource type="Texture2D" uid="uid://chhxgosx1wjvu" path="res://asset/sprite/building/apartment.png" id="3_opcs3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jua5p"]
+shader = ExtResource("2_vdgmj")
+shader_parameter/deform = Vector2(0.445, 0.445)
+shader_parameter/offset = Vector2(26.38, 46.045)
+shader_parameter/modulate = Color(0, 0, 0, 0.55)
+shader_parameter/x_buffer = 2.0
+shader_parameter/y_buffer = 2.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_valto"]
+size = Vector2(398, 182)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6bls"]
+size = Vector2(270, 86)
+
+[node name="RedApartment" type="StaticBody2D"]
+script = ExtResource("1_jurqn")
+interact_text = "Return to your apartment"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jua5p")
+position = Vector2(58, -238)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_opcs3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(41, -75)
+shape = SubResource("RectangleShape2D_valto")
+debug_color = Color(0.701961, 0, 0.0745098, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-15, 29)
+shape = SubResource("RectangleShape2D_m6bls")
+debug_color = Color(0.701961, 0, 0.0745098, 0.419608)
+
+[node name="RespawnSpot" type="Marker2D" parent="."]
+position = Vector2(266, 130)

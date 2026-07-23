@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://o7mtseircyj4"]
+
+[ext_resource type="Script" path="res://entity/fish/npc_fish.gd" id="1_12gts"]
+[ext_resource type="Texture2D" uid="uid://defgrteu7s1qm" path="res://asset/sprite/fish/pope_fish.png" id="2_rnf2q"]
+[ext_resource type="Texture2D" uid="uid://5jgmgg00k63r" path="res://asset/sprite/ui/circle.png" id="3_0je4c"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="4_g42k1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jt33u"]
+size = Vector2(144, 40)
+
+[sub_resource type="Animation" id="Animation_h3qmf"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fish:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0, -8), Vector2(0, -13), Vector2(0, -8), Vector2(0, -3), Vector2(0, -8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uq0v7"]
+_data = {
+"idle": SubResource("Animation_h3qmf")
+}
+
+[node name="PopeFish" type="CharacterBody2D"]
+script = ExtResource("1_12gts")
+fish_name = "Pope fish"
+tier = 3
+max_hp = 1000
+stats = Array[int]([42, 85, 28, 69, 21])
+possible_steal_loot = Array[int]([1002, 0])
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 0.478431)
+position = Vector2(-8, 56)
+scale = Vector2(3, 0.25)
+texture = ExtResource("3_0je4c")
+
+[node name="Fish" type="Sprite2D" parent="."]
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_rnf2q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 4)
+shape = SubResource("RectangleShape2D_jt33u")
+debug_color = Color(0.701961, 0.00392157, 0.0117647, 0.419608)
+
+[node name="NameLabel" type="Label" parent="."]
+z_index = 50
+offset_left = -128.0
+offset_top = -72.0
+offset_right = 128.0
+offset_bottom = -40.0
+theme_override_colors/font_color = Color(0.113725, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("4_g42k1")
+text = "Pope fish"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uq0v7")
+}
+autoplay = "idle"

@@ -1,0 +1,248 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkamhjgp5m08g"]
+
+[ext_resource type="Script" path="res://ui/company_work.gd" id="1_f44d3"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="2_vkx21"]
+[ext_resource type="Texture2D" uid="uid://juj5dsayjlwg" path="res://asset/sprite/building/church_background.png" id="3_euhg2"]
+[ext_resource type="Texture2D" uid="uid://defgrteu7s1qm" path="res://asset/sprite/fish/pope_fish.png" id="4_m5eiq"]
+[ext_resource type="Texture2D" uid="uid://p73ulmivegfh" path="res://asset/sprite/ui/square.png" id="5_adwws"]
+[ext_resource type="PackedScene" uid="uid://6rq61wi1af6k" path="res://ui/ServiceButton.tscn" id="6_mmw6e"]
+
+[node name="ChurchUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f44d3")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.290196, 0.25098, 0.0901961, 0.67451)
+
+[node name="WorkLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -427.0
+offset_top = -16.0
+offset_right = 469.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("2_vkx21")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "
+[center]Visiting [color=yellow][wave]Church of the deep[/wave][/color] ...[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="EnvironmentImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 133.0
+offset_top = -192.0
+offset_right = 603.0
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_euhg2")
+
+[node name="FishDoctor" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1024.0
+offset_top = 456.0
+offset_right = 1588.0
+offset_bottom = 796.0
+texture = ExtResource("4_m5eiq")
+
+[node name="ReputationLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -619.0
+offset_top = 112.0
+offset_right = -171.0
+offset_bottom = 145.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_vkx21")
+theme_override_font_sizes/font_size = 24
+text = "Reputation - 1"
+
+[node name="ReputationProgress" type="TextureProgressBar" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 128.0
+offset_top = 160.0
+offset_right = 640.0
+offset_bottom = 191.0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_adwws")
+texture_progress = ExtResource("5_adwws")
+tint_under = Color(0.529412, 0.529412, 0.529412, 1)
+tint_progress = Color(1, 0.972549, 0.596078, 1)
+
+[node name="ProgressLabel" type="RichTextLabel" parent="ReputationProgress"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -7.5
+offset_right = 64.0
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]0 / 100[/center]"
+scroll_active = false
+
+[node name="JobLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -619.0
+offset_top = 224.0
+offset_right = -171.0
+offset_bottom = 257.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_vkx21")
+theme_override_font_sizes/font_size = 24
+text = "Work as"
+
+[node name="JobBox" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 128.0
+offset_top = 272.0
+offset_right = 640.0
+offset_bottom = 331.0
+theme_override_constants/separation = 15
+
+[node name="PromoteButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 192.0
+offset_top = 328.0
+offset_right = 576.0
+offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("2_vkx21")
+theme_override_font_sizes/font_size = 25
+text = "Apply for promotion"
+
+[node name="ServiceLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -619.0
+offset_top = 160.0
+offset_right = -171.0
+offset_bottom = 193.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_vkx21")
+theme_override_font_sizes/font_size = 24
+text = "Services"
+
+[node name="ServiceBox" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 208.0
+offset_right = 768.0
+offset_bottom = 411.0
+
+[node name="ServiceButton" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("6_mmw6e")]
+layout_mode = 2
+service_name = "Pray"
+service_desc = "Recover 25% SP"
+service_cost = 0
+service_time_needed = 1
+company = NodePath("../..")
+recover_sp_percentage = 25
+
+[node name="ServiceButton2" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("6_mmw6e")]
+layout_mode = 2
+service_name = "Mediate"
+service_desc = "Recover 75% SP"
+service_cost = 0
+service_time_needed = 2
+company = NodePath("../..")
+recover_sp_percentage = 75
+
+[node name="ServiceButton3" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("6_mmw6e")]
+layout_mode = 2
+service_name = "Donate"
+service_desc = "Help the needed"
+service_cost = 100
+company = NodePath("../..")
+
+[node name="ServiceButton4" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("6_mmw6e")]
+layout_mode = 2
+service_name = "Church treatment"
+service_desc = "Recover 25% HP"
+service_cost = 50
+service_time_needed = 3
+company = NodePath("../..")
+recover_hp_percentage = 25
+
+[node name="ServiceButton5" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("6_mmw6e")]
+layout_mode = 2
+service_name = "Volunteer work A"
+service_desc = "Increase HAR by 2"
+service_cost = 0
+service_time_needed = 2
+company = NodePath("../..")
+gain_stat = Array[int]([0, 0, 0, 2, 0])
+
+[node name="ServiceButton6" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("6_mmw6e")]
+layout_mode = 2
+service_name = "Volunteer work B"
+service_desc = "Increase YEE by 4"
+service_cost = 0
+service_time_needed = 2
+company = NodePath("../..")
+gain_stat = Array[int]([0, 0, 0, 0, 4])
+
+[node name="ServiceButton7" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("6_mmw6e")]
+layout_mode = 2
+service_name = "Buy church meal"
+service_desc = "Receive Church Meal"
+service_cost = 50
+company = NodePath("../..")
+limited_stock = true
+max_service_stock = 1
+give_item_id = 1002
+
+[node name="LeaveButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1176.0
+offset_top = 72.0
+offset_right = 1277.0
+offset_bottom = 113.0
+theme_override_fonts/font = ExtResource("2_vkx21")
+theme_override_font_sizes/font_size = 25
+text = "Leave"
+
+[connection signal="pressed" from="PromoteButton" to="." method="_on_promote_button_pressed"]
+[connection signal="mouse_entered" from="LeaveButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="LeaveButton" to="." method="_on_leave_button_pressed"]

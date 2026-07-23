@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://m0v4pmr67utb"]
+
+[ext_resource type="Script" path="res://entity/fish/npc_fish.gd" id="1_x8w1o"]
+[ext_resource type="Texture2D" uid="uid://cyt7ocvp44jok" path="res://asset/sprite/fish/shark.png" id="2_llxme"]
+[ext_resource type="Texture2D" uid="uid://5jgmgg00k63r" path="res://asset/sprite/ui/circle.png" id="3_1e3og"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="4_nqp5c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jt33u"]
+size = Vector2(201.083, 32.912)
+
+[sub_resource type="Animation" id="Animation_h3qmf"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fish:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0, -8), Vector2(0, -13), Vector2(0, -8), Vector2(0, -3), Vector2(0, -8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uq0v7"]
+_data = {
+"idle": SubResource("Animation_h3qmf")
+}
+
+[node name="Shark" type="CharacterBody2D"]
+script = ExtResource("1_x8w1o")
+fish_name = "Rebecca Shar"
+tier = 3
+max_hp = 1000
+stats = Array[int]([55, 14, 75, 23, 31])
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 0.478431)
+position = Vector2(-16, 64)
+scale = Vector2(3.75, 0.375)
+texture = ExtResource("3_1e3og")
+
+[node name="Fish" type="Sprite2D" parent="."]
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_llxme")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-20.4467, 6.47603)
+rotation = 0.178501
+shape = SubResource("RectangleShape2D_jt33u")
+debug_color = Color(0.701961, 0.00392157, 0.0117647, 0.419608)
+
+[node name="NameLabel" type="Label" parent="."]
+z_index = 50
+offset_left = -120.0
+offset_top = -72.0
+offset_right = 136.0
+offset_bottom = -40.0
+theme_override_colors/font_color = Color(0.184314, 1, 0.0745098, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("4_nqp5c")
+text = "Rebecca Shar"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uq0v7")
+}
+autoplay = "idle"

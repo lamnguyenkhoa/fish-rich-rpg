@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://dtxmmajk5ntsw"]
+
+[ext_resource type="Script" uid="uid://cgl0yrrr18aru" path="res://entity/player/player.gd" id="1_av2pu"]
+[ext_resource type="Texture2D" uid="uid://5jgmgg00k63r" path="res://asset/sprite/ui/circle.png" id="2_ewljf"]
+[ext_resource type="Texture2D" uid="uid://b0154alq27j5v" path="res://asset/sprite/eviota.png" id="3_pxkxk"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="4_vvdyi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nntff"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_katn5"]
+size = Vector2(400, 120)
+
+[sub_resource type="Animation" id="Animation_wgtrr"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FishSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.9, 1, 1.4, 1.5, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -0.116199, -0.116199, 0.0, 0.0, 0.0742863, 0.0742863, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2he42"]
+_data = {
+&"idle": SubResource("Animation_wgtrr")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73y42"]
+size = Vector2(136, 64)
+
+[node name="PlayerEviota" type="CharacterBody2D" unique_id=1855792530]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_av2pu")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=661993251]
+self_modulate = Color(0, 0, 0, 0.301961)
+position = Vector2(0, 24)
+scale = Vector2(1.375, 0.125)
+texture = ExtResource("2_ewljf")
+
+[node name="FishSprite" type="Sprite2D" parent="." unique_id=1066561753]
+material = SubResource("ShaderMaterial_nntff")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_pxkxk")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1402986281]
+position = Vector2(-8, 1)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_katn5")
+debug_color = Color(0.701961, 0.0313726, 0.0235294, 0.419608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=542900171]
+libraries/ = SubResource("AnimationLibrary_2he42")
+autoplay = &"idle"
+
+[node name="InteractArea" type="Area2D" parent="." unique_id=979290838]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=2098032623]
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_73y42")
+debug_color = Color(0.0431373, 0.701961, 0.054902, 0.419608)
+
+[node name="InteractLabel" type="Label" parent="." unique_id=146394153]
+z_index = 100
+offset_left = -144.0
+offset_top = -88.0
+offset_right = 144.0
+offset_bottom = -31.0
+theme_override_colors/font_color = Color(1, 0.854902, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("4_vvdyi")
+theme_override_font_sizes/font_size = 20
+text = "Interact"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2

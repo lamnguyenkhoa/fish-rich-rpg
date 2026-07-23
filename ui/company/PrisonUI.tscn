@@ -1,0 +1,276 @@
+[gd_scene load_steps=8 format=3 uid="uid://bob03cyiaxrcu"]
+
+[ext_resource type="Script" path="res://ui/company_work.gd" id="1_ttglp"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="2_jq01x"]
+[ext_resource type="Texture2D" uid="uid://d4cgkl61lquvu" path="res://asset/sprite/building/prison_background.png" id="3_rypdg"]
+[ext_resource type="Texture2D" uid="uid://bp7jc5fb0ymxu" path="res://asset/sprite/fish/electric_eel_warden.png" id="4_wb60s"]
+[ext_resource type="Texture2D" uid="uid://p73ulmivegfh" path="res://asset/sprite/ui/square.png" id="5_vd4hr"]
+[ext_resource type="PackedScene" uid="uid://ccta77b8vbyr1" path="res://ui/WorkButton.tscn" id="6_82gve"]
+[ext_resource type="PackedScene" uid="uid://6rq61wi1af6k" path="res://ui/ServiceButton.tscn" id="7_c05sj"]
+
+[node name="PrisonUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ttglp")
+xp_per_level = Array[int]([200, 250, 300, 350, 400])
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101961, 0.0666667, 0.231373, 0.721569)
+
+[node name="WorkLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -427.0
+offset_top = -16.0
+offset_right = 469.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("2_jq01x")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "
+[center]Visiting [color=purple][wave]Amethyst Prison[/wave][/color] ...[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="EnvironmentImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 45.0
+offset_top = -192.0
+offset_right = 642.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_rypdg")
+
+[node name="OctopusChef" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 405.0
+offset_top = 40.0
+offset_right = 770.0
+offset_bottom = 429.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wb60s")
+
+[node name="ReputationLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -619.0
+offset_top = 112.0
+offset_right = -171.0
+offset_bottom = 145.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_jq01x")
+theme_override_font_sizes/font_size = 24
+text = "Reputation - 1"
+
+[node name="ReputationProgress" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 160.0
+offset_right = 640.0
+offset_bottom = 191.0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_vd4hr")
+texture_progress = ExtResource("5_vd4hr")
+tint_under = Color(0.529412, 0.529412, 0.529412, 1)
+tint_progress = Color(1, 0.972549, 0.596078, 1)
+
+[node name="ProgressLabel" type="RichTextLabel" parent="ReputationProgress"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -7.5
+offset_right = 64.0
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]0 / 100[/center]"
+scroll_active = false
+
+[node name="JobLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -619.0
+offset_top = 224.0
+offset_right = -171.0
+offset_bottom = 257.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_jq01x")
+theme_override_font_sizes/font_size = 24
+text = "Work as"
+
+[node name="JobBox" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 272.0
+offset_right = 640.0
+offset_bottom = 331.0
+theme_override_constants/separation = 15
+
+[node name="WorkButton" parent="JobBox" node_paths=PackedStringArray("company") instance=ExtResource("6_82gve")]
+layout_mode = 2
+job_name = "Cleaner"
+job_pay = 100
+reputation_xp = 5
+company = NodePath("../..")
+need_for_stat = 10
+
+[node name="WorkButton2" parent="JobBox" node_paths=PackedStringArray("company") instance=ExtResource("6_82gve")]
+visible = false
+layout_mode = 2
+job_name = "Admin staff"
+job_pay = 250
+reputation_xp = 10
+company = NodePath("../..")
+need_for_stat = 15
+
+[node name="WorkButton3" parent="JobBox" node_paths=PackedStringArray("company") instance=ExtResource("6_82gve")]
+visible = false
+layout_mode = 2
+job_name = "Counselor"
+job_pay = 600
+reputation_xp = 20
+company = NodePath("../..")
+need_for_stat = 25
+
+[node name="WorkButton4" parent="JobBox" node_paths=PackedStringArray("company") instance=ExtResource("6_82gve")]
+visible = false
+layout_mode = 2
+job_name = "Prison Officer"
+job_pay = 1365
+reputation_xp = 35
+company = NodePath("../..")
+need_for_stat = 35
+
+[node name="WorkButton5" parent="JobBox" node_paths=PackedStringArray("company") instance=ExtResource("6_82gve")]
+visible = false
+layout_mode = 2
+job_name = "Deputy Warden"
+job_pay = 1950
+reputation_xp = 60
+company = NodePath("../..")
+need_for_stat = 45
+
+[node name="WorkButton6" parent="JobBox" node_paths=PackedStringArray("company") instance=ExtResource("6_82gve")]
+visible = false
+layout_mode = 2
+job_name = "Prison Director"
+job_pay = 2450
+reputation_xp = 85
+company = NodePath("../..")
+need_for_stat = 60
+
+[node name="PromoteButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 328.0
+offset_right = 576.0
+offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("2_jq01x")
+theme_override_font_sizes/font_size = 25
+text = "Apply for promotion"
+
+[node name="ServiceLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -619.0
+offset_top = 416.0
+offset_right = -171.0
+offset_bottom = 449.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_jq01x")
+theme_override_font_sizes/font_size = 24
+text = "Activities"
+
+[node name="ServiceBox" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 464.0
+offset_right = 640.0
+offset_bottom = 648.0
+
+[node name="ServiceButton" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("7_c05sj")]
+layout_mode = 2
+service_name = "Learn crime"
+service_desc = "Increase HAR by 5"
+service_cost = 150
+service_time_needed = 3
+reputation_xp = -25
+company = NodePath("../..")
+limited_stock = false
+gain_stat = Array[int]([0, 0, 0, 5, 0])
+
+[node name="ServiceButton2" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("7_c05sj")]
+layout_mode = 2
+service_name = "Join exercise"
+service_desc = "Increase YEE by 5"
+service_cost = 0
+service_time_needed = 2
+company = NodePath("../..")
+limited_stock = false
+gain_stat = Array[int]([0, 0, 0, 0, 5])
+
+[node name="ServiceButton3" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("7_c05sj")]
+layout_mode = 2
+service_name = "Smuggle"
+service_desc = "Get 5000$. 25% caught chance"
+service_cost = 0
+service_time_needed = 3
+reputation_xp = -50
+company = NodePath("../..")
+limited_stock = false
+special_case = 105
+
+[node name="LeaveButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1176.0
+offset_top = 72.0
+offset_right = 1277.0
+offset_bottom = 113.0
+theme_override_fonts/font = ExtResource("2_jq01x")
+theme_override_font_sizes/font_size = 25
+text = "Leave"
+
+[connection signal="mouse_entered" from="PromoteButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="PromoteButton" to="." method="_on_promote_button_pressed"]
+[connection signal="mouse_entered" from="LeaveButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="LeaveButton" to="." method="_on_leave_button_pressed"]

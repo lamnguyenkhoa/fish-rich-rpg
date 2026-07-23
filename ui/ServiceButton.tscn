@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://6rq61wi1af6k"]
+
+[ext_resource type="Script" path="res://ui/service_button.gd" id="1_3fg44"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="1_h81km"]
+
+[node name="ServiceButton" type="HBoxContainer"]
+script = ExtResource("1_3fg44")
+limited_stock = null
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_h81km")
+theme_override_font_sizes/font_size = 22
+text = "Buy item"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "10$, Buy item desc"
+
+[connection signal="mouse_entered" from="Button" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

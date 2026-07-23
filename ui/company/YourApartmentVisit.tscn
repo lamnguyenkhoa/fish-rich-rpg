@@ -1,0 +1,210 @@
+[gd_scene load_steps=6 format=3 uid="uid://r1ah7gujb1lr"]
+
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="1_ghfl1"]
+[ext_resource type="Script" path="res://ui/company_work.gd" id="1_t12u5"]
+[ext_resource type="Texture2D" uid="uid://dpalq260oi3ma" path="res://asset/sprite/building/your_apartment.png" id="3_cmtek"]
+[ext_resource type="Texture2D" uid="uid://p73ulmivegfh" path="res://asset/sprite/ui/square.png" id="4_48gwd"]
+[ext_resource type="PackedScene" uid="uid://6rq61wi1af6k" path="res://ui/ServiceButton.tscn" id="6_johfd"]
+
+[node name="YourApartmentUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t12u5")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.337255, 0.192157, 0, 0.54902)
+
+[node name="WorkLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -427.0
+offset_top = -16.0
+offset_right = 469.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("1_ghfl1")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "
+[center]Staying in [color=orange][wave]Your apartment[/wave][/color] ...[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="EnvironmentImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -192.0
+offset_right = 613.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_cmtek")
+
+[node name="ReputationLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -619.0
+offset_top = 112.0
+offset_right = -171.0
+offset_bottom = 145.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_ghfl1")
+theme_override_font_sizes/font_size = 24
+text = "Reputation - 1"
+
+[node name="ReputationProgress" type="TextureProgressBar" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 128.0
+offset_top = 160.0
+offset_right = 640.0
+offset_bottom = 191.0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_48gwd")
+texture_progress = ExtResource("4_48gwd")
+tint_under = Color(0.529412, 0.529412, 0.529412, 1)
+tint_progress = Color(1, 0.972549, 0.596078, 1)
+
+[node name="ProgressLabel" type="RichTextLabel" parent="ReputationProgress"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -7.5
+offset_right = 64.0
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]0 / 100[/center]"
+scroll_active = false
+
+[node name="JobLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -619.0
+offset_top = 224.0
+offset_right = -171.0
+offset_bottom = 257.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_ghfl1")
+theme_override_font_sizes/font_size = 24
+text = "Work as"
+
+[node name="JobBox" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 128.0
+offset_top = 272.0
+offset_right = 640.0
+offset_bottom = 331.0
+theme_override_constants/separation = 15
+
+[node name="PromoteButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 192.0
+offset_top = 328.0
+offset_right = 576.0
+offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("1_ghfl1")
+theme_override_font_sizes/font_size = 25
+text = "Apply for promotion"
+
+[node name="ServiceLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -619.0
+offset_top = 160.0
+offset_right = -171.0
+offset_bottom = 193.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_ghfl1")
+theme_override_font_sizes/font_size = 24
+text = "Actions"
+
+[node name="ServiceBox" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 208.0
+offset_right = 640.0
+offset_bottom = 392.0
+
+[node name="ServiceButton" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("6_johfd")]
+layout_mode = 2
+service_name = "Quick Nap"
+service_desc = "Recover 5% HP and 10% SP"
+service_cost = 0
+service_time_needed = 1
+company = NodePath("../..")
+no_restock = null
+recover_hp_percentage = 5
+recover_sp_percentage = 10
+
+[node name="ServiceButton2" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("6_johfd")]
+layout_mode = 2
+service_name = "Sleep"
+service_desc = "Full recovery and move to next day"
+service_cost = 0
+company = NodePath("../..")
+no_restock = null
+recover_hp_percentage = 100
+recover_sp_percentage = 100
+special_case = 100
+
+[node name="ServiceButton3" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("6_johfd")]
+layout_mode = 2
+service_name = "Pay the debt"
+service_desc = "End the game"
+service_cost = 1000000
+company = NodePath("../..")
+limited_stock = true
+max_service_stock = 1
+no_restock = true
+special_case = 200
+
+[node name="LeaveButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1176.0
+offset_top = 72.0
+offset_right = 1277.0
+offset_bottom = 113.0
+theme_override_fonts/font = ExtResource("1_ghfl1")
+theme_override_font_sizes/font_size = 25
+text = "Leave"
+
+[connection signal="pressed" from="PromoteButton" to="." method="_on_promote_button_pressed"]
+[connection signal="mouse_entered" from="LeaveButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="LeaveButton" to="." method="_on_leave_button_pressed"]

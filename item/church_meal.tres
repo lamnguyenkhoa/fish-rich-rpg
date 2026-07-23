@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://dsd7hwggcttx"]
+
+[ext_resource type="Script" path="res://item/item_resource.gd" id="1_vg23t"]
+
+[resource]
+script = ExtResource("1_vg23t")
+item_id = 1002
+name = "Church Meal"
+description = "Meal made by the church for the need.
+Recover 30 HP and 35 SP."
+type = 1
+recover_hp = 30
+recover_sp = 35
+recover_hp_percentage = 0
+recover_sp_percentage = 0
+gain_stat = Array[int]([0, 0, 0, 0, 0])
+special_case = ""

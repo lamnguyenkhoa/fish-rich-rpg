@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://cew5y7l5jj33n"]
+
+[ext_resource type="Script" path="res://item/item_resource.gd" id="1_lfm2y"]
+
+[resource]
+script = ExtResource("1_lfm2y")
+item_id = 1000
+name = "Fried rice"
+description = "Delicious fried rice made from searice and fried with seabutter.
+Recover 20 SP."
+type = 1
+recover_hp = 0
+recover_sp = 20
+recover_hp_percentage = 0
+recover_sp_percentage = 0
+special_case = ""

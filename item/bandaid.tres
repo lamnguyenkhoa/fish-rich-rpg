@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://b46ot2yaj87hr"]
+
+[ext_resource type="Script" path="res://item/item_resource.gd" id="1_od6x2"]
+
+[resource]
+script = ExtResource("1_od6x2")
+item_id = 2000
+name = "Bandaid"
+description = "Simple treatment for the flesh.
+Recover 10 HP."
+type = 1
+recover_hp = 10
+recover_sp = 0
+recover_hp_percentage = 0
+recover_sp_percentage = 0
+special_case = ""

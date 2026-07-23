@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cla805uxt7pt5"]
+
+[ext_resource type="Script" path="res://ui/item_button.gd" id="1_4hvfi"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="2_5a1mm"]
+
+[node name="ItemButton" type="HBoxContainer"]
+script = ExtResource("1_4hvfi")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5a1mm")
+text = "Item"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "x1"
+
+[node name="Control2" type="Control" parent="."]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

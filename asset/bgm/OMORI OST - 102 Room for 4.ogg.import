@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bu831bljee4u8"
+path="res://.godot/imported/OMORI OST - 102 Room for 4.ogg-3b676eee3af765eb412085af636c5cbc.oggvorbisstr"
+
+[deps]
+
+source_file="res://asset/bgm/OMORI OST - 102 Room for 4.ogg"
+dest_files=["res://.godot/imported/OMORI OST - 102 Room for 4.ogg-3b676eee3af765eb412085af636c5cbc.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

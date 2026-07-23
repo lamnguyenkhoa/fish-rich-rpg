@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://bf3tcodbfx8sp"]
+
+[ext_resource type="Script" path="res://item/item_resource.gd" id="1_iyk5t"]
+
+[resource]
+script = ExtResource("1_iyk5t")
+item_id = 2002
+name = "Premium Medkit"
+description = "Highest quality portable healing device that money can buy, legally.
+Recover 50 HP and 20% of HP."
+type = 1
+recover_hp = 50
+recover_sp = 0
+recover_hp_percentage = 20
+recover_sp_percentage = 0
+special_case = ""

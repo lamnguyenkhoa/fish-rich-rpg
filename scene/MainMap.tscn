@@ -1,0 +1,344 @@
+[gd_scene format=3 uid="uid://c0xitnvds1848"]
+
+[ext_resource type="Texture2D" uid="uid://cts32tvdsnmfx" path="res://asset/sprite/building/sand.png" id="1_0tepv"]
+[ext_resource type="Script" uid="uid://cwlywvdd2jqak" path="res://scene/map_manager.gd" id="1_pelnp"]
+[ext_resource type="PackedScene" uid="uid://dtxmmajk5ntsw" path="res://entity/player/PlayerEviota.tscn" id="2_0uhqw"]
+[ext_resource type="Script" uid="uid://b5lrxhsf7hpvl" path="res://scene/camera_follow.gd" id="3_bmpse"]
+[ext_resource type="PackedScene" uid="uid://yhpp75dbteo1" path="res://entity/building/SharkSolutionBuilding.tscn" id="3_i16ob"]
+[ext_resource type="Texture2D" uid="uid://bncvi8074qve1" path="res://asset/sprite/building/seaweed_tiled_hotizontal.png" id="3_np4vr"]
+[ext_resource type="Texture2D" uid="uid://b0ofcfywvrxa4" path="res://asset/sprite/building/seaweed_tiled_vertical.png" id="4_myd5i"]
+[ext_resource type="Texture2D" uid="uid://p73ulmivegfh" path="res://asset/sprite/ui/square.png" id="4_upago"]
+[ext_resource type="PackedScene" uid="uid://h7orxnlmdjqe" path="res://entity/building/OctopusRestaurantBuilding.tscn" id="6_wluxn"]
+[ext_resource type="PackedScene" uid="uid://075cq1jo2r0u" path="res://ui/GameUI.tscn" id="7_6vlpv"]
+[ext_resource type="PackedScene" uid="uid://cuo5yqknjvw01" path="res://entity/building/YourApartment.tscn" id="7_t4meo"]
+[ext_resource type="Shader" uid="uid://d1ym82673oeip" path="res://shader/water_effect.gdshader" id="8_jbp0p"]
+[ext_resource type="PackedScene" uid="uid://x1r3h8o3fg16" path="res://entity/building/University.tscn" id="8_w4ucs"]
+[ext_resource type="PackedScene" uid="uid://b3tmooiwoyysu" path="res://entity/building/GymBuilding.tscn" id="9_04awf"]
+[ext_resource type="PackedScene" uid="uid://dq1lf15wa51dl" path="res://ui/company/SharkSolutionWork.tscn" id="9_tsdjd"]
+[ext_resource type="PackedScene" uid="uid://dwus0dorc3abk" path="res://ui/company/OctopusRestaurantVisit.tscn" id="10_475j1"]
+[ext_resource type="Shader" uid="uid://b015rtpnnsq6f" path="res://shader/windwalker_water.gdshader" id="10_bs6qu"]
+[ext_resource type="PackedScene" uid="uid://biqxju6alq3qq" path="res://entity/building/HospitalBuilding.tscn" id="10_v3uhw"]
+[ext_resource type="PackedScene" uid="uid://drivyomhbl11b" path="res://entity/fish/ThugBarracuda.tscn" id="10_yas0d"]
+[ext_resource type="PackedScene" uid="uid://da1yt70l2yuco" path="res://entity/building/PrisonBuilding.tscn" id="13_i5esd"]
+[ext_resource type="PackedScene" uid="uid://c4dn4ygqcba8i" path="res://entity/building/ChurchBuilding.tscn" id="15_eyqfy"]
+[ext_resource type="PackedScene" uid="uid://dln8xnjttyagr" path="res://entity/fish/BossBarracuda.tscn" id="15_qjv23"]
+[ext_resource type="PackedScene" uid="uid://r1ah7gujb1lr" path="res://ui/company/YourApartmentVisit.tscn" id="15_xrgbd"]
+[ext_resource type="PackedScene" uid="uid://bkudip2s0vw0v" path="res://entity/fish/DonBarracuda.tscn" id="16_llj84"]
+[ext_resource type="PackedScene" uid="uid://o7mtseircyj4" path="res://entity/fish/PopeFish.tscn" id="16_x4y7b"]
+[ext_resource type="PackedScene" uid="uid://bvjvtbcoje0qb" path="res://ui/company/UniversityUI.tscn" id="17_q7i15"]
+[ext_resource type="Shader" uid="uid://d4l6043knsi2q" path="res://shader/2d_wind.gdshader" id="17_rytdt"]
+[ext_resource type="PackedScene" uid="uid://dn0e5wy7w8n2b" path="res://entity/fish/Octopus.tscn" id="18_sfkup"]
+[ext_resource type="PackedScene" uid="uid://c2ihbm08ukep4" path="res://entity/fish/DoctorFish.tscn" id="19_6hknq"]
+[ext_resource type="PackedScene" uid="uid://cjyppyoi6jmhg" path="res://ui/company/GymUI.tscn" id="19_e0jw8"]
+[ext_resource type="PackedScene" uid="uid://m0v4pmr67utb" path="res://entity/fish/Shark.tscn" id="19_f0oh7"]
+[ext_resource type="PackedScene" uid="uid://bql645p037mxa" path="res://entity/fish/Clownfish.tscn" id="19_isd7b"]
+[ext_resource type="PackedScene" uid="uid://cirnhtavxhmn7" path="res://entity/fish/BlueTangFish.tscn" id="20_jug0g"]
+[ext_resource type="PackedScene" uid="uid://bdb5te3l6q8ky" path="res://ui/company/HospitalUI.tscn" id="22_lt8vf"]
+[ext_resource type="PackedScene" uid="uid://bob03cyiaxrcu" path="res://ui/company/PrisonUI.tscn" id="23_n0m50"]
+[ext_resource type="PackedScene" uid="uid://y0c66svnd50g" path="res://ui/EndgameUI.tscn" id="24_g7740"]
+[ext_resource type="AudioStream" uid="uid://bu831bljee4u8" path="res://asset/bgm/OMORI OST - 102 Room for 4.ogg" id="27_k807w"]
+[ext_resource type="PackedScene" uid="uid://bkamhjgp5m08g" path="res://ui/company/ChurchUI.tscn" id="31_w05yh"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4qfei"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f8d53"]
+noise = SubResource("FastNoiseLite_4qfei")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nap8k"]
+shader = ExtResource("8_jbp0p")
+shader_parameter/refraction_map = SubResource("NoiseTexture2D_f8d53")
+shader_parameter/refraction_stretch = Vector2(1, 1)
+shader_parameter/refraction_strength = 0.02
+shader_parameter/water_tint = Color(0.2, 0.6, 1, 0)
+shader_parameter/speed = 0.02
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufjok"]
+size = Vector2(3520, 60)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gkeei"]
+shader = ExtResource("17_rytdt")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqsta"]
+size = Vector2(64, 1728)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_860ia"]
+shader = ExtResource("17_rytdt")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n44i7"]
+shader = ExtResource("17_rytdt")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yuvmt"]
+shader = ExtResource("17_rytdt")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 30.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yrcn7"]
+shader = ExtResource("10_bs6qu")
+shader_parameter/WATER_COL = Color(0.0901961, 0.321569, 0.431373, 1)
+shader_parameter/WATER2_COL = Color(0.0235294, 0.196078, 0.286275, 1)
+shader_parameter/FOAM_COL = Color(0.505882, 0.572549, 0.576471, 1)
+shader_parameter/distortion_speed = 1.0
+shader_parameter/tile = Vector2(1, 1)
+shader_parameter/offset = Vector2(0, 0)
+
+[node name="MainMap" type="Node2D" unique_id=377019627 node_paths=PackedStringArray("player_apartment", "prison", "work_ui", "endgame_ui")]
+script = ExtResource("1_pelnp")
+player_apartment = NodePath("YSortGroup/YourApartment")
+prison = NodePath("YSortGroup/Prison")
+work_ui = NodePath("CanvasLayer/WorkUI")
+endgame_ui = NodePath("CanvasLayer/EndgameUI")
+
+[node name="Environment" type="Sprite2D" parent="." unique_id=1561816058]
+texture_repeat = 2
+position = Vector2(496, 280)
+texture = ExtResource("1_0tepv")
+region_enabled = true
+region_rect = Rect2(0, 0, 5000, 2500)
+
+[node name="WaterShader" type="Sprite2D" parent="." unique_id=859824416]
+visible = false
+material = SubResource("ShaderMaterial_nap8k")
+position = Vector2(520, 284)
+scale = Vector2(80.5, 41.125)
+texture = ExtResource("4_upago")
+
+[node name="WorldBorderTop" type="StaticBody2D" parent="." unique_id=1122933660]
+collision_mask = 7
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBorderTop" unique_id=181870656]
+position = Vector2(600, -480)
+shape = SubResource("RectangleShape2D_ufjok")
+
+[node name="Sprite2D3" type="Sprite2D" parent="WorldBorderTop" unique_id=775177906]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gkeei")
+position = Vector2(488, -656)
+texture = ExtResource("3_np4vr")
+region_enabled = true
+region_rect = Rect2(0, 0, 5000, 390)
+
+[node name="YSortGroup" type="Node2D" parent="." unique_id=1429609672]
+y_sort_enabled = true
+
+[node name="PlayerEviota" parent="YSortGroup" unique_id=392357835 instance=ExtResource("2_0uhqw")]
+position = Vector2(272, 664)
+
+[node name="SharkSolutionBuilding" parent="YSortGroup" unique_id=1824538538 node_paths=PackedStringArray("open_company_ui") instance=ExtResource("3_i16ob")]
+position = Vector2(1304, 64)
+interact_text = "Work at Shark Solution Corp"
+open_company_ui = NodePath("../../CanvasLayer/WorkUI/SharkSolutionUI")
+
+[node name="OctopusRestaurantBuilding" parent="YSortGroup" unique_id=600098534 node_paths=PackedStringArray("open_company_ui") instance=ExtResource("6_wluxn")]
+position = Vector2(496, 416)
+open_company_ui = NodePath("../../CanvasLayer/WorkUI/OctopusRestaurantUI")
+
+[node name="YourApartment" parent="YSortGroup" unique_id=1627524300 node_paths=PackedStringArray("open_company_ui") instance=ExtResource("7_t4meo")]
+position = Vector2(-16, 600)
+open_company_ui = NodePath("../../CanvasLayer/WorkUI/YourApartmentUI")
+
+[node name="University" parent="YSortGroup" unique_id=1334232825 node_paths=PackedStringArray("open_company_ui") instance=ExtResource("8_w4ucs")]
+position = Vector2(304, -200)
+interact_text = "Go to universeaty"
+open_company_ui = NodePath("../../CanvasLayer/WorkUI/UniversityUI")
+
+[node name="Gym" parent="YSortGroup" unique_id=32858064 node_paths=PackedStringArray("open_company_ui") instance=ExtResource("9_04awf")]
+position = Vector2(1168, 416)
+interact_text = "Go to gym"
+open_company_ui = NodePath("../../CanvasLayer/WorkUI/GymUI")
+
+[node name="Prison" parent="YSortGroup" unique_id=2012810417 node_paths=PackedStringArray("open_company_ui") instance=ExtResource("13_i5esd")]
+position = Vector2(-640, -440)
+open_company_ui = NodePath("../../CanvasLayer/WorkUI/PrisonUI")
+
+[node name="Hospital" parent="YSortGroup" unique_id=795778934 node_paths=PackedStringArray("open_company_ui") instance=ExtResource("10_v3uhw")]
+position = Vector2(856, -376)
+open_company_ui = NodePath("../../CanvasLayer/WorkUI/HospitalUI")
+
+[node name="Church" parent="YSortGroup" unique_id=959247649 node_paths=PackedStringArray("open_company_ui") instance=ExtResource("15_eyqfy")]
+position = Vector2(1824, -352)
+open_company_ui = NodePath("../../CanvasLayer/WorkUI/ChurchUI")
+
+[node name="ThugBarracuda" parent="YSortGroup" unique_id=99503499 instance=ExtResource("10_yas0d")]
+position = Vector2(-816, 40)
+flip_sprite = true
+stats = Array[int]([22, 14, 15, 12, 17])
+
+[node name="PopeFish" parent="YSortGroup" unique_id=799434679 instance=ExtResource("16_x4y7b")]
+position = Vector2(1976, -280)
+
+[node name="Octopus" parent="YSortGroup" unique_id=1038310336 instance=ExtResource("18_sfkup")]
+position = Vector2(672, 448)
+
+[node name="Doctorfish" parent="YSortGroup" unique_id=1874399734 instance=ExtResource("19_6hknq")]
+position = Vector2(992, -344)
+
+[node name="Clownfish" parent="YSortGroup" unique_id=2801540 instance=ExtResource("19_isd7b")]
+position = Vector2(392, -136)
+flip_sprite = true
+
+[node name="BlueTangFish" parent="YSortGroup" unique_id=1980698329 instance=ExtResource("20_jug0g")]
+position = Vector2(-664, 840)
+
+[node name="Shark" parent="YSortGroup" unique_id=1717676907 instance=ExtResource("19_f0oh7")]
+position = Vector2(1496, 168)
+
+[node name="BossBarracuda" parent="YSortGroup" unique_id=30630380 instance=ExtResource("15_qjv23")]
+position = Vector2(-840, 360)
+flip_sprite = true
+
+[node name="BossBarracuda2" parent="YSortGroup" unique_id=1720420705 instance=ExtResource("15_qjv23")]
+position = Vector2(1872, 800)
+flip_sprite = true
+
+[node name="ThugBarracuda3" parent="YSortGroup" unique_id=1838331837 instance=ExtResource("10_yas0d")]
+position = Vector2(-904, 472)
+flip_sprite = true
+stats = Array[int]([22, 14, 15, 12, 17])
+
+[node name="ThugBarracuda4" parent="YSortGroup" unique_id=1143065489 instance=ExtResource("10_yas0d")]
+position = Vector2(-248, -176)
+flip_sprite = true
+stats = Array[int]([22, 14, 15, 12, 17])
+
+[node name="ThugBarracuda5" parent="YSortGroup" unique_id=75148636 instance=ExtResource("10_yas0d")]
+position = Vector2(-568, 208)
+stats = Array[int]([22, 14, 15, 12, 17])
+
+[node name="DonBarracuda" parent="YSortGroup" unique_id=857727371 instance=ExtResource("16_llj84")]
+position = Vector2(2080, 936)
+
+[node name="WorldBorderBotAndSide" type="StaticBody2D" parent="." unique_id=932688365]
+collision_mask = 7
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBorderBotAndSide" unique_id=1684361259]
+position = Vector2(600, -480)
+shape = SubResource("RectangleShape2D_ufjok")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorderBotAndSide" unique_id=529820094]
+position = Vector2(-1056, 288)
+shape = SubResource("RectangleShape2D_nqsta")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBorderBotAndSide" unique_id=1547345851]
+position = Vector2(2272, 300)
+shape = SubResource("RectangleShape2D_nqsta")
+
+[node name="Sprite2D4" type="Sprite2D" parent="WorldBorderBotAndSide" unique_id=1449424122]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_860ia")
+position = Vector2(520, 1040)
+texture = ExtResource("3_np4vr")
+region_enabled = true
+region_rect = Rect2(0, 0, 5000, 390)
+
+[node name="Sprite2D" type="Sprite2D" parent="WorldBorderBotAndSide" unique_id=1553795457]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_n44i7")
+position = Vector2(-1144, 248)
+texture = ExtResource("4_myd5i")
+region_enabled = true
+region_rect = Rect2(0, 0, 245, 3500)
+
+[node name="Sprite2D2" type="Sprite2D" parent="WorldBorderBotAndSide" unique_id=1290738936]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_yuvmt")
+position = Vector2(2368, 248)
+texture = ExtResource("4_myd5i")
+region_enabled = true
+region_rect = Rect2(0, 0, 245, 3500)
+
+[node name="WaterTop" type="Sprite2D" parent="." unique_id=2146273440]
+self_modulate = Color(1, 1, 1, 0.243137)
+material = SubResource("ShaderMaterial_yrcn7")
+position = Vector2(464, 296)
+scale = Vector2(74.25, 36.25)
+texture = ExtResource("4_upago")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=178553415 node_paths=PackedStringArray("follow_target")]
+position = Vector2(272, 528)
+position_smoothing_enabled = true
+script = ExtResource("3_bmpse")
+follow_target = NodePath("../YSortGroup/PlayerEviota")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1501607981]
+
+[node name="GameUI" parent="CanvasLayer" unique_id=62031727 instance=ExtResource("7_6vlpv")]
+
+[node name="WorkUI" type="Control" parent="CanvasLayer" unique_id=654643192]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SharkSolutionUI" parent="CanvasLayer/WorkUI" unique_id=1601555397 instance=ExtResource("9_tsdjd")]
+visible = false
+layout_mode = 1
+
+[node name="OctopusRestaurantUI" parent="CanvasLayer/WorkUI" unique_id=785512701 instance=ExtResource("10_475j1")]
+visible = false
+layout_mode = 1
+
+[node name="PrisonUI" parent="CanvasLayer/WorkUI" unique_id=116307256 instance=ExtResource("23_n0m50")]
+visible = false
+layout_mode = 1
+
+[node name="YourApartmentUI" parent="CanvasLayer/WorkUI" unique_id=773177746 instance=ExtResource("15_xrgbd")]
+visible = false
+layout_mode = 1
+
+[node name="UniversityUI" parent="CanvasLayer/WorkUI" unique_id=502548831 instance=ExtResource("17_q7i15")]
+visible = false
+layout_mode = 1
+
+[node name="GymUI" parent="CanvasLayer/WorkUI" unique_id=114692582 instance=ExtResource("19_e0jw8")]
+visible = false
+layout_mode = 1
+
+[node name="HospitalUI" parent="CanvasLayer/WorkUI" unique_id=779942014 instance=ExtResource("22_lt8vf")]
+visible = false
+layout_mode = 1
+
+[node name="ChurchUI" parent="CanvasLayer/WorkUI" unique_id=489282996 instance=ExtResource("31_w05yh")]
+visible = false
+layout_mode = 1
+
+[node name="EndgameUI" parent="CanvasLayer" unique_id=1367672118 instance=ExtResource("24_g7740")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=199796989]
+stream = ExtResource("27_k807w")
+autoplay = true
+bus = &"BGM"

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://c57ajqq5ymsg5"]
+
+[ext_resource type="Script" path="res://item/item_resource.gd" id="1_3m81y"]
+
+[resource]
+script = ExtResource("1_3m81y")
+item_id = 2004
+name = "Reflex booster drink"
+description = "It's a blue liquid in a bottle. Look questionable.
+Permanently increase HAR and YEET by 5."
+type = 1
+recover_hp = 0
+recover_sp = 0
+recover_hp_percentage = 0
+recover_sp_percentage = 0
+gain_stat = Array[int]([0, 0, 0, 5, 5])
+special_case = ""

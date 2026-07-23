@@ -1,0 +1,371 @@
+[gd_scene load_steps=8 format=3 uid="uid://mf0qldclxjpr"]
+
+[ext_resource type="Script" path="res://ui/player_menu.gd" id="1_widhm"]
+[ext_resource type="Texture2D" uid="uid://dfgijvecgklle" path="res://asset/sprite/ui/eviota_avatar.png" id="2_bt7mv"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="3_osxo0"]
+[ext_resource type="Texture2D" uid="uid://p73ulmivegfh" path="res://asset/sprite/ui/square.png" id="4_1ohro"]
+[ext_resource type="Script" path="res://ui/inventory_menu.gd" id="6_px05k"]
+[ext_resource type="PackedScene" uid="uid://cla805uxt7pt5" path="res://ui/ItemButton.tscn" id="7_cy0jt"]
+[ext_resource type="Script" path="res://ui/option_menu.gd" id="7_ia5qf"]
+
+[node name="PlayerMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -352.0
+offset_top = -256.0
+offset_right = 352.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_widhm")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_osxo0")
+tab_alignment = 1
+
+[node name="Inventory" type="Control" parent="TabContainer"]
+layout_mode = 2
+script = ExtResource("6_px05k")
+item_button_prefab = ExtResource("7_cy0jt")
+
+[node name="Avatar" type="TextureRect" parent="TabContainer/Inventory"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 11.0
+offset_right = 109.0
+offset_bottom = 107.0
+texture = ExtResource("2_bt7mv")
+
+[node name="HealthBar" type="TextureProgressBar" parent="TabContainer/Inventory"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 35.0
+offset_right = 357.0
+offset_bottom = 59.0
+value = 75.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_1ohro")
+texture_progress = ExtResource("4_1ohro")
+tint_progress = Color(0.117647, 1, 0, 1)
+
+[node name="Label" type="Label" parent="TabContainer/Inventory/HealthBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "100/100"
+
+[node name="StaminaBar" type="TextureProgressBar" parent="TabContainer/Inventory"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 67.0
+offset_right = 357.0
+offset_bottom = 91.0
+value = 75.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_1ohro")
+texture_progress = ExtResource("4_1ohro")
+tint_progress = Color(1, 0.960784, 0.0784314, 1)
+
+[node name="Label" type="Label" parent="TabContainer/Inventory/StaminaBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "100/100"
+
+[node name="Statbox" type="VBoxContainer" parent="TabContainer/Inventory"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 116.0
+offset_right = 133.0
+offset_bottom = 291.0
+
+[node name="ForBox" type="HBoxContainer" parent="TabContainer/Inventory/Statbox"]
+layout_mode = 2
+
+[node name="ForLabel" type="Label" parent="TabContainer/Inventory/Statbox/ForBox"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("3_osxo0")
+theme_override_font_sizes/font_size = 20
+text = "FOR: 20"
+
+[node name="Control" type="Control" parent="TabContainer/Inventory/Statbox/ForBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="IntBox" type="HBoxContainer" parent="TabContainer/Inventory/Statbox"]
+layout_mode = 2
+
+[node name="IntLabel" type="Label" parent="TabContainer/Inventory/Statbox/IntBox"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("3_osxo0")
+theme_override_font_sizes/font_size = 20
+text = "INT: 20"
+
+[node name="Control" type="Control" parent="TabContainer/Inventory/Statbox/IntBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StrBox" type="HBoxContainer" parent="TabContainer/Inventory/Statbox"]
+layout_mode = 2
+
+[node name="StrLabel" type="Label" parent="TabContainer/Inventory/Statbox/StrBox"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("3_osxo0")
+theme_override_font_sizes/font_size = 20
+text = "STR: 20"
+
+[node name="Control" type="Control" parent="TabContainer/Inventory/Statbox/StrBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HarBox" type="HBoxContainer" parent="TabContainer/Inventory/Statbox"]
+layout_mode = 2
+
+[node name="HarLabel" type="Label" parent="TabContainer/Inventory/Statbox/HarBox"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("3_osxo0")
+theme_override_font_sizes/font_size = 20
+text = "HAR: 20"
+
+[node name="Control" type="Control" parent="TabContainer/Inventory/Statbox/HarBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="YeeBox" type="HBoxContainer" parent="TabContainer/Inventory/Statbox"]
+layout_mode = 2
+
+[node name="YeeLabel" type="Label" parent="TabContainer/Inventory/Statbox/YeeBox"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("3_osxo0")
+theme_override_font_sizes/font_size = 20
+text = "YEE: 20"
+
+[node name="Control" type="Control" parent="TabContainer/Inventory/Statbox/YeeBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatDesc" type="Label" parent="TabContainer/Inventory"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 123.0
+offset_right = 357.0
+offset_bottom = 266.0
+theme_override_font_sizes/font_size = 20
+text = "Fortitude.
+
+Indicate fish's resistance, both mentally and physically."
+autowrap_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="TabContainer/Inventory"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 403.0
+offset_right = 177.0
+offset_bottom = 431.0
+theme_override_fonts/font = ExtResource("3_osxo0")
+theme_override_font_sizes/font_size = 20
+text = "Money: 100$"
+
+[node name="DebtMoneyLabel" type="Label" parent="TabContainer/Inventory"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 435.0
+offset_right = 293.0
+offset_bottom = 463.0
+theme_override_fonts/font = ExtResource("3_osxo0")
+theme_override_font_sizes/font_size = 20
+text = "Debt money: 20000$"
+
+[node name="ItemListBackground" type="ColorRect" parent="TabContainer/Inventory"]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 35.0
+offset_right = 685.0
+offset_bottom = 291.0
+color = Color(0.380392, 0.380392, 0.380392, 0.509804)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Inventory"]
+layout_mode = 0
+offset_left = 381.0
+offset_top = 43.0
+offset_right = 677.0
+offset_bottom = 283.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Inventory/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemDesc" type="RichTextLabel" parent="TabContainer/Inventory"]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 307.0
+offset_right = 685.0
+offset_bottom = 475.0
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[font_size=24][Item name][/font_size]
+
+Recover 25% of your HP."
+
+[node name="Option" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("7_ia5qf")
+
+[node name="AudioGroup" type="Control" parent="TabContainer/Option"]
+anchors_preset = 0
+offset_left = 53.0
+offset_top = 35.0
+offset_right = 637.0
+offset_bottom = 219.0
+
+[node name="Title" type="Label" parent="TabContainer/Option/AudioGroup"]
+layout_mode = 1
+offset_right = 71.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("3_osxo0")
+theme_override_font_sizes/font_size = 20
+text = "Audio"
+
+[node name="MasterLabel" type="Label" parent="TabContainer/Option/AudioGroup"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 113.0
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("3_osxo0")
+text = "Master
+"
+
+[node name="BGMLabel" type="Label" parent="TabContainer/Option/AudioGroup"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 72.0
+offset_right = 113.0
+offset_bottom = 93.0
+theme_override_fonts/font = ExtResource("3_osxo0")
+text = "BGM"
+
+[node name="SFXLabel" type="Label" parent="TabContainer/Option/AudioGroup"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 104.0
+offset_right = 113.0
+offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("3_osxo0")
+text = "SFX"
+
+[node name="MasterSlider" type="HSlider" parent="TabContainer/Option/AudioGroup"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 40.0
+offset_right = 512.0
+offset_bottom = 56.0
+step = 5.0
+
+[node name="BGMSlider" type="HSlider" parent="TabContainer/Option/AudioGroup"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 72.0
+offset_right = 512.0
+offset_bottom = 88.0
+step = 5.0
+
+[node name="SFXSlider" type="HSlider" parent="TabContainer/Option/AudioGroup"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 104.0
+offset_right = 512.0
+offset_bottom = 120.0
+step = 5.0
+
+[node name="BackMenuButton" type="Button" parent="TabContainer/Option"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -147.0
+offset_top = -48.0
+offset_right = -4.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_osxo0")
+text = "Back to menu"
+
+[node name="QuitButton" type="Button" parent="TabContainer/Option"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -331.0
+offset_top = -48.0
+offset_right = -188.0
+offset_bottom = -19.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_osxo0")
+text = "Quit game"
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 669.0
+offset_right = 695.0
+offset_bottom = 24.0
+text = "X"
+
+[connection signal="tab_clicked" from="TabContainer" to="." method="_on_tab_container_tab_clicked"]
+[connection signal="tab_hovered" from="TabContainer" to="." method="_on_tab_container_tab_hovered"]
+[connection signal="mouse_entered" from="TabContainer/Inventory/Statbox/ForBox/ForLabel" to="TabContainer/Inventory" method="_on_for_label_mouse_entered"]
+[connection signal="mouse_entered" from="TabContainer/Inventory/Statbox/IntBox/IntLabel" to="TabContainer/Inventory" method="_on_int_label_mouse_entered"]
+[connection signal="mouse_entered" from="TabContainer/Inventory/Statbox/StrBox/StrLabel" to="TabContainer/Inventory" method="_on_str_label_mouse_entered"]
+[connection signal="mouse_entered" from="TabContainer/Inventory/Statbox/HarBox/HarLabel" to="TabContainer/Inventory" method="_on_har_label_mouse_entered"]
+[connection signal="mouse_entered" from="TabContainer/Inventory/Statbox/YeeBox/YeeLabel" to="TabContainer/Inventory" method="_on_yee_label_mouse_entered"]
+[connection signal="value_changed" from="TabContainer/Option/AudioGroup/MasterSlider" to="TabContainer/Option" method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Option/AudioGroup/BGMSlider" to="TabContainer/Option" method="_on_bgm_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Option/AudioGroup/SFXSlider" to="TabContainer/Option" method="_on_sfx_slider_value_changed"]
+[connection signal="mouse_entered" from="TabContainer/Option/BackMenuButton" to="TabContainer/Option" method="_on_back_menu_button_mouse_entered"]
+[connection signal="pressed" from="TabContainer/Option/BackMenuButton" to="TabContainer/Option" method="_on_back_menu_button_pressed"]
+[connection signal="mouse_entered" from="TabContainer/Option/QuitButton" to="TabContainer/Option" method="_on_quit_button_mouse_entered"]
+[connection signal="pressed" from="TabContainer/Option/QuitButton" to="TabContainer/Option" method="_on_quit_button_pressed"]
+[connection signal="mouse_entered" from="CloseButton" to="." method="_on_close_button_mouse_entered"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

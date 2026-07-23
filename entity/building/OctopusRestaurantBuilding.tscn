@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://h7orxnlmdjqe"]
+
+[ext_resource type="Script" path="res://entity/building/company_building.gd" id="1_jnoxt"]
+[ext_resource type="Texture2D" uid="uid://d0m5lqvifcfkt" path="res://asset/sprite/building/octopus_restaurant.png" id="2_kexma"]
+[ext_resource type="Shader" path="res://shader/topdown_shadow.gdshader" id="2_xgcya"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jua5p"]
+shader = ExtResource("2_xgcya")
+shader_parameter/deform = Vector2(0.5, 0.5)
+shader_parameter/offset = Vector2(0, 15)
+shader_parameter/modulate = Color(0, 0, 0, 0.55)
+shader_parameter/x_buffer = 2.0
+shader_parameter/y_buffer = 2.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_valto"]
+size = Vector2(272, 80)
+
+[node name="OctopusRestaurantBuilding" type="StaticBody2D"]
+script = ExtResource("1_jnoxt")
+interact_text = "Visit Octopus Restaurant"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jua5p")
+position = Vector2(0, -104)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_kexma")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_valto")
+debug_color = Color(0.701961, 0, 0.0745098, 0.419608)

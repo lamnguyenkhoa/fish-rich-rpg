@@ -1,0 +1,303 @@
+[gd_scene format=3 uid="uid://075cq1jo2r0u"]
+
+[ext_resource type="Script" uid="uid://b5rblr27ktaon" path="res://asset/sprite/ui/game_ui.gd" id="1_yatn0"]
+[ext_resource type="Texture2D" uid="uid://p73ulmivegfh" path="res://asset/sprite/ui/square.png" id="2_reaai"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="3_q7wdd"]
+[ext_resource type="PackedScene" uid="uid://mf0qldclxjpr" path="res://ui/PlayerMenu.tscn" id="5_lvtvn"]
+[ext_resource type="PackedScene" uid="uid://dqxthbc3g0l2v" path="res://ui/NPCInteractUI.tscn" id="6_w1lfw"]
+[ext_resource type="Script" uid="uid://beherv7nmw88t" path="res://ui/notification_ui.gd" id="7_kxei4"]
+
+[sub_resource type="Animation" id="Animation_1m6t5"]
+resource_name = "day_transition"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NextDayCover:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NextDayCover:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5y4gg"]
+_data = {
+&"day_transition": SubResource("Animation_1m6t5")
+}
+
+[node name="GameUI" type="Control" unique_id=1645127203]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yatn0")
+
+[node name="NextDayCover" type="ColorRect" parent="." unique_id=1305602008]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="TopBanner" type="TextureRect" parent="." unique_id=1950027224]
+self_modulate = Color(0, 0, 0, 0.619608)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+texture = ExtResource("2_reaai")
+
+[node name="GameTitle" type="Label" parent="TopBanner" unique_id=1085312879]
+self_modulate = Color(0, 0, 0, 0.572549)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -675.0
+offset_right = -478.0
+offset_bottom = 34.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_q7wdd")
+theme_override_font_sizes/font_size = 24
+text = "Fish Rich RPG"
+
+[node name="TimeLeft" type="RichTextLabel" parent="TopBanner" unique_id=296015786]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.5
+offset_right = 98.5
+offset_bottom = 75.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("3_q7wdd")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center][shake]300[/shake][/center]"
+fit_content = true
+
+[node name="MoneyLabel" type="Label" parent="TopBanner" unique_id=1261908995]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -278.0
+offset_top = 8.0
+offset_right = -14.0
+offset_bottom = 42.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("3_q7wdd")
+theme_override_font_sizes/font_size = 24
+text = "Money: 0$"
+horizontal_alignment = 2
+
+[node name="PlayerMenu" parent="." unique_id=1767180463 instance=ExtResource("5_lvtvn")]
+visible = false
+layout_mode = 1
+
+[node name="NPCInteractUI" parent="." unique_id=1079707448 instance=ExtResource("6_w1lfw")]
+visible = false
+layout_mode = 1
+
+[node name="NotificationUI" type="Control" parent="." unique_id=2102316407]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -80.0
+offset_right = 168.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_kxei4")
+
+[node name="BG" type="ColorRect" parent="NotificationUI" unique_id=2080648121]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.513726)
+
+[node name="Title" type="Label" parent="NotificationUI" unique_id=1396591274]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -147.0
+offset_top = 16.0
+offset_right = 149.0
+offset_bottom = 61.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_q7wdd")
+text = "You was caught commit crime"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Desc" type="Label" parent="NotificationUI" unique_id=609806333]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.0
+offset_top = -8.0
+offset_right = 149.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You have to stay in prison for 3 days and lost 10% of your money"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CloseButton" type="Button" parent="NotificationUI" unique_id=1788460973]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -40.0
+offset_right = 29.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_q7wdd")
+text = "Close"
+
+[node name="TutorialUI" type="Control" parent="." unique_id=1222066707]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -196.0
+offset_right = 400.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="TutorialUI" unique_id=1569476836]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.721569)
+
+[node name="Title" type="Label" parent="TutorialUI" unique_id=1273869817]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 16.0
+offset_right = 85.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_q7wdd")
+theme_override_font_sizes/font_size = 30
+text = "Tutorial"
+
+[node name="Content" type="RichTextLabel" parent="TutorialUI" unique_id=2080247105]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 92.0
+offset_right = 741.0
+offset_bottom = 332.0
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "- Use [color=yellow]WASD[/color] to [wave]move around[/wave].
+- Use [color=yellow]Tab[/color] to open inventory menu.
+- When near something interactable, press [color=yellow]E[/color] to interact.
+- You only have [color=yellow]300 seconds[/color] to spend the money.
+- Time does not flow in certain scenes. Take your time to read.
+- Have fun and enjoy the agony of money!"
+autowrap_mode = 2
+
+[node name="CloseTutorialButton" type="Button" parent="TutorialUI" unique_id=517724712]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -68.0
+offset_right = 56.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_q7wdd")
+theme_override_font_sizes/font_size = 30
+text = "Close"
+
+[node name="BotBanner" type="TextureRect" parent="." unique_id=109364253]
+self_modulate = Color(0, 0, 0, 0.360784)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_reaai")
+expand_mode = 1
+
+[node name="HelpText" type="Label" parent="BotBanner" unique_id=1520523652]
+self_modulate = Color(0.741176, 0.741176, 0.741176, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -675.0
+offset_top = 8.0
+offset_right = -75.0
+offset_bottom = 30.0
+grow_horizontal = 2
+text = "WASD: Move | Tab: Open menu | E: Interact"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1966726141]
+libraries/ = SubResource("AnimationLibrary_5y4gg")
+speed_scale = 2.0
+
+[connection signal="mouse_entered" from="NotificationUI/CloseButton" to="NotificationUI" method="_on_close_button_mouse_entered"]
+[connection signal="pressed" from="NotificationUI/CloseButton" to="NotificationUI" method="_on_close_button_pressed"]
+[connection signal="mouse_entered" from="TutorialUI/CloseTutorialButton" to="." method="_on_close_tutorial_button_mouse_entered"]
+[connection signal="pressed" from="TutorialUI/CloseTutorialButton" to="." method="_on_close_tutorial_button_pressed"]

@@ -1,0 +1,253 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdb5te3l6q8ky"]
+
+[ext_resource type="Script" path="res://ui/company_work.gd" id="1_3krvm"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="2_m04a6"]
+[ext_resource type="Texture2D" uid="uid://cmesytjj1gok2" path="res://asset/sprite/building/hospital_background.png" id="3_7asw2"]
+[ext_resource type="Texture2D" uid="uid://p73ulmivegfh" path="res://asset/sprite/ui/square.png" id="4_a6ggo"]
+[ext_resource type="PackedScene" uid="uid://6rq61wi1af6k" path="res://ui/ServiceButton.tscn" id="5_1ec23"]
+[ext_resource type="Texture2D" uid="uid://dk4g8ofabo2pp" path="res://asset/sprite/fish/doctorfish_doctor.png" id="6_rdk07"]
+
+[node name="HospitalUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3krvm")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.329412, 0.313726, 0.286275, 0.67451)
+
+[node name="WorkLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -427.0
+offset_top = -16.0
+offset_right = 469.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("2_m04a6")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "
+[center]Visiting [color=red][wave]Hospital[/wave][/color] ...[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="EnvironmentImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 141.0
+offset_top = -168.0
+offset_right = 604.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7asw2")
+
+[node name="FishDoctor" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1032.0
+offset_top = 360.0
+offset_right = 1518.0
+offset_bottom = 684.0
+rotation = 0.243879
+texture = ExtResource("6_rdk07")
+
+[node name="ReputationLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -619.0
+offset_top = 112.0
+offset_right = -171.0
+offset_bottom = 145.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_m04a6")
+theme_override_font_sizes/font_size = 24
+text = "Reputation - 1"
+
+[node name="ReputationProgress" type="TextureProgressBar" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 128.0
+offset_top = 160.0
+offset_right = 640.0
+offset_bottom = 191.0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_a6ggo")
+texture_progress = ExtResource("4_a6ggo")
+tint_under = Color(0.529412, 0.529412, 0.529412, 1)
+tint_progress = Color(1, 0.972549, 0.596078, 1)
+
+[node name="ProgressLabel" type="RichTextLabel" parent="ReputationProgress"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -7.5
+offset_right = 64.0
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]0 / 100[/center]"
+scroll_active = false
+
+[node name="JobLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -619.0
+offset_top = 224.0
+offset_right = -171.0
+offset_bottom = 257.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_m04a6")
+theme_override_font_sizes/font_size = 24
+text = "Work as"
+
+[node name="JobBox" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 128.0
+offset_top = 272.0
+offset_right = 640.0
+offset_bottom = 331.0
+theme_override_constants/separation = 15
+
+[node name="PromoteButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 192.0
+offset_top = 328.0
+offset_right = 576.0
+offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("2_m04a6")
+theme_override_font_sizes/font_size = 25
+text = "Apply for promotion"
+
+[node name="ServiceLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -619.0
+offset_top = 160.0
+offset_right = -171.0
+offset_bottom = 193.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_m04a6")
+theme_override_font_sizes/font_size = 24
+text = "Services"
+
+[node name="ServiceBox" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 208.0
+offset_right = 768.0
+offset_bottom = 411.0
+
+[node name="ServiceButton" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("5_1ec23")]
+layout_mode = 2
+service_name = "Light treatment"
+service_desc = "Recover 25% HP"
+service_cost = 499
+service_time_needed = 1
+company = NodePath("../..")
+recover_hp_percentage = 25
+
+[node name="ServiceButton2" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("5_1ec23")]
+layout_mode = 2
+service_name = "Full treatment"
+service_desc = "Recover 100% HP"
+service_cost = 2999
+service_time_needed = 2
+company = NodePath("../..")
+recover_hp_percentage = 100
+
+[node name="ServiceButton3" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("5_1ec23")]
+layout_mode = 2
+service_name = "Buy Bandage"
+service_desc = "Receive Bandage"
+service_cost = 299
+company = NodePath("../..")
+limited_stock = true
+max_service_stock = 5
+give_item_id = 2000
+
+[node name="ServiceButton4" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("5_1ec23")]
+layout_mode = 2
+service_name = "Buy First aid Kit"
+service_desc = "Receive First aid Kit"
+service_cost = 1099
+company = NodePath("../..")
+limited_stock = true
+max_service_stock = 4
+give_item_id = 2001
+
+[node name="ServiceButton5" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("5_1ec23")]
+layout_mode = 2
+service_name = "Buy Premium Medkit"
+service_desc = "Receive Premium Medkit"
+service_cost = 2399
+company = NodePath("../..")
+limited_stock = true
+max_service_stock = 2
+give_item_id = 2002
+
+[node name="ServiceButton6" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("5_1ec23")]
+layout_mode = 2
+service_name = "Fin Enhancement"
+service_desc = "Increase YEE by 14"
+service_cost = 7099
+service_time_needed = 4
+company = NodePath("../..")
+gain_stat = Array[int]([0, 0, 0, 0, 14])
+
+[node name="ServiceButton7" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("5_1ec23")]
+layout_mode = 2
+service_name = "Body Enhancement"
+service_desc = "Increase FOR by 22"
+service_cost = 12999
+service_time_needed = 5
+company = NodePath("../..")
+gain_stat = Array[int]([22, 0, 0, 0, 0])
+
+[node name="LeaveButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1176.0
+offset_top = 72.0
+offset_right = 1277.0
+offset_bottom = 113.0
+theme_override_fonts/font = ExtResource("2_m04a6")
+theme_override_font_sizes/font_size = 25
+text = "Leave"
+
+[connection signal="pressed" from="PromoteButton" to="." method="_on_promote_button_pressed"]
+[connection signal="mouse_entered" from="LeaveButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="LeaveButton" to="." method="_on_leave_button_pressed"]

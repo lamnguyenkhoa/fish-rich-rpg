@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccta77b8vbyr1"]
+
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="1_jwjl1"]
+[ext_resource type="Script" path="res://ui/work_button.gd" id="1_y3kwt"]
+
+[node name="WorkButton" type="HBoxContainer"]
+script = ExtResource("1_y3kwt")
+job_name = "Job name"
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(0.0470588, 1, 0, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jwjl1")
+theme_override_font_sizes/font_size = 25
+text = "Job name"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "10$ / period"
+
+[connection signal="mouse_entered" from="Button" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://yhpp75dbteo1"]
+
+[ext_resource type="Script" path="res://entity/building/company_building.gd" id="1_mo2oc"]
+[ext_resource type="Texture2D" uid="uid://0phdv304e2jj" path="res://asset/sprite/building/shark_solution_corp.png" id="2_jq1gu"]
+[ext_resource type="Shader" path="res://shader/topdown_shadow.gdshader" id="2_x7adj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wdl3y"]
+shader = ExtResource("2_x7adj")
+shader_parameter/deform = Vector2(0.5, 0.5)
+shader_parameter/offset = Vector2(20, 40)
+shader_parameter/modulate = Color(0, 0, 0, 0.55)
+shader_parameter/x_buffer = 2.0
+shader_parameter/y_buffer = 2.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_valto"]
+size = Vector2(296, 143.5)
+
+[node name="SharkSolutionBuilding" type="StaticBody2D"]
+script = ExtResource("1_mo2oc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_wdl3y")
+position = Vector2(0, -112.5)
+texture = ExtResource("2_jq1gu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -16.25)
+shape = SubResource("RectangleShape2D_valto")
+debug_color = Color(0.701961, 0, 0.0745098, 0.419608)
