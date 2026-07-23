@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0154alq27j5v"
-path="res://.godot/imported/eviota.png-2fddbf3e28a3409a672bdfae75f4f4c5.ctex"
+uid="uid://ccop8rmpg7fsa"
+path="res://.godot/imported/film-border.png-1299a77d5794aff925b718f63bb0ecbe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/sprite/eviota.png"
-dest_files=["res://.godot/imported/eviota.png-2fddbf3e28a3409a672bdfae75f4f4c5.ctex"]
+source_file="res://asset/sprite/ui/film-border.png"
+dest_files=["res://.godot/imported/film-border.png-1299a77d5794aff925b718f63bb0ecbe.ctex"]
 
 [params]
 

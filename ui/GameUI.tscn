@@ -87,15 +87,34 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -98.5
-offset_right = 98.5
-offset_bottom = 75.0
+offset_left = -99.0
+offset_top = 8.0
+offset_right = 98.0
+offset_bottom = 73.0
 grow_horizontal = 2
 theme_override_fonts/normal_font = ExtResource("3_q7wdd")
-theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/normal_font_size = 42
 bbcode_enabled = true
 text = "[center][shake]300[/shake][/center]"
 fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeLeft2" type="RichTextLabel" parent="TopBanner" unique_id=1727089309]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.5
+offset_right = 98.5
+offset_bottom = 21.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("3_q7wdd")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center][shake]Time is passing[/shake][/center]"
+fit_content = true
+vertical_alignment = 1
 
 [node name="MoneyLabel" type="Label" parent="TopBanner" unique_id=1261908995]
 layout_mode = 1

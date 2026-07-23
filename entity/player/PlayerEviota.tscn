@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cgl0yrrr18aru" path="res://entity/player/player.gd" id="1_av2pu"]
 [ext_resource type="Texture2D" uid="uid://5jgmgg00k63r" path="res://asset/sprite/ui/circle.png" id="2_ewljf"]
-[ext_resource type="Texture2D" uid="uid://b0154alq27j5v" path="res://asset/sprite/eviota.png" id="3_pxkxk"]
+[ext_resource type="Texture2D" uid="uid://b0154alq27j5v" path="res://asset/sprite/fish/eviota.png" id="3_pxkxk"]
 [ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="4_vvdyi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nntff"]

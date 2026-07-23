@@ -3,15 +3,13 @@
 [ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="1_1t8w5"]
 [ext_resource type="Script" uid="uid://bmix47emgasgc" path="res://scene/main_menu.gd" id="1_weaub"]
 [ext_resource type="PackedScene" uid="uid://cqvjcw8u7cxo5" path="res://scene/NeoFishCity.tscn" id="2_f2och"]
-[ext_resource type="Texture2D" uid="uid://c260o057dro3q" path="res://asset/background.png" id="3_f2och"]
+[ext_resource type="Texture2D" uid="uid://c260o057dro3q" path="res://asset/sprite/ui/background.png" id="3_f2och"]
 [ext_resource type="Texture2D" uid="uid://d4jv223ai7c8d" path="res://asset/sprite/ui/suffer-from-success.png" id="4_f2och"]
 [ext_resource type="Shader" uid="uid://d1ym82673oeip" path="res://shader/water_effect.gdshader" id="4_yjjb2"]
 [ext_resource type="Texture2D" uid="uid://ur6c6neynl5g" path="res://asset/sprite/fish/sign_eviota.png" id="7_5e4xe"]
-[ext_resource type="Texture2D" uid="uid://kda7e8vkx333" path="res://asset/sprite/cutscene/sign_contract.png" id="8_86chh"]
-[ext_resource type="Texture2D" uid="uid://3j8gltdbyfh5" path="res://asset/sprite/fish/satan_fish.png" id="9_ia2o1"]
-[ext_resource type="Texture2D" uid="uid://defgrteu7s1qm" path="res://asset/sprite/fish/pope_fish.png" id="10_a4lwx"]
-[ext_resource type="Texture2D" uid="uid://cs1ifrxf8l4lm" path="res://asset/sprite/cutscene/loss_gambling.png" id="10_k6pj4"]
+[ext_resource type="Texture2D" uid="uid://ccop8rmpg7fsa" path="res://asset/sprite/ui/film-border.png" id="12_ca4gs"]
 [ext_resource type="AudioStream" uid="uid://bt5rp6gmikkep" path="res://asset/bgm/OMORI OST - 107 Underwater Highway.ogg" id="12_qp0bc"]
+[ext_resource type="Shader" uid="uid://dvlt205uqaou4" path="res://shader/texture_scrolling.gdshader" id="13_avmkl"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_g4jp6"]
 
@@ -25,6 +23,24 @@ shader_parameter/refraction_stretch = Vector2(0.25, 0.25)
 shader_parameter/refraction_strength = 0.02
 shader_parameter/water_tint = Color(0.2, 0.6, 1, 0.1)
 shader_parameter/speed = 0.02
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1pt2h"]
+shader = ExtResource("13_avmkl")
+shader_parameter/scroll_speed = 0.08
+shader_parameter/angle_degrees = 0.0
+shader_parameter/repeat_x = 1.0
+shader_parameter/repeat_y = 1.0
+shader_parameter/row_offset = 1.0
+shader_parameter/texture_to_scroll = ExtResource("12_ca4gs")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qh5yu"]
+shader = ExtResource("13_avmkl")
+shader_parameter/scroll_speed = 0.08
+shader_parameter/angle_degrees = 180.00000855
+shader_parameter/repeat_x = 1.0
+shader_parameter/repeat_y = 1.0
+shader_parameter/row_offset = 1.0
+shader_parameter/texture_to_scroll = ExtResource("12_ca4gs")
 
 [node name="MainMenu" type="Node2D" unique_id=291327344]
 script = ExtResource("1_weaub")
@@ -130,7 +146,6 @@ theme_override_font_sizes/font_size = 40
 text = "Quit"
 
 [node name="IntroCutscene" type="TabContainer" parent="CanvasLayer" unique_id=19748745]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -141,7 +156,7 @@ tabs_visible = false
 
 [node name="FishIntro" type="ColorRect" parent="CanvasLayer/IntroCutscene" unique_id=1670771484]
 layout_mode = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.078431375, 0.0627451, 0.07450981, 1)
 metadata/_tab_index = 0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/IntroCutscene/FishIntro" unique_id=2139494188]
@@ -151,15 +166,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -285.5
-offset_top = -232.0
-offset_right = 285.5
-offset_bottom = -4.0
+offset_left = -283.0
+offset_top = -192.0
+offset_right = 288.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_5e4xe")
 
 [node name="Label" type="Label" parent="CanvasLayer/IntroCutscene/FishIntro" unique_id=1768623061]
+custom_minimum_size = Vector2(600, 200)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -172,269 +188,49 @@ offset_right = 469.0
 offset_bottom = 276.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 32
 text = "You are a fish.
-A Sign Eviota fish.
+An Eviota, to be exact.
 
-Did you know Sign Eviota only live for ~25 days after matured."
+Did you know, Eviota only live for around 25 days after matured."
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="CanvasLayer/IntroCutscene/FishIntro" unique_id=1771043265]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -264.0
-offset_top = 16.0
-offset_right = 264.0
-offset_bottom = 64.0
+offset_left = -123.0
+offset_top = 144.0
+offset_right = 117.0
+offset_bottom = 194.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(1, 0.9118875, 0, 1)
+theme_override_font_sizes/font_size = 24
 text = "Left click to continue"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="DebtDevil" type="ColorRect" parent="CanvasLayer/IntroCutscene" unique_id=963247826]
-visible = false
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-metadata/_tab_index = 1
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/IntroCutscene/DebtDevil" unique_id=2136884523]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -427.0
-offset_top = -256.0
-offset_right = -42.0
+[node name="FilmBorder" type="ColorRect" parent="CanvasLayer" unique_id=1744576732]
+material = SubResource("ShaderMaterial_1pt2h")
+custom_minimum_size = Vector2(10, 120)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 128.0
 grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_86chh")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/IntroCutscene/DebtDevil" unique_id=525688861]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -3.0
-offset_top = -224.0
-offset_right = 585.0
+[node name="FilmBorder2" type="ColorRect" parent="CanvasLayer" unique_id=1645753253]
+material = SubResource("ShaderMaterial_qh5yu")
+custom_minimum_size = Vector2(10, 120)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
 grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_ia2o1")
-
-[node name="Label" type="Label" parent="CanvasLayer/IntroCutscene/DebtDevil" unique_id=1329285991]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -427.0
-offset_top = 64.0
-offset_right = 467.0
-offset_bottom = 276.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 40
-text = "Upset because of your short lifespan, you sign a contract with Satan fish.
-
-You get a lots of money to enjoy your life, but after you die, your soul will be his."
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="Label2" type="Label" parent="CanvasLayer/IntroCutscene/DebtDevil" unique_id=1543219162]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -264.0
-offset_top = 16.0
-offset_right = 264.0
-offset_bottom = 64.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 40
-text = "Left click to continue"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="Gambling" type="ColorRect" parent="CanvasLayer/IntroCutscene" unique_id=1648345780]
-visible = false
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-metadata/_tab_index = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/IntroCutscene/Gambling" unique_id=1284583186]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -267.0
-offset_top = -312.0
-offset_right = 202.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_k6pj4")
-
-[node name="Label" type="Label" parent="CanvasLayer/IntroCutscene/Gambling" unique_id=2065659225]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -539.0
-offset_top = 64.0
-offset_right = 515.0
-offset_bottom = 275.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 40
-text = "Well, you used all of them up to gambling and lost everything!
-
-How terrible! What awful gambling skill you have! Now you back to square one, except your soul."
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="Label2" type="Label" parent="CanvasLayer/IntroCutscene/Gambling" unique_id=1619433856]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -264.0
-offset_top = 16.0
-offset_right = 264.0
-offset_bottom = 64.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 40
-text = "Left click to continue"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="PopeAdvice" type="ColorRect" parent="CanvasLayer/IntroCutscene" unique_id=316661603]
-visible = false
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-metadata/_tab_index = 3
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/IntroCutscene/PopeAdvice" unique_id=382962686]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -291.0
-offset_top = -248.0
-offset_right = 246.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_a4lwx")
-
-[node name="Label" type="Label" parent="CanvasLayer/IntroCutscene/PopeAdvice" unique_id=596254650]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -531.0
-offset_top = 64.0
-offset_right = 523.0
-offset_bottom = 276.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 40
-text = "\"Those who sold their soul to the devil will be damned eternally in hell\" - Pope fish said.
-
-You, finally awared how serious this is, decided that you should pay Satan his money back before you die. I mean, it's not that hard, right?"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="Label2" type="Label" parent="CanvasLayer/IntroCutscene/PopeAdvice" unique_id=1775495574]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -264.0
-offset_top = 16.0
-offset_right = 264.0
-offset_bottom = 64.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 40
-text = "Left click to continue"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="SoMuchMoney" type="ColorRect" parent="CanvasLayer/IntroCutscene" unique_id=449838944]
-visible = false
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-metadata/_tab_index = 4
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/IntroCutscene/SoMuchMoney" unique_id=1885720459]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -308.0
-offset_top = -272.0
-offset_right = 263.0
-offset_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_5e4xe")
-
-[node name="Label" type="Label" parent="CanvasLayer/IntroCutscene/SoMuchMoney" unique_id=1129011749]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -531.0
-offset_top = 64.0
-offset_right = 523.0
-offset_bottom = 319.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 40
-text = "You asked for what? 1,000,000$ Oceanic dollar?
-How did you lost all of them to gambling without buying anything decent? Do you know how much is 1,000,000$? You could have bought some Fishcoin...
-Oh well, good luck with your money-making journey. Time is ticking! Go go go!"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="Label2" type="Label" parent="CanvasLayer/IntroCutscene/SoMuchMoney" unique_id=579990097]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -264.0
-offset_top = 16.0
-offset_right = 264.0
-offset_bottom = 64.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 40
-text = "Left click to continue
-(may take sometime to load)"
-horizontal_alignment = 1
-autowrap_mode = 2
+grow_vertical = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=238733114]
 stream = ExtResource("12_qp0bc")
