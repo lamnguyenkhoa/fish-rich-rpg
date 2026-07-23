@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c260o057dro3q" path="res://asset/sprite/ui/background.png" id="3_f2och"]
 [ext_resource type="Texture2D" uid="uid://d4jv223ai7c8d" path="res://asset/sprite/ui/suffer-from-success.png" id="4_f2och"]
 [ext_resource type="Shader" uid="uid://d1ym82673oeip" path="res://shader/water_effect.gdshader" id="4_yjjb2"]
-[ext_resource type="Texture2D" uid="uid://ur6c6neynl5g" path="res://asset/sprite/fish/sign_eviota.png" id="7_5e4xe"]
+[ext_resource type="Texture2D" uid="uid://b0154alq27j5v" path="res://asset/sprite/fish/eviota.png" id="7_581fk"]
+[ext_resource type="Texture2D" uid="uid://b82dkci5vbaob" path="res://asset/sprite/item/tophat.png" id="8_ee4am"]
 [ext_resource type="Texture2D" uid="uid://ccop8rmpg7fsa" path="res://asset/sprite/ui/film-border.png" id="12_ca4gs"]
 [ext_resource type="AudioStream" uid="uid://bt5rp6gmikkep" path="res://asset/bgm/OMORI OST - 107 Underwater Highway.ogg" id="12_qp0bc"]
 [ext_resource type="Shader" uid="uid://dvlt205uqaou4" path="res://shader/texture_scrolling.gdshader" id="13_avmkl"]
@@ -151,10 +152,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 1
 tabs_visible = false
 
 [node name="FishIntro" type="ColorRect" parent="CanvasLayer/IntroCutscene" unique_id=1670771484]
+visible = false
 layout_mode = 2
 color = Color(0.078431375, 0.0627451, 0.07450981, 1)
 metadata/_tab_index = 0
@@ -172,7 +174,7 @@ offset_right = 288.0
 offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_5e4xe")
+texture = ExtResource("7_581fk")
 
 [node name="Label" type="Label" parent="CanvasLayer/IntroCutscene/FishIntro" unique_id=1768623061]
 custom_minimum_size = Vector2(600, 200)
@@ -196,7 +198,7 @@ Did you know, Eviota only live for around 25 days after matured."
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Label2" type="Label" parent="CanvasLayer/IntroCutscene/FishIntro" unique_id=1771043265]
+[node name="ClickContinue" type="Label" parent="CanvasLayer/IntroCutscene/FishIntro" unique_id=1771043265]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 1
 anchors_preset = 5
@@ -212,6 +214,96 @@ theme_override_font_sizes/font_size = 24
 text = "Left click to continue"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="GrandpaInherit" type="ColorRect" parent="CanvasLayer/IntroCutscene" unique_id=1793542824]
+layout_mode = 2
+color = Color(0.078431375, 0.0627451, 0.07450981, 1)
+metadata/_tab_index = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/IntroCutscene/GrandpaInherit" unique_id=634978202]
+self_modulate = Color(0.859375, 0.52336836, 0.40654966, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -627.0
+offset_top = -24.0
+offset_right = -331.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_581fk")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/IntroCutscene/GrandpaInherit" unique_id=405712960]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -299.0
+offset_top = -48.0
+offset_right = -27.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_581fk")
+expand_mode = 1
+flip_h = true
+
+[node name="Label" type="Label" parent="CanvasLayer/IntroCutscene/GrandpaInherit" unique_id=672836680]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 101.0
+offset_top = -184.0
+offset_right = 645.0
+offset_bottom = 272.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "You have a distance old relative who is super rich.
+He about to die of age.
+You are his last known relative. He want to give you his wealth.
+But he don't want it to be easy.
+\"Prove me you have the quality of a rich kid. Show me how you use money.\"
+He give a challenge
+"
+autowrap_mode = 2
+
+[node name="ClickContinue" type="Label" parent="CanvasLayer/IntroCutscene/GrandpaInherit" unique_id=1322037621]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -123.0
+offset_top = 144.0
+offset_right = 117.0
+offset_bottom = 194.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.9118875, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Left click to continue"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/IntroCutscene/GrandpaInherit" unique_id=1705901569]
+layout_mode = 0
+offset_left = 183.99998
+offset_top = 336.0
+offset_right = 304.0
+offset_bottom = 456.0
+rotation = -0.20818217
+texture = ExtResource("8_ee4am")
+expand_mode = 2
 
 [node name="FilmBorder" type="ColorRect" parent="CanvasLayer" unique_id=1744576732]
 material = SubResource("ShaderMaterial_1pt2h")
