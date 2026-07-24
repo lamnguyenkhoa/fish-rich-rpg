@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://g742yol2p51i"]
+
+[node name="PopupPanel" type="Panel" unique_id=299842664]
+offset_right = 256.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=732724729]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_separation = 4
+text = "Take a nap (15s). Recover all your HP.
+Really?"

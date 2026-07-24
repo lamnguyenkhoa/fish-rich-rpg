@@ -3,6 +3,7 @@ class_name GameUI
 
 @onready var money_label: Label = $TopBanner/MoneyLabel
 @onready var time_left_label: RichTextLabel = $TopBanner/TimeLeft
+@onready var time_passing_label: RichTextLabel = $TopBanner/TimePassing
 @onready var notification_ui: NotificationUI = $NotificationUI
 @onready var npc_interact_ui: NPCInteractUI = $NPCInteractUI
 @onready var tutorial_ui = $TutorialUI
@@ -10,6 +11,8 @@ class_name GameUI
 
 func _ready() -> void:
 	GameManager.game_ui = self
+	GameManager.time_status_changed.connect(update_time_passing_label)
+
 
 func _process(_delta: float) -> void:
 	if GameManager.time_left <= 10.0:
@@ -17,11 +20,18 @@ func _process(_delta: float) -> void:
 	else:
 		time_left_label.text = "%d" % GameManager.time_left
 
+func update_time_passing_label():
+	if GameManager.time_is_passing:
+		time_passing_label.text = "[center][shake]Time is passing[/shake][/center]"
+	else:
+		time_passing_label.text = "[center]Time is paused. Relax...[/center]"
+
+
 func update_money_text(amount: int):
 	money_label.text = "Money: {0}$".format([amount])
 
-func play_day_transition():
-	anim_player.play("day_transition")
+# func play_day_transition():
+# 	anim_player.play("day_transition")
 
 func _on_close_tutorial_button_pressed() -> void:
 	tutorial_ui.visible = false

@@ -12,6 +12,7 @@ var map_manager: MapManager
 var phone_ui: PhoneUI
 
 signal time_passed
+signal time_status_changed
 signal inventory_changed
 
 func _ready():
@@ -27,14 +28,17 @@ func _process(delta: float) -> void:
 
 func start_time():
 	time_is_passing = true
+	time_status_changed.emit()
 
 func stop_time():
 	time_is_passing = false
+	time_status_changed.emit()
 
-func change_time_speed():
-	pass
+func change_time_speed(new_speed: float):
+	time_speed = new_speed
+	time_status_changed.emit()
 
-	
+
 func load_item_database():
 	var directory_path = "res://item/"
 

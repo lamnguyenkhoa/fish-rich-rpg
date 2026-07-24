@@ -5,6 +5,9 @@ class_name InteriorInteractable
 @export var image: CompressedTexture2D
 @export var time_usage: float = 0
 
+@export var popup_panel_prefab: PackedScene
+@export var pop_up_content: String
+
 var hover_scale: float = 1.1
 var hover_duration: float = 0.15
 var squeeze_scale: float = 0.9
@@ -13,6 +16,7 @@ var squeeze_duration: float = 0.08
 var _base_scale: Vector2
 var _hover_tween: Tween
 
+var popup_inst: Control
 
 func _ready() -> void:
 	if image != null:
@@ -21,6 +25,10 @@ func _ready() -> void:
 	_base_scale = scale
 	resized.connect(func(): pivot_offset = size / 2.0)
 
+func _process(_delta: float) -> void:
+	if is_instance_valid(popup_inst):
+		popup_inst.global_position = get_global_mouse_position()
+
 
 func _on_pressed() -> void:
 	SoundManager.play_button_click_sfx()
@@ -28,10 +36,17 @@ func _on_pressed() -> void:
 
 func _on_mouse_exited() -> void:
 	_animate_scale(_base_scale)
+	if is_instance_valid(popup_inst):
+		popup_inst.queue_free()
 
 func _on_mouse_entered() -> void:
 	SoundManager.play_button_click_sfx()
 	_animate_scale(_base_scale * hover_scale)
+	if popup_inst == null:
+		popup_inst = popup_panel_prefab.instantiate()
+		add_child(popup_inst)
+		popup_inst.get_node("RichTextLabel").text = pop_up_content
+
 
 func _animate_scale(target_scale: Vector2) -> void:
 	if _hover_tween != null and _hover_tween.is_valid():
