@@ -2,11 +2,11 @@ extends Interactable
 class_name CompanyBuilding
 
 @export var interact_text: String
-@export var open_company_ui: CompanyWork
+@export var open_interior_ui: BuildingInterior
 
 func interact(_player: Player):
 	SoundManager.play_button_click_sfx()
-	open_company_ui.open_ui()
+	open_interior_ui.open_ui()
 	GameManager.player.is_busy = true
 	GameManager.player_menu.close_menu()
 

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://slk6ug7rqxnh"]
+
+[ext_resource type="Texture2D" uid="uid://k26scr24okhh" path="res://asset/sprite/ui/star.png" id="1_ptntp"]
+[ext_resource type="Script" uid="uid://cmk2qvluj577g" path="res://ui/interior/interior_interactable.gd" id="2_gh8dd"]
+
+[node name="InteriorInteractable" type="Button" unique_id=1734670431]
+offset_right = 293.0
+offset_bottom = 293.0
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_gh8dd")
+image = ExtResource("1_ptntp")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

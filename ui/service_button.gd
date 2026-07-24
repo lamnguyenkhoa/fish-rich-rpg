@@ -36,7 +36,7 @@ func _ready() -> void:
 	if service_cost > 0:
 		label.text = "{0}$, ".format([service_cost]) + label.text
 	if service_time_needed > 0:
-		label.text = "{0} period(s), ".format([service_time_needed]) + label.text
+		label.text = "{0}s, ".format([service_time_needed]) + label.text
 
 	if not Engine.is_editor_hint():
 		if special_case == EnumAutoload.ServiceSpecialCase.PAY_DEBT:
@@ -55,6 +55,8 @@ func update_service_status():
 	if limited_stock and current_service_stock <= 0:
 		button.disabled = true
 	if GameManager.player.money < service_cost:
+		button.disabled = true
+	if GameManager.time_left < service_time_needed:
 		button.disabled = true
 
 func _on_button_pressed():

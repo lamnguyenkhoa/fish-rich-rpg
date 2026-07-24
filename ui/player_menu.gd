@@ -14,6 +14,11 @@ func _ready():
 	player = GameManager.player
 	inventory_menu.init()
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("open_player_menu") and not player.is_busy and not GameManager.phone_ui.visible:
+		toggle_menu()
+
+
 func toggle_menu():
 	if visible:
 		close_menu()

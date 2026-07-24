@@ -75,10 +75,6 @@ func _ready() -> void:
 	init_inventory()
 	GameManager.game_ui.update_money_text(money)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("open_player_menu") and not is_busy:
-		GameManager.player_menu.toggle_menu()
-
 func _physics_process(_delta):
 	# Clear previous items in range
 	things_in_range.clear()

@@ -9,6 +9,7 @@ var player: Player
 var player_menu: PlayerMenu
 var game_ui: GameUI
 var map_manager: MapManager
+var phone_ui: PhoneUI
 
 signal time_passed
 signal inventory_changed
@@ -22,6 +23,7 @@ func _ready():
 func _process(delta: float) -> void:
 	if time_is_passing:
 		time_left -= delta * time_speed
+		time_left = max(time_left, 0)
 
 func start_time():
 	time_is_passing = true

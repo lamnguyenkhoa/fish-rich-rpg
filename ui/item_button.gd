@@ -27,16 +27,19 @@ func _on_button_pressed() -> void:
 		GameManager.player.lost_item(item_data.item_id, 1)
 	resolve_item_effect(item_data)
 
-func resolve_item_effect(_item_data: ItemResource):
-	GameManager.player.recover("hp", _item_data.recover_hp, false)
-	GameManager.player.recover("hp", _item_data.recover_hp_percentage, true)
-	GameManager.player.recover("sp", _item_data.recover_sp, false)
-	GameManager.player.recover("sp", _item_data.recover_sp_percentage, true)
-	GameManager.player.for_stat += _item_data.gain_stat[0]
-	GameManager.player.int_stat += _item_data.gain_stat[1]
-	GameManager.player.str_stat += _item_data.gain_stat[2]
-	GameManager.player.har_stat += _item_data.gain_stat[3]
-	GameManager.player.yee_stat += _item_data.gain_stat[4]
-	if _item_data.special_case != EnumAutoload.ItemSpecialCase.NONE:
-		#TODO
+func resolve_item_effect(item_data: ItemResource):
+	GameManager.player.recover("hp", item_data.recover_hp, false)
+	GameManager.player.recover("hp", item_data.recover_hp_percentage, true)
+	GameManager.player.recover("sp", item_data.recover_sp, false)
+	GameManager.player.recover("sp", item_data.recover_sp_percentage, true)
+	GameManager.player.for_stat += item_data.gain_stat[0]
+	GameManager.player.int_stat += item_data.gain_stat[1]
+	GameManager.player.str_stat += item_data.gain_stat[2]
+	GameManager.player.har_stat += item_data.gain_stat[3]
+	GameManager.player.yee_stat += item_data.gain_stat[4]
+	if item_data.special_case != EnumAutoload.ItemSpecialCase.NONE:
+		match (item_data.special_case):
+			EnumAutoload.ItemSpecialCase.SMARTPHONE:
+				GameManager.player_menu.close_menu()
+				GameManager.phone_ui.open_phone()
 		return

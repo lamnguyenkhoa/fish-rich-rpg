@@ -1,12 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://r1ah7gujb1lr"]
+[gd_scene format=3 uid="uid://r1ah7gujb1lr"]
 
 [ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="1_ghfl1"]
-[ext_resource type="Script" path="res://ui/company_work.gd" id="1_t12u5"]
+[ext_resource type="Script" uid="uid://d1fcdqwxmlnnn" path="res://ui/company_work.gd" id="1_t12u5"]
 [ext_resource type="Texture2D" uid="uid://dpalq260oi3ma" path="res://asset/sprite/building/your_apartment.png" id="3_cmtek"]
 [ext_resource type="Texture2D" uid="uid://p73ulmivegfh" path="res://asset/sprite/ui/square.png" id="4_48gwd"]
 [ext_resource type="PackedScene" uid="uid://6rq61wi1af6k" path="res://ui/ServiceButton.tscn" id="6_johfd"]
 
-[node name="YourApartmentUI" type="Control"]
+[node name="YourApartmentUI" type="Control" unique_id=4282913]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t12u5")
 
-[node name="BG" type="ColorRect" parent="."]
+[node name="BG" type="ColorRect" parent="." unique_id=223483063]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.337255, 0.192157, 0, 0.54902)
 
-[node name="WorkLabel" type="RichTextLabel" parent="."]
+[node name="WorkLabel" type="RichTextLabel" parent="." unique_id=937204342]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -43,7 +43,7 @@ text = "
 fit_content = true
 scroll_active = false
 
-[node name="EnvironmentImage" type="TextureRect" parent="."]
+[node name="EnvironmentImage" type="TextureRect" parent="." unique_id=2076636124]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -58,7 +58,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_cmtek")
 
-[node name="ReputationLabel" type="Label" parent="."]
+[node name="ReputationLabel" type="Label" parent="." unique_id=1035600341]
 visible = false
 layout_mode = 1
 anchors_preset = 5
@@ -73,7 +73,7 @@ theme_override_fonts/font = ExtResource("1_ghfl1")
 theme_override_font_sizes/font_size = 24
 text = "Reputation - 1"
 
-[node name="ReputationProgress" type="TextureProgressBar" parent="."]
+[node name="ReputationProgress" type="TextureProgressBar" parent="." unique_id=414517076]
 visible = false
 layout_mode = 0
 offset_left = 128.0
@@ -87,7 +87,7 @@ texture_progress = ExtResource("4_48gwd")
 tint_under = Color(0.529412, 0.529412, 0.529412, 1)
 tint_progress = Color(1, 0.972549, 0.596078, 1)
 
-[node name="ProgressLabel" type="RichTextLabel" parent="ReputationProgress"]
+[node name="ProgressLabel" type="RichTextLabel" parent="ReputationProgress" unique_id=1775189872]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -106,7 +106,7 @@ bbcode_enabled = true
 text = "[center]0 / 100[/center]"
 scroll_active = false
 
-[node name="JobLabel" type="Label" parent="."]
+[node name="JobLabel" type="Label" parent="." unique_id=1905766701]
 visible = false
 layout_mode = 1
 anchors_preset = 5
@@ -121,7 +121,7 @@ theme_override_fonts/font = ExtResource("1_ghfl1")
 theme_override_font_sizes/font_size = 24
 text = "Work as"
 
-[node name="JobBox" type="VBoxContainer" parent="."]
+[node name="JobBox" type="VBoxContainer" parent="." unique_id=1361581474]
 visible = false
 layout_mode = 0
 offset_left = 128.0
@@ -130,7 +130,7 @@ offset_right = 640.0
 offset_bottom = 331.0
 theme_override_constants/separation = 15
 
-[node name="PromoteButton" type="Button" parent="."]
+[node name="PromoteButton" type="Button" parent="." unique_id=2085620253]
 visible = false
 layout_mode = 0
 offset_left = 192.0
@@ -141,7 +141,7 @@ theme_override_fonts/font = ExtResource("1_ghfl1")
 theme_override_font_sizes/font_size = 25
 text = "Apply for promotion"
 
-[node name="ServiceLabel" type="Label" parent="."]
+[node name="ServiceLabel" type="Label" parent="." unique_id=1071187519]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -155,47 +155,25 @@ theme_override_fonts/font = ExtResource("1_ghfl1")
 theme_override_font_sizes/font_size = 24
 text = "Actions"
 
-[node name="ServiceBox" type="VBoxContainer" parent="."]
+[node name="ServiceBox" type="VBoxContainer" parent="." unique_id=1142638460]
 layout_mode = 0
 offset_left = 128.0
 offset_top = 208.0
 offset_right = 640.0
 offset_bottom = 392.0
 
-[node name="ServiceButton" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("6_johfd")]
+[node name="ServiceButton" parent="ServiceBox" unique_id=528607996 node_paths=PackedStringArray("company") instance=ExtResource("6_johfd")]
 layout_mode = 2
 service_name = "Quick Nap"
-service_desc = "Recover 5% HP and 10% SP"
+service_desc = "Recover your HP. Really?"
 service_cost = 0
-service_time_needed = 1
+service_time_needed = 15
 company = NodePath("../..")
 no_restock = null
 recover_hp_percentage = 5
 recover_sp_percentage = 10
 
-[node name="ServiceButton2" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("6_johfd")]
-layout_mode = 2
-service_name = "Sleep"
-service_desc = "Full recovery and move to next day"
-service_cost = 0
-company = NodePath("../..")
-no_restock = null
-recover_hp_percentage = 100
-recover_sp_percentage = 100
-special_case = 100
-
-[node name="ServiceButton3" parent="ServiceBox" node_paths=PackedStringArray("company") instance=ExtResource("6_johfd")]
-layout_mode = 2
-service_name = "Pay the debt"
-service_desc = "End the game"
-service_cost = 1000000
-company = NodePath("../..")
-limited_stock = true
-max_service_stock = 1
-no_restock = true
-special_case = 200
-
-[node name="LeaveButton" type="Button" parent="."]
+[node name="LeaveButton" type="Button" parent="." unique_id=74096081]
 layout_mode = 0
 offset_left = 1176.0
 offset_top = 72.0
