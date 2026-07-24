@@ -3,6 +3,7 @@ extends Node2D
 @export var main_game_scene: PackedScene
 
 @onready var intro_cutscene: TabContainer = $CanvasLayer/IntroCutscene
+@onready var cutscene_deco: Control = $CanvasLayer/CutsceneDeco
 
 var max_tabs = 0
 
@@ -19,6 +20,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_play_button_pressed() -> void:
 	intro_cutscene.visible = true
+	cutscene_deco.visible = true
 	SoundManager.play_button_click_sfx()
 
 func _on_quit_button_pressed() -> void:

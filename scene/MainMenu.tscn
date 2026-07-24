@@ -8,7 +8,12 @@
 [ext_resource type="Shader" uid="uid://d1ym82673oeip" path="res://shader/water_effect.gdshader" id="4_yjjb2"]
 [ext_resource type="Texture2D" uid="uid://b0154alq27j5v" path="res://asset/sprite/fish/eviota.png" id="7_581fk"]
 [ext_resource type="Texture2D" uid="uid://b82dkci5vbaob" path="res://asset/sprite/item/tophat.png" id="8_ee4am"]
+[ext_resource type="Texture2D" uid="uid://bo7il2j3ld2vg" path="res://asset/sprite/item/moneybag.png" id="8_qh5yu"]
+[ext_resource type="Texture2D" uid="uid://s1mu3i6uehp7" path="res://asset/sprite/ui/eviota_face_front.png" id="9_f2och"]
+[ext_resource type="Texture2D" uid="uid://dlwxu05kcs6bm" path="res://asset/sprite/ui/point_up.png" id="10_ca4gs"]
+[ext_resource type="Texture2D" uid="uid://dwi4nv5kbn55b" path="res://asset/sprite/ui/eviota_sideway.png" id="11_1pt2h"]
 [ext_resource type="Texture2D" uid="uid://ccop8rmpg7fsa" path="res://asset/sprite/ui/film-border.png" id="12_ca4gs"]
+[ext_resource type="Texture2D" uid="uid://yqp80ogpgbr8" path="res://asset/sprite/ui/point-diagonal.png" id="12_qh5yu"]
 [ext_resource type="AudioStream" uid="uid://bt5rp6gmikkep" path="res://asset/bgm/OMORI OST - 107 Underwater Highway.ogg" id="12_qp0bc"]
 [ext_resource type="Shader" uid="uid://dvlt205uqaou4" path="res://shader/texture_scrolling.gdshader" id="13_avmkl"]
 
@@ -147,16 +152,16 @@ theme_override_font_sizes/font_size = 40
 text = "Quit"
 
 [node name="IntroCutscene" type="TabContainer" parent="CanvasLayer" unique_id=19748745]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+current_tab = 0
 tabs_visible = false
 
 [node name="FishIntro" type="ColorRect" parent="CanvasLayer/IntroCutscene" unique_id=1670771484]
-visible = false
 layout_mode = 2
 color = Color(0.078431375, 0.0627451, 0.07450981, 1)
 metadata/_tab_index = 0
@@ -176,7 +181,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_581fk")
 
-[node name="Label" type="Label" parent="CanvasLayer/IntroCutscene/FishIntro" unique_id=1768623061]
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/IntroCutscene/FishIntro" unique_id=779880098]
 custom_minimum_size = Vector2(600, 200)
 layout_mode = 1
 anchors_preset = 8
@@ -187,16 +192,19 @@ anchor_bottom = 0.5
 offset_left = -491.0
 offset_top = 64.0
 offset_right = 469.0
-offset_bottom = 276.0
+offset_bottom = 264.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-text = "You are a fish.
-An Eviota, to be exact.
-
-Did you know, Eviota only live for around 25 days after matured."
-horizontal_alignment = 1
+theme_override_font_sizes/normal_font_size = 28
+text = "be fish
+not just any fish
+be an Eviota
+turns out Eviota only live about 25 days after reaching adulthood
+life expectancy measured in loading screens
+also broke as hell
+it's so over"
 autowrap_mode = 2
+horizontal_alignment = 1
 
 [node name="ClickContinue" type="Label" parent="CanvasLayer/IntroCutscene/FishIntro" unique_id=1771043265]
 custom_minimum_size = Vector2(200, 50)
@@ -215,12 +223,22 @@ text = "Left click to continue"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="GrandpaInherit" type="ColorRect" parent="CanvasLayer/IntroCutscene" unique_id=1793542824]
+[node name="Inheritance" type="ColorRect" parent="CanvasLayer/IntroCutscene" unique_id=1793542824]
+visible = false
 layout_mode = 2
 color = Color(0.078431375, 0.0627451, 0.07450981, 1)
 metadata/_tab_index = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/IntroCutscene/GrandpaInherit" unique_id=634978202]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/IntroCutscene/Inheritance" unique_id=356076828]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 296.0
+offset_right = 209.29211
+offset_bottom = 456.0
+texture = ExtResource("8_qh5yu")
+expand_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/IntroCutscene/Inheritance" unique_id=634978202]
 self_modulate = Color(0.859375, 0.52336836, 0.40654966, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -237,7 +255,7 @@ grow_vertical = 2
 texture = ExtResource("7_581fk")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/IntroCutscene/GrandpaInherit" unique_id=405712960]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/IntroCutscene/Inheritance" unique_id=405712960]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -254,7 +272,35 @@ texture = ExtResource("7_581fk")
 expand_mode = 1
 flip_h = true
 
-[node name="Label" type="Label" parent="CanvasLayer/IntroCutscene/GrandpaInherit" unique_id=672836680]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/IntroCutscene/Inheritance" unique_id=1705901569]
+layout_mode = 0
+offset_left = 183.99998
+offset_top = 336.0
+offset_right = 304.0
+offset_bottom = 456.0
+rotation = -0.20818217
+texture = ExtResource("8_ee4am")
+expand_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="CanvasLayer/IntroCutscene/Inheritance" unique_id=2144105124]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 424.0
+offset_right = 233.29211
+offset_bottom = 584.0
+texture = ExtResource("8_qh5yu")
+expand_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/IntroCutscene/Inheritance" unique_id=1751341729]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 472.0
+offset_right = 169.29211
+offset_bottom = 632.0
+texture = ExtResource("8_qh5yu")
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/IntroCutscene/Inheritance" unique_id=1004438379]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 1
 anchors_preset = 8
@@ -262,23 +308,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 101.0
-offset_top = -184.0
-offset_right = 645.0
-offset_bottom = 272.5
+offset_left = 93.0
+offset_top = -120.0
+offset_right = 637.0
+offset_bottom = 176.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 28
-text = "You have a distance old relative who is super rich.
-He about to die of age.
-You are his last known relative. He want to give you his wealth.
-But he don't want it to be easy.
-\"Prove me you have the quality of a rich kid. Show me how you use money.\"
-He give a challenge
-"
+theme_override_constants/line_separation = 4
+theme_override_font_sizes/normal_font_size = 28
+text = "have a distant old relative who's absurdly rich
+
+guy's ancient, about to die of old age
+
+turns out you're his last living relative
+
+\"nice, inheritance secured\"
+
+we are so back"
 autowrap_mode = 2
 
-[node name="ClickContinue" type="Label" parent="CanvasLayer/IntroCutscene/GrandpaInherit" unique_id=1322037621]
+[node name="ClickContinue" type="Label" parent="CanvasLayer/IntroCutscene/Inheritance" unique_id=1322037621]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 1
 anchors_preset = 5
@@ -295,32 +344,205 @@ text = "Left click to continue"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/IntroCutscene/GrandpaInherit" unique_id=1705901569]
+[node name="Inheritance2" type="ColorRect" parent="CanvasLayer/IntroCutscene" unique_id=1333051300]
+visible = false
+layout_mode = 2
+color = Color(0.078431375, 0.0627451, 0.07450981, 1)
+metadata/_tab_index = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/IntroCutscene/Inheritance2" unique_id=687057109]
+self_modulate = Color(0.859375, 0.52336836, 0.40654966, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 133.0
+offset_top = -72.0
+offset_right = 381.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_f2och")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/IntroCutscene/Inheritance2" unique_id=655571849]
 layout_mode = 0
-offset_left = 183.99998
-offset_top = 336.0
-offset_right = 304.0
-offset_bottom = 456.0
-rotation = -0.20818217
+offset_left = 792.00006
+offset_top = 152.00003
+offset_right = 1078.5931
+offset_bottom = 372.39313
+rotation = -0.0076928437
 texture = ExtResource("8_ee4am")
 expand_mode = 2
 
-[node name="FilmBorder" type="ColorRect" parent="CanvasLayer" unique_id=1744576732]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/IntroCutscene/Inheritance2" unique_id=1334163031]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -603.0
+offset_top = -88.0
+offset_right = -107.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_separation = 4
+theme_override_font_sizes/normal_font_size = 28
+text = "old man just laughs
+
+\"You think I'm handing it over that easily?\"
+\"Prove you've got the instincts of a rich kid. Show me what you'd do with money.\"
+
+hands you a challenge instead of a will
+
+mfw inheritance has a skill check"
+autowrap_mode = 2
+
+[node name="ClickContinue" type="Label" parent="CanvasLayer/IntroCutscene/Inheritance2" unique_id=1860559907]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -123.0
+offset_top = 144.0
+offset_right = 117.0
+offset_bottom = 194.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.9118875, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Left click to continue"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/IntroCutscene/Inheritance2" unique_id=1992470955]
+layout_mode = 0
+offset_left = 824.0
+offset_top = 416.00003
+offset_right = 1095.7793
+offset_bottom = 726.3301
+rotation = -0.0076928437
+texture = ExtResource("10_ca4gs")
+expand_mode = 3
+
+[node name="Inheritance3" type="ColorRect" parent="CanvasLayer/IntroCutscene" unique_id=1383338412]
+visible = false
+layout_mode = 2
+color = Color(0.078431375, 0.0627451, 0.07450981, 1)
+metadata/_tab_index = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/IntroCutscene/Inheritance3" unique_id=2002994909]
+self_modulate = Color(0.859375, 0.52336836, 0.40654966, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 85.0
+offset_top = -144.0
+offset_right = 397.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_1pt2h")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/IntroCutscene/Inheritance3" unique_id=401551759]
+layout_mode = 0
+offset_left = 800.00006
+offset_top = 160.0
+offset_right = 1020.3932
+offset_bottom = 380.3931
+rotation = -0.0076928437
+texture = ExtResource("8_ee4am")
+expand_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/IntroCutscene/Inheritance3" unique_id=1519748418]
+layout_mode = 0
+offset_left = 912.0
+offset_top = 416.00003
+offset_right = 1125.2747
+offset_bottom = 726.3301
+rotation = -0.0076928437
+texture = ExtResource("12_qh5yu")
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/IntroCutscene/Inheritance3" unique_id=122986798]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -603.0
+offset_top = -128.0
+offset_right = -107.0
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_separation = 4
+theme_override_font_sizes/normal_font_size = 28
+text = "old fish billionaire clears throat
+
+\"You must spend $1,000,000 within 5 minutes.\"
+\"You cannot give it away.\"
+\"You cannot intentionally damage or destroy anything of value that you buy.\"
+\"You cannot tell anyone about this challenge.\"
+\"Fail mean no money\"
+
+mfw speedrunning capitalism%"
+autowrap_mode = 2
+
+[node name="ClickContinue" type="Label" parent="CanvasLayer/IntroCutscene/Inheritance3" unique_id=317592552]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -123.0
+offset_top = 144.0
+offset_right = 117.0
+offset_bottom = 194.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.9118875, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Left click to continue"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CutsceneDeco" type="Control" parent="CanvasLayer" unique_id=121495716]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FilmBorder" type="ColorRect" parent="CanvasLayer/CutsceneDeco" unique_id=1744576732]
 material = SubResource("ShaderMaterial_1pt2h")
 custom_minimum_size = Vector2(10, 120)
+layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 128.0
 grow_horizontal = 2
 
-[node name="FilmBorder2" type="ColorRect" parent="CanvasLayer" unique_id=1645753253]
+[node name="FilmBorder2" type="ColorRect" parent="CanvasLayer/CutsceneDeco" unique_id=1645753253]
 material = SubResource("ShaderMaterial_qh5yu")
 custom_minimum_size = Vector2(10, 120)
+layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -120.0
 grow_horizontal = 2
 grow_vertical = 0
 
