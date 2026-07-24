@@ -49,7 +49,7 @@ var yee_stat: int = 9: # Each point increase movespeed by 2%
 	set(value):
 		yee_stat = value
 		recalculate_stat()
-var money: int = 100:
+var money: int = 1000000:
 	set(value):
 		if value < 0:
 			value = 0
@@ -115,7 +115,7 @@ func recalculate_stat():
 	max_sp = BASE_STAMINA + for_stat * 5
 	emit_signal("stat_changed")
 
-func damaged(type: String, value: int, is_percentage_max: bool=false):
+func damaged(type: String, value: int, is_percentage_max: bool = false):
 	if type == "hp":
 		if is_percentage_max:
 			current_hp = clamp(current_hp - (max_hp * (value / 100.0)), 0, max_hp)
@@ -127,7 +127,7 @@ func damaged(type: String, value: int, is_percentage_max: bool=false):
 		else:
 			current_sp = clamp(current_sp - value, 0, max_sp)
 
-func recover(type: String, value: int, is_percentage_max: bool=false):
+func recover(type: String, value: int, is_percentage_max: bool = false):
 	if type == "hp":
 		if is_percentage_max:
 			current_hp = clamp(current_hp + (max_hp * (value / 100.0)), 0, max_hp)
@@ -155,3 +155,4 @@ func init_inventory():
 	for item_id in GameManager.item_database_dict.keys():
 		inventory[item_id] = 0
 	inventory[EnumAutoload.ItemId.FRIED_RICE] = 1
+	inventory[EnumAutoload.ItemId.SMARTPHONE] = 1

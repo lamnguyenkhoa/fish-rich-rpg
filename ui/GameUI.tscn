@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b5rblr27ktaon" path="res://asset/sprite/ui/game_ui.gd" id="1_yatn0"]
 [ext_resource type="Texture2D" uid="uid://p73ulmivegfh" path="res://asset/sprite/ui/square.png" id="2_reaai"]
 [ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="3_q7wdd"]
+[ext_resource type="PackedScene" uid="uid://xp3axoagvn2s" path="res://ui/PhoneUI.tscn" id="5_e78dt"]
 [ext_resource type="PackedScene" uid="uid://mf0qldclxjpr" path="res://ui/PlayerMenu.tscn" id="5_lvtvn"]
 [ext_resource type="PackedScene" uid="uid://dqxthbc3g0l2v" path="res://ui/NPCInteractUI.tscn" id="6_w1lfw"]
 [ext_resource type="Script" uid="uid://beherv7nmw88t" path="res://ui/notification_ui.gd" id="7_kxei4"]
@@ -100,7 +101,7 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TimeLeft2" type="RichTextLabel" parent="TopBanner" unique_id=1727089309]
+[node name="TimePassing" type="RichTextLabel" parent="TopBanner" unique_id=1727089309]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -133,6 +134,9 @@ horizontal_alignment = 2
 
 [node name="PlayerMenu" parent="." unique_id=1767180463 instance=ExtResource("5_lvtvn")]
 visible = false
+layout_mode = 1
+
+[node name="PhoneUI" parent="." unique_id=1487221091 instance=ExtResource("5_e78dt")]
 layout_mode = 1
 
 [node name="NPCInteractUI" parent="." unique_id=1079707448 instance=ExtResource("6_w1lfw")]

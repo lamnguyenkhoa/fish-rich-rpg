@@ -37,7 +37,7 @@ func update_work_status():
 		label.text = "{0}$ / {1} periods".format([job_pay * company.current_reputation_level, job_time_needed])
 
 	# Check availability
-	if job_time_needed > GameManager.get_time_left():
+	if job_time_needed > GameManager.time_left:
 		button.disabled = true
 		return false
 	if GameManager.player != null:

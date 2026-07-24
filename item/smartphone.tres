@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://dmi8na80h5w5d"]
+
+[ext_resource type="Script" uid="uid://brrb6re60es8q" path="res://item/item_resource.gd" id="1_y8dkh"]
+
+[resource]
+script = ExtResource("1_y8dkh")
+item_id = 9000
+name = "Smartphone"
+description = "Your smart phone. You can play gacha games on it."
+type = 2
+special_case = 100
+not_consumable = true

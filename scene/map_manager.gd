@@ -8,3 +8,4 @@ class_name MapManager
 
 func _ready():
 	GameManager.map_manager = self
+	GameManager.start_time()

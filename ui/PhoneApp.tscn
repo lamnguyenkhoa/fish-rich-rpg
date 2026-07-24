@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://basf2r5nh1fvy"]
+
+[ext_resource type="Script" uid="uid://dvf1okytld02r" path="res://ui/phone_app.gd" id="1_ax7pp"]
+[ext_resource type="Texture2D" uid="uid://p73ulmivegfh" path="res://asset/sprite/ui/square.png" id="1_d38ha"]
+[ext_resource type="FontFile" uid="uid://ddcwy4m1koo1p" path="res://asset/font/NotoSans-VariableFont_wdth,wght.ttf" id="2_ax7pp"]
+[ext_resource type="Texture2D" uid="uid://csns6getpnnwr" path="res://asset/sprite/ui/mermaid_connect.png" id="2_cggvy"]
+
+[node name="PhoneApp" type="VBoxContainer" unique_id=2008993405]
+script = ExtResource("1_ax7pp")
+app_icon = ExtResource("2_cggvy")
+app_name = "Mermaid Connect"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=179948572]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("1_d38ha")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=471314220]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("2_ax7pp")
+theme_override_font_sizes/font_size = 12
+text = "Mermaid Connect"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

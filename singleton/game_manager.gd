@@ -1,11 +1,9 @@
 extends Node
 
-var debt_money = 1000000
-var interest_rate = 1.05
-var day_left = 20
-var current_time = 0 # from 0 to 8, 8 unit of time
+var time_left: float = 300.0
+var time_is_passing = false
+var time_speed = 1.0
 var item_database_dict: Dictionary = {}
-var debt_paid = false
 
 var player: Player
 var player_menu: PlayerMenu
@@ -14,7 +12,6 @@ var map_manager: MapManager
 
 signal time_passed
 signal inventory_changed
-signal day_passed
 
 func _ready():
 	SoundManager.set_master_volume(1)
@@ -22,23 +19,20 @@ func _ready():
 	SoundManager.set_sound_volume(0.8)
 	load_item_database()
 
-func get_time_left():
-	return 8 - current_time
+func _process(delta: float) -> void:
+	if time_is_passing:
+		time_left -= delta * time_speed
 
-func pass_time(time: int):
-	current_time = clampi(current_time + time, 0, 8)
-	emit_signal("time_passed")
+func start_time():
+	time_is_passing = true
 
-func move_to_next_day(amount: int=1):
-	day_left -= amount
-	current_time = 0
-	emit_signal("time_passed")
-	emit_signal("day_passed")
-	close_all_windows()
-	GameManager.game_ui.play_day_transition()
-	if day_left <= 0 and not debt_paid:
-		end_game(false)
+func stop_time():
+	time_is_passing = false
 
+func change_time_speed():
+	pass
+
+	
 func load_item_database():
 	var directory_path = "res://item/"
 
@@ -70,49 +64,15 @@ func load_item_database():
 func open_npc_interact_ui(target_npc: NPCFish):
 	game_ui.npc_interact_ui.open_ui(target_npc)
 
-func force_go_home_and_rest():
-	close_all_windows()
-	var respawn_pos = map_manager.player_apartment.get_node("RespawnSpot").global_position
-	player.global_position = respawn_pos
-	move_to_next_day(2)
-	if day_left > 0:
-		player.recover("hp", 100, true)
-		player.recover("sp", 100, true)
-		GameManager.game_ui.notification_ui.notify_injured()
-
-func prison_smuggle():
-	var random_num = randi() % 100
-	if random_num < 25:
-		sent_to_prison()
-	else:
-		player.money += 5000
-
-func sent_to_prison():
-	close_all_windows()
-	var respawn_pos = map_manager.prison.get_node("RespawnSpot").global_position
-	player.global_position = respawn_pos
-	move_to_next_day(3)
-	if day_left > 0:
-		player.recover("hp", 100, true)
-		player.recover("sp", 100, true)
-		player.money -= int(player.money * 0.2)
-		GameManager.game_ui.notification_ui.notify_caught()
-
-func paid_the_debt():
-	debt_paid = true
-	end_game(true)
+func pass_time(time: float):
+	time_left = clamp(time_left - time, 0, time_left)
+	time_passed.emit()
 
 func end_game(is_win):
 	close_all_windows()
 	if is_win:
 		map_manager.endgame_ui.open_win_screen()
 	else:
-		# Automatically pay if enough money, last chance
-		if not debt_paid and player.money >= debt_money:
-			player.money -= debt_money
-			debt_paid = true
-			map_manager.endgame_ui.open_win_screen()
-			return
 		map_manager.endgame_ui.open_lose_screen()
 	GameManager.player.is_busy = true
 
@@ -124,8 +84,5 @@ func close_all_windows():
 	game_ui.npc_interact_ui.close_ui()
 
 func reset():
-	debt_money = 1000000
-	interest_rate = 1.05
-	day_left = 20
-	current_time = 0
-	debt_paid = false
+	player.money = 1000000
+	time_left = 300.0

@@ -1,14 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://mf0qldclxjpr"]
+[gd_scene format=3 uid="uid://mf0qldclxjpr"]
 
-[ext_resource type="Script" path="res://ui/player_menu.gd" id="1_widhm"]
-[ext_resource type="Texture2D" uid="uid://dfgijvecgklle" path="res://asset/sprite/ui/eviota_avatar.png" id="2_bt7mv"]
+[ext_resource type="Script" uid="uid://c1dbl0e74lq5s" path="res://ui/player_menu.gd" id="1_widhm"]
 [ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="3_osxo0"]
 [ext_resource type="Texture2D" uid="uid://p73ulmivegfh" path="res://asset/sprite/ui/square.png" id="4_1ohro"]
-[ext_resource type="Script" path="res://ui/inventory_menu.gd" id="6_px05k"]
+[ext_resource type="Texture2D" uid="uid://dwi4nv5kbn55b" path="res://asset/sprite/ui/eviota_sideway.png" id="5_pyxam"]
+[ext_resource type="Script" uid="uid://cle3tggfp3nww" path="res://ui/inventory_menu.gd" id="6_px05k"]
 [ext_resource type="PackedScene" uid="uid://cla805uxt7pt5" path="res://ui/ItemButton.tscn" id="7_cy0jt"]
-[ext_resource type="Script" path="res://ui/option_menu.gd" id="7_ia5qf"]
+[ext_resource type="Script" uid="uid://c5q2yacu4oegp" path="res://ui/option_menu.gd" id="7_ia5qf"]
 
-[node name="PlayerMenu" type="Control"]
+[node name="PlayerMenu" type="Control" unique_id=1859073169]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -23,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_widhm")
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="TabContainer" type="TabContainer" parent="." unique_id=2039481741]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,21 +32,24 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_osxo0")
 tab_alignment = 1
+current_tab = 0
 
-[node name="Inventory" type="Control" parent="TabContainer"]
+[node name="Inventory" type="Control" parent="TabContainer" unique_id=1912958745]
 layout_mode = 2
 script = ExtResource("6_px05k")
 item_button_prefab = ExtResource("7_cy0jt")
+metadata/_tab_index = 0
 
-[node name="Avatar" type="TextureRect" parent="TabContainer/Inventory"]
+[node name="Avatar" type="TextureRect" parent="TabContainer/Inventory" unique_id=740184406]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 11.0
 offset_right = 109.0
 offset_bottom = 107.0
-texture = ExtResource("2_bt7mv")
+texture = ExtResource("5_pyxam")
+expand_mode = 3
 
-[node name="HealthBar" type="TextureProgressBar" parent="TabContainer/Inventory"]
+[node name="HealthBar" type="TextureProgressBar" parent="TabContainer/Inventory" unique_id=1789828954]
 layout_mode = 0
 offset_left = 133.0
 offset_top = 35.0
@@ -58,7 +61,7 @@ texture_under = ExtResource("4_1ohro")
 texture_progress = ExtResource("4_1ohro")
 tint_progress = Color(0.117647, 1, 0, 1)
 
-[node name="Label" type="Label" parent="TabContainer/Inventory/HealthBar"]
+[node name="Label" type="Label" parent="TabContainer/Inventory/HealthBar" unique_id=2129228333]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -74,7 +77,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "100/100"
 
-[node name="StaminaBar" type="TextureProgressBar" parent="TabContainer/Inventory"]
+[node name="StaminaBar" type="TextureProgressBar" parent="TabContainer/Inventory" unique_id=436487778]
 layout_mode = 0
 offset_left = 133.0
 offset_top = 67.0
@@ -86,7 +89,7 @@ texture_under = ExtResource("4_1ohro")
 texture_progress = ExtResource("4_1ohro")
 tint_progress = Color(1, 0.960784, 0.0784314, 1)
 
-[node name="Label" type="Label" parent="TabContainer/Inventory/StaminaBar"]
+[node name="Label" type="Label" parent="TabContainer/Inventory/StaminaBar" unique_id=804122737]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -102,84 +105,85 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "100/100"
 
-[node name="Statbox" type="VBoxContainer" parent="TabContainer/Inventory"]
+[node name="Statbox" type="VBoxContainer" parent="TabContainer/Inventory" unique_id=171162440]
 layout_mode = 0
 offset_left = 17.0
 offset_top = 116.0
 offset_right = 133.0
 offset_bottom = 291.0
 
-[node name="ForBox" type="HBoxContainer" parent="TabContainer/Inventory/Statbox"]
+[node name="ForBox" type="HBoxContainer" parent="TabContainer/Inventory/Statbox" unique_id=16428622]
 layout_mode = 2
 
-[node name="ForLabel" type="Label" parent="TabContainer/Inventory/Statbox/ForBox"]
+[node name="ForLabel" type="Label" parent="TabContainer/Inventory/Statbox/ForBox" unique_id=505801965]
 layout_mode = 2
 mouse_filter = 1
 theme_override_fonts/font = ExtResource("3_osxo0")
 theme_override_font_sizes/font_size = 20
 text = "FOR: 20"
 
-[node name="Control" type="Control" parent="TabContainer/Inventory/Statbox/ForBox"]
+[node name="Control" type="Control" parent="TabContainer/Inventory/Statbox/ForBox" unique_id=181732576]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="IntBox" type="HBoxContainer" parent="TabContainer/Inventory/Statbox"]
+[node name="IntBox" type="HBoxContainer" parent="TabContainer/Inventory/Statbox" unique_id=1770071719]
 layout_mode = 2
 
-[node name="IntLabel" type="Label" parent="TabContainer/Inventory/Statbox/IntBox"]
+[node name="IntLabel" type="Label" parent="TabContainer/Inventory/Statbox/IntBox" unique_id=1419767816]
 layout_mode = 2
 mouse_filter = 1
 theme_override_fonts/font = ExtResource("3_osxo0")
 theme_override_font_sizes/font_size = 20
 text = "INT: 20"
 
-[node name="Control" type="Control" parent="TabContainer/Inventory/Statbox/IntBox"]
+[node name="Control" type="Control" parent="TabContainer/Inventory/Statbox/IntBox" unique_id=345960249]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="StrBox" type="HBoxContainer" parent="TabContainer/Inventory/Statbox"]
+[node name="StrBox" type="HBoxContainer" parent="TabContainer/Inventory/Statbox" unique_id=179714743]
 layout_mode = 2
 
-[node name="StrLabel" type="Label" parent="TabContainer/Inventory/Statbox/StrBox"]
+[node name="StrLabel" type="Label" parent="TabContainer/Inventory/Statbox/StrBox" unique_id=1925651718]
 layout_mode = 2
 mouse_filter = 1
 theme_override_fonts/font = ExtResource("3_osxo0")
 theme_override_font_sizes/font_size = 20
 text = "STR: 20"
 
-[node name="Control" type="Control" parent="TabContainer/Inventory/Statbox/StrBox"]
+[node name="Control" type="Control" parent="TabContainer/Inventory/Statbox/StrBox" unique_id=1081576368]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HarBox" type="HBoxContainer" parent="TabContainer/Inventory/Statbox"]
+[node name="HarBox" type="HBoxContainer" parent="TabContainer/Inventory/Statbox" unique_id=1649211522]
 layout_mode = 2
 
-[node name="HarLabel" type="Label" parent="TabContainer/Inventory/Statbox/HarBox"]
+[node name="HarLabel" type="Label" parent="TabContainer/Inventory/Statbox/HarBox" unique_id=782416832]
 layout_mode = 2
 mouse_filter = 1
 theme_override_fonts/font = ExtResource("3_osxo0")
 theme_override_font_sizes/font_size = 20
 text = "HAR: 20"
 
-[node name="Control" type="Control" parent="TabContainer/Inventory/Statbox/HarBox"]
+[node name="Control" type="Control" parent="TabContainer/Inventory/Statbox/HarBox" unique_id=1387892905]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="YeeBox" type="HBoxContainer" parent="TabContainer/Inventory/Statbox"]
+[node name="YeeBox" type="HBoxContainer" parent="TabContainer/Inventory/Statbox" unique_id=66977860]
 layout_mode = 2
 
-[node name="YeeLabel" type="Label" parent="TabContainer/Inventory/Statbox/YeeBox"]
+[node name="YeeLabel" type="Label" parent="TabContainer/Inventory/Statbox/YeeBox" unique_id=325057284]
 layout_mode = 2
 mouse_filter = 1
 theme_override_fonts/font = ExtResource("3_osxo0")
 theme_override_font_sizes/font_size = 20
 text = "YEE: 20"
 
-[node name="Control" type="Control" parent="TabContainer/Inventory/Statbox/YeeBox"]
+[node name="Control" type="Control" parent="TabContainer/Inventory/Statbox/YeeBox" unique_id=407364948]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="StatDesc" type="Label" parent="TabContainer/Inventory"]
+[node name="StatDesc" type="Label" parent="TabContainer/Inventory" unique_id=137507380]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 0
 offset_left = 133.0
 offset_top = 123.0
@@ -191,27 +195,17 @@ text = "Fortitude.
 Indicate fish's resistance, both mentally and physically."
 autowrap_mode = 2
 
-[node name="MoneyLabel" type="Label" parent="TabContainer/Inventory"]
+[node name="MoneyLabel" type="Label" parent="TabContainer/Inventory" unique_id=1009818998]
 layout_mode = 0
-offset_left = 17.0
-offset_top = 403.0
-offset_right = 177.0
-offset_bottom = 431.0
+offset_left = 13.0
+offset_top = 443.0
+offset_right = 173.0
+offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("3_osxo0")
 theme_override_font_sizes/font_size = 20
 text = "Money: 100$"
 
-[node name="DebtMoneyLabel" type="Label" parent="TabContainer/Inventory"]
-layout_mode = 0
-offset_left = 41.0
-offset_top = 435.0
-offset_right = 293.0
-offset_bottom = 463.0
-theme_override_fonts/font = ExtResource("3_osxo0")
-theme_override_font_sizes/font_size = 20
-text = "Debt money: 20000$"
-
-[node name="ItemListBackground" type="ColorRect" parent="TabContainer/Inventory"]
+[node name="ItemListBackground" type="ColorRect" parent="TabContainer/Inventory" unique_id=368764669]
 layout_mode = 0
 offset_left = 373.0
 offset_top = 35.0
@@ -219,18 +213,18 @@ offset_right = 685.0
 offset_bottom = 291.0
 color = Color(0.380392, 0.380392, 0.380392, 0.509804)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Inventory"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Inventory" unique_id=980041196]
 layout_mode = 0
 offset_left = 381.0
 offset_top = 43.0
 offset_right = 677.0
 offset_bottom = 283.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Inventory/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Inventory/ScrollContainer" unique_id=1698377118]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ItemDesc" type="RichTextLabel" parent="TabContainer/Inventory"]
+[node name="ItemDesc" type="RichTextLabel" parent="TabContainer/Inventory" unique_id=1616035]
 layout_mode = 0
 offset_left = 373.0
 offset_top = 307.0
@@ -242,19 +236,20 @@ text = "[font_size=24][Item name][/font_size]
 
 Recover 25% of your HP."
 
-[node name="Option" type="Control" parent="TabContainer"]
+[node name="Option" type="Control" parent="TabContainer" unique_id=1579921567]
 visible = false
 layout_mode = 2
 script = ExtResource("7_ia5qf")
+metadata/_tab_index = 1
 
-[node name="AudioGroup" type="Control" parent="TabContainer/Option"]
+[node name="AudioGroup" type="Control" parent="TabContainer/Option" unique_id=352491120]
 anchors_preset = 0
 offset_left = 53.0
 offset_top = 35.0
 offset_right = 637.0
 offset_bottom = 219.0
 
-[node name="Title" type="Label" parent="TabContainer/Option/AudioGroup"]
+[node name="Title" type="Label" parent="TabContainer/Option/AudioGroup" unique_id=1620037452]
 layout_mode = 1
 offset_right = 71.0
 offset_bottom = 27.0
@@ -262,7 +257,7 @@ theme_override_fonts/font = ExtResource("3_osxo0")
 theme_override_font_sizes/font_size = 20
 text = "Audio"
 
-[node name="MasterLabel" type="Label" parent="TabContainer/Option/AudioGroup"]
+[node name="MasterLabel" type="Label" parent="TabContainer/Option/AudioGroup" unique_id=929533653]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 40.0
@@ -272,7 +267,7 @@ theme_override_fonts/font = ExtResource("3_osxo0")
 text = "Master
 "
 
-[node name="BGMLabel" type="Label" parent="TabContainer/Option/AudioGroup"]
+[node name="BGMLabel" type="Label" parent="TabContainer/Option/AudioGroup" unique_id=956067168]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 72.0
@@ -281,7 +276,7 @@ offset_bottom = 93.0
 theme_override_fonts/font = ExtResource("3_osxo0")
 text = "BGM"
 
-[node name="SFXLabel" type="Label" parent="TabContainer/Option/AudioGroup"]
+[node name="SFXLabel" type="Label" parent="TabContainer/Option/AudioGroup" unique_id=1603942531]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 104.0
@@ -290,7 +285,7 @@ offset_bottom = 125.0
 theme_override_fonts/font = ExtResource("3_osxo0")
 text = "SFX"
 
-[node name="MasterSlider" type="HSlider" parent="TabContainer/Option/AudioGroup"]
+[node name="MasterSlider" type="HSlider" parent="TabContainer/Option/AudioGroup" unique_id=1361535750]
 layout_mode = 0
 offset_left = 144.0
 offset_top = 40.0
@@ -298,7 +293,7 @@ offset_right = 512.0
 offset_bottom = 56.0
 step = 5.0
 
-[node name="BGMSlider" type="HSlider" parent="TabContainer/Option/AudioGroup"]
+[node name="BGMSlider" type="HSlider" parent="TabContainer/Option/AudioGroup" unique_id=1245083928]
 layout_mode = 0
 offset_left = 144.0
 offset_top = 72.0
@@ -306,7 +301,7 @@ offset_right = 512.0
 offset_bottom = 88.0
 step = 5.0
 
-[node name="SFXSlider" type="HSlider" parent="TabContainer/Option/AudioGroup"]
+[node name="SFXSlider" type="HSlider" parent="TabContainer/Option/AudioGroup" unique_id=60599660]
 layout_mode = 0
 offset_left = 144.0
 offset_top = 104.0
@@ -314,7 +309,7 @@ offset_right = 512.0
 offset_bottom = 120.0
 step = 5.0
 
-[node name="BackMenuButton" type="Button" parent="TabContainer/Option"]
+[node name="BackMenuButton" type="Button" parent="TabContainer/Option" unique_id=387222645]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -330,7 +325,7 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_osxo0")
 text = "Back to menu"
 
-[node name="QuitButton" type="Button" parent="TabContainer/Option"]
+[node name="QuitButton" type="Button" parent="TabContainer/Option" unique_id=1032775761]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -346,7 +341,7 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_osxo0")
 text = "Quit game"
 
-[node name="CloseButton" type="Button" parent="."]
+[node name="CloseButton" type="Button" parent="." unique_id=1391769272]
 layout_mode = 0
 offset_left = 669.0
 offset_right = 695.0

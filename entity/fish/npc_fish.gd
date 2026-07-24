@@ -21,12 +21,11 @@ var steal_awareness = 0
 
 func _ready() -> void:
 	if flip_sprite:
-		fish_sprite.scale.x = -fish_sprite.scale.x
+		fish_sprite.scale.x = - fish_sprite.scale.x
 	if not Engine.is_editor_hint():
 		current_hp = max_hp
 		name_label.text = fish_name
 		randomly_set_defeat_money()
-		GameManager.day_passed.connect(revive)
 
 func interact(_player: Player):
 	GameManager.open_npc_interact_ui(self)
@@ -34,7 +33,7 @@ func interact(_player: Player):
 func get_interact_text(_player: Player) -> String:
 	return "Interact with {0}".format([fish_name])
 
-func damaged(value: int, is_percentage_max: bool=false):
+func damaged(value: int, is_percentage_max: bool = false):
 	if is_percentage_max:
 		current_hp = clamp(current_hp - (max_hp * (value / 100.0)), 0, max_hp)
 	else:

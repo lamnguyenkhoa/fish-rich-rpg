@@ -20,6 +20,8 @@ enum ItemId {
     PREMIUM_MEDKIT = 2002,
     BODY_ENHANCE_DRUG = 2003,
     REFLEX_BOOSTER_DRINK = 2004,
+    # INTERACTABLE EQUIPMENT
+    SMARTPHONE = 9000
 }
 
 enum ServiceSpecialCase {
@@ -27,4 +29,10 @@ enum ServiceSpecialCase {
     NEXT_DAY = 100,
     SMUGGLE = 105,
     PAY_DEBT = 200
+}
+
+
+enum ItemSpecialCase {
+    NONE,
+    SMARTPHONE = 100
 }

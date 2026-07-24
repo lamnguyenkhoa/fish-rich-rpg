@@ -37,6 +37,6 @@ func resolve_item_effect(_item_data: ItemResource):
 	GameManager.player.str_stat += _item_data.gain_stat[2]
 	GameManager.player.har_stat += _item_data.gain_stat[3]
 	GameManager.player.yee_stat += _item_data.gain_stat[4]
-	if _item_data.special_case != "":
+	if _item_data.special_case != EnumAutoload.ItemSpecialCase.NONE:
 		#TODO
 		return

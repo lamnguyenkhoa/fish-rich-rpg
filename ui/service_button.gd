@@ -40,27 +40,21 @@ func _ready() -> void:
 
 	if not Engine.is_editor_hint():
 		if special_case == EnumAutoload.ServiceSpecialCase.PAY_DEBT:
-			service_cost = GameManager.debt_money
 			label.text = "Pay debt {0}$, ".format([service_cost]) + service_desc
 			button.text = service_name
 		update_service_status()
 		company.ui_opened.connect(update_service_status)
 		GameManager.time_passed.connect(update_service_status)
-		GameManager.day_passed.connect(restock)
 		GameManager.player.money_changed.connect(update_service_status)
 
 func update_service_status():
 	button.disabled = false
 	button.text = service_name
-	if special_case == EnumAutoload.ServiceSpecialCase.PAY_DEBT and GameManager.debt_paid:
-		visible = false
 	if limited_stock and special_case != EnumAutoload.ServiceSpecialCase.PAY_DEBT:
 		button.text = "{0} ({1} left)".format([service_name, current_service_stock])
 	if limited_stock and current_service_stock <= 0:
 		button.disabled = true
 	if GameManager.player.money < service_cost:
-		button.disabled = true
-	if GameManager.get_time_left() < service_time_needed:
 		button.disabled = true
 
 func _on_button_pressed():
