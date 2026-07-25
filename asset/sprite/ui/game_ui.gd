@@ -13,6 +13,14 @@ func _ready() -> void:
 	GameManager.game_ui = self
 	GameManager.time_status_changed.connect(update_time_passing_label)
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("quick_toggle_phone") and not GameManager.player.is_busy:
+		if GameManager.phone_ui.visible:
+			GameManager.phone_ui.close_phone()
+		else:
+			GameManager.player_menu.close_menu()
+			GameManager.phone_ui.open_phone()
+
 
 func _process(_delta: float) -> void:
 	if GameManager.time_left <= 10.0:

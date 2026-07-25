@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://d1m00bkpadnme" path="res://asset/sprite/ui/phone/phone2.png" id="2_2vdfh"]
 [ext_resource type="PackedScene" uid="uid://basf2r5nh1fvy" path="res://ui/PhoneApp.tscn" id="2_cjpjw"]
 [ext_resource type="PackedScene" uid="uid://cjn0etsjn5ej8" path="res://ui/phone_app/MermaidConnectUI.tscn" id="4_2vdfh"]
-[ext_resource type="Texture2D" uid="uid://0n1pfb34ncg" path="res://asset/sprite/ui/phone/mermaid_connect.png" id="4_d80dh"]
 
 [sub_resource type="Animation" id="Animation_2vdfh"]
 length = 0.001
@@ -47,7 +46,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_cjpjw"]
 resource_name = "jump_up"
-length = 0.39999999999999997
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -139,7 +138,6 @@ columns = 3
 
 [node name="PhoneApp" parent="PhonePortrait/AppContainer" unique_id=2008993405 instance=ExtResource("2_cjpjw")]
 layout_mode = 2
-app_icon = ExtResource("4_d80dh")
 
 [node name="AppOpenDarkscreen" type="ColorRect" parent="PhonePortrait" unique_id=2110782142]
 self_modulate = Color(1, 1, 1, 0)
@@ -183,4 +181,5 @@ text = "Put away"
 libraries/ = SubResource("AnimationLibrary_ea1x0")
 
 [connection signal="app_opened" from="PhonePortrait/AppContainer/PhoneApp" to="." method="_on_phone_app_app_opened"]
+[connection signal="app_closed" from="PhonePortrait/MermaidConnectUI" to="." method="_on_mermaid_connect_ui_app_closed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

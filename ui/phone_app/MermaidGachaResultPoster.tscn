@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://7yute4fcss26"]
+
+[ext_resource type="Texture2D" uid="uid://bn4gq5mrywdw4" path="res://asset/sprite/ui/phone/mermaid_gacha_result_silver.png" id="1_6iuj3"]
+[ext_resource type="Script" uid="uid://c6rje10utyk1v" path="res://ui/phone_app/phone_gacha_result_item.gd" id="2_jqryd"]
+[ext_resource type="Texture2D" uid="uid://bosqjo7it86s0" path="res://asset/sprite/ui/phone/mermaid_gacha_result_gold.png" id="3_k8cyl"]
+[ext_resource type="Texture2D" uid="uid://d02737imh2m2l" path="res://asset/sprite/ui/phone/mermaid_gacha_result_rainbow.png" id="4_3l1dk"]
+
+[node name="MermaidGachaResultPoster" type="TextureRect" unique_id=53887440]
+custom_minimum_size = Vector2(80, 100)
+texture = ExtResource("1_6iuj3")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("2_jqryd")
+image_list = Array[CompressedTexture2D]([ExtResource("1_6iuj3"), ExtResource("3_k8cyl"), ExtResource("4_3l1dk")])

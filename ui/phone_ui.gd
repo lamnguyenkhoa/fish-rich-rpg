@@ -30,3 +30,7 @@ func _on_phone_app_app_opened(app_name: String) -> void:
 	match (app_name):
 		"Mermaid Connect":
 			mermaid_connect_ui.open_app_ui()
+
+
+func _on_mermaid_connect_ui_app_closed() -> void:
+	anim_player.play_backwards("rotate_phone")
