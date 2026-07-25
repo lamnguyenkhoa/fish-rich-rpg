@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bogjm4kvh8nx5"]
 
-[ext_resource type="Texture2D" uid="uid://daw7fsr6h6byg" path="res://asset/sprite/interior/apartment.png" id="1_4xsx7"]
+[ext_resource type="Texture2D" uid="uid://daw7fsr6h6byg" path="res://asset/sprite/interior/apartment_interior.png" id="1_4xsx7"]
 [ext_resource type="Script" uid="uid://ctlbquygas2fk" path="res://ui/interior/building_interior.gd" id="1_tw6d3"]
 [ext_resource type="PackedScene" uid="uid://slk6ug7rqxnh" path="res://ui/interior/InteriorInteractable.tscn" id="2_tw6d3"]
 [ext_resource type="Texture2D" uid="uid://q6o4mvaqpfpn" path="res://asset/sprite/interior/apartment_bed.png" id="3_34nvb"]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://biqxju6alq3qq"]
+[gd_scene format=3 uid="uid://biqxju6alq3qq"]
 
-[ext_resource type="Script" path="res://entity/building/company_building.gd" id="1_jb8nd"]
-[ext_resource type="Shader" path="res://shader/topdown_shadow.gdshader" id="2_btkkw"]
+[ext_resource type="Script" uid="uid://dla1i1jeu5n4s" path="res://entity/building/company_building.gd" id="1_jb8nd"]
+[ext_resource type="Shader" uid="uid://u25x57qodqev" path="res://shader/topdown_shadow.gdshader" id="2_btkkw"]
 [ext_resource type="Texture2D" uid="uid://c1q4ibw740hi8" path="res://asset/sprite/building/hospital.png" id="3_p5w2h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jua5p"]
@@ -13,20 +13,22 @@ shader_parameter/x_buffer = 2.0
 shader_parameter/y_buffer = 2.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_psa7f"]
-size = Vector2(256, 120)
+size = Vector2(336, 56)
 
-[node name="Hospital" type="StaticBody2D"]
-position = Vector2(624, 416)
+[node name="Hospital" type="StaticBody2D" unique_id=1210126757]
 script = ExtResource("1_jb8nd")
 interact_text = "Go to hospital"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1818161238]
 material = SubResource("ShaderMaterial_jua5p")
 position = Vector2(0, -144)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_p5w2h")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(16, -68)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=711740112]
+position = Vector2(8, -44)
 shape = SubResource("RectangleShape2D_psa7f")
 debug_color = Color(0.701961, 0, 0.0745098, 0.419608)
+
+[node name="RespawnSpot" type="Marker2D" parent="." unique_id=645956084]
+position = Vector2(16, 78)

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://daw7fsr6h6byg"
-path="res://.godot/imported/apartment.png-9c9d5da362b63e7b8d0564c9691511c9.ctex"
+path="res://.godot/imported/apartment_interior.png-7385478995c1de4facff561c5d9fdcf5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/sprite/interior/apartment.png"
-dest_files=["res://.godot/imported/apartment.png-9c9d5da362b63e7b8d0564c9691511c9.ctex"]
+source_file="res://asset/sprite/interior/apartment_interior.png"
+dest_files=["res://.godot/imported/apartment_interior.png-7385478995c1de4facff561c5d9fdcf5.ctex"]
 
 [params]
 

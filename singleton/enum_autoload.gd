@@ -28,7 +28,8 @@ enum ServiceSpecialCase {
     NONE,
     NEXT_DAY = 100,
     SMUGGLE = 105,
-    PAY_DEBT = 200
+    PAY_DEBT = 200,
+    HOSPITAL_HELP_DESK = 300,
 }
 
 

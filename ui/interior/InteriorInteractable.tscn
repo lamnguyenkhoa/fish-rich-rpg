@@ -15,7 +15,6 @@ expand_icon = true
 script = ExtResource("2_gh8dd")
 image = ExtResource("1_ptntp")
 popup_panel_prefab = ExtResource("3_gh8dd")
-pop_up_content = "Take a nap (15s). Recover all your HP.Really?"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

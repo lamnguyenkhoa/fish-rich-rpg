@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://dtjs4ahqerl1i"]
+
+[ext_resource type="Script" uid="uid://ctlbquygas2fk" path="res://ui/interior/building_interior.gd" id="1_5dggp"]
+[ext_resource type="Texture2D" uid="uid://dbg8wt8ugdldd" path="res://asset/sprite/interior/hospital_interior.png" id="2_jdyga"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="3_bthh3"]
+[ext_resource type="PackedScene" uid="uid://slk6ug7rqxnh" path="res://ui/interior/InteriorInteractable.tscn" id="4_2ulcu"]
+[ext_resource type="Texture2D" uid="uid://c36vaj044cwif" path="res://asset/sprite/interior/hospital_helpdesk.png" id="5_4th2i"]
+[ext_resource type="Texture2D" uid="uid://b20b6wgjg20wh" path="res://asset/sprite/interior/hospital_seat.png" id="6_4v8ec"]
+[ext_resource type="Texture2D" uid="uid://djccx6bmtxwep" path="res://asset/sprite/interior/hospital_doctor_room.png" id="7_4v8ec"]
+
+[node name="HospitalInterior" type="Control" unique_id=1605184919]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_5dggp")
+
+[node name="Background" type="ColorRect" parent="." unique_id=77637318]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_right = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.077394694, 0.34116843, 0.36328125, 1)
+
+[node name="InteriorArt" type="TextureRect" parent="." unique_id=601585066]
+self_modulate = Color(0.40234375, 0.40234375, 0.40234375, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = -272.0
+offset_right = 936.0
+offset_bottom = 296.0
+grow_vertical = 2
+texture = ExtResource("2_jdyga")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="WorkLabel" type="RichTextLabel" parent="." unique_id=386697371]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -374.0
+offset_top = 72.0
+offset_right = -54.0
+offset_bottom = 224.0
+grow_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("3_bthh3")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Visiting the [color=lightblue][wave]the fishpital[/wave][/color] ...[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Helpdesk" parent="." unique_id=1734670431 instance=ExtResource("4_2ulcu")]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 217.0
+offset_right = 341.0
+offset_bottom = 501.0
+pivot_offset = Vector2(134, 142)
+icon = ExtResource("5_4th2i")
+image = ExtResource("5_4th2i")
+time_usage = 5.0
+pop_up_content = "First aid treatment. Pay money per lost health point."
+special_case = 300
+
+[node name="Seat" parent="." unique_id=1614445235 instance=ExtResource("4_2ulcu")]
+layout_mode = 0
+offset_left = 596.0
+offset_top = 423.0
+offset_right = 919.0
+offset_bottom = 592.0
+pivot_offset = Vector2(161.5, 84.5)
+icon = ExtResource("6_4v8ec")
+image = ExtResource("6_4v8ec")
+time_usage = 10.0
+money_cost = 500.0
+play_time_pass_transition = true
+pop_up_content = "Take a regularly health check"
+
+[node name="DoctorRoom" parent="." unique_id=1061637373 instance=ExtResource("4_2ulcu")]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 278.0
+offset_right = 458.0
+offset_bottom = 482.0
+pivot_offset = Vector2(45, 102)
+icon = ExtResource("7_4v8ec")
+image = ExtResource("7_4v8ec")
+time_usage = 30.0
+money_cost = 1500.0
+play_time_pass_transition = true
+pop_up_content = "Consult the doctor. VIP package."

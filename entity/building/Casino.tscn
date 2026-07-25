@@ -17,7 +17,7 @@ size = Vector2(304, 128)
 
 [node name="Casino" type="StaticBody2D" unique_id=271249110]
 script = ExtResource("1_nw7w0")
-interact_text = "Return to your apartment"
+interact_text = "Go to building"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=583248943]
 material = SubResource("ShaderMaterial_pakef")

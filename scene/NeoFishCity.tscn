@@ -13,8 +13,10 @@
 [ext_resource type="Shader" uid="uid://b015rtpnnsq6f" path="res://shader/windwalker_water.gdshader" id="8_q5g7b"]
 [ext_resource type="PackedScene" uid="uid://b4pa1fvvkcpu3" path="res://entity/building/Casino.tscn" id="9_y4yca"]
 [ext_resource type="PackedScene" uid="uid://d1r6umm7ce0ll" path="res://entity/building/GroceryStore.tscn" id="10_3kgtk"]
+[ext_resource type="PackedScene" uid="uid://biqxju6alq3qq" path="res://entity/building/HospitalBuilding.tscn" id="11_q5g7b"]
 [ext_resource type="PackedScene" uid="uid://bp15f55hjcc0f" path="res://ui/interior/CasinoInterior.tscn" id="14_wpelm"]
 [ext_resource type="PackedScene" uid="uid://d3nnr4ap3ib24" path="res://ui/interior/GroceryStoreInterior.tscn" id="16_d6et2"]
+[ext_resource type="PackedScene" uid="uid://dtjs4ahqerl1i" path="res://ui/interior/HospitalInterior.tscn" id="18_qh2f3"]
 [ext_resource type="PackedScene" uid="uid://bogjm4kvh8nx5" path="res://ui/interior/ApartmentInterior.tscn" id="21_0yw4d"]
 [ext_resource type="Script" uid="uid://b5lrxhsf7hpvl" path="res://scene/camera_follow.gd" id="27_081fe"]
 
@@ -152,6 +154,10 @@ open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/CasinoInterior")
 position = Vector2(824, 496)
 open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/GroceryStoreInterior")
 
+[node name="Hospital" parent="YSortGroup" unique_id=249826890 node_paths=PackedStringArray("open_interior_ui") instance=ExtResource("11_q5g7b")]
+position = Vector2(1344, 528)
+open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/HospitalInterior")
+
 [node name="WorldBorderBotAndSide" type="StaticBody2D" parent="." unique_id=493320393]
 collision_mask = 7
 
@@ -224,6 +230,10 @@ visible = false
 layout_mode = 1
 
 [node name="GroceryStoreInterior" parent="CanvasLayer/InteriorUI" unique_id=1178219086 instance=ExtResource("16_d6et2")]
+visible = false
+layout_mode = 1
+
+[node name="HospitalInterior" parent="CanvasLayer/InteriorUI" unique_id=1605184919 instance=ExtResource("18_qh2f3")]
 visible = false
 layout_mode = 1
 
