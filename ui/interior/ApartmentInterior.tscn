@@ -54,21 +54,21 @@ icon = ExtResource("3_34nvb")
 image = ExtResource("3_34nvb")
 time_usage = 15.0
 play_time_pass_transition = true
+pop_up_content = "Take a nap, recover all your health."
 
 [node name="WorkLabel" type="RichTextLabel" parent="." unique_id=1005747862]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -350.0
-offset_top = 24.0
-offset_right = -30.0
-offset_bottom = 176.0
+offset_left = -358.0
+offset_top = 64.0
+offset_right = -38.0
+offset_bottom = 216.0
 grow_horizontal = 0
 theme_override_fonts/normal_font = ExtResource("5_34nvb")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "
-[center]Staying in [color=orange][wave]Your apartment[/wave][/color] ...[/center]"
+text = "[center]Staying in [color=orange][wave]Your apartment[/wave][/color] ...[/center]"
 fit_content = true
 scroll_active = false

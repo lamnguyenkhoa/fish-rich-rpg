@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://d3nnr4ap3ib24"]
+
+[ext_resource type="Script" uid="uid://ctlbquygas2fk" path="res://ui/interior/building_interior.gd" id="1_8uqf8"]
+[ext_resource type="Texture2D" uid="uid://bor2lkligc71e" path="res://asset/sprite/interior/grocery_store_interior.png" id="2_rf2l0"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="3_vcqjc"]
+[ext_resource type="PackedScene" uid="uid://slk6ug7rqxnh" path="res://ui/interior/InteriorInteractable.tscn" id="4_72vtv"]
+[ext_resource type="Texture2D" uid="uid://b73u1r16fpgh1" path="res://asset/sprite/interior/carrot.png" id="5_vcqjc"]
+[ext_resource type="Texture2D" uid="uid://cbbboxirg8tej" path="res://asset/sprite/interior/cauliflower.png" id="6_72vtv"]
+[ext_resource type="Texture2D" uid="uid://c1jhap0kp4cro" path="res://asset/sprite/interior/chili_pepper.png" id="7_7kk27"]
+[ext_resource type="Texture2D" uid="uid://gcg88nbiuy3v" path="res://asset/sprite/interior/garlic.png" id="8_p7evw"]
+
+[node name="GroceryStoreInterior" type="Control" unique_id=1178219086]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_8uqf8")
+
+[node name="Background" type="ColorRect" parent="." unique_id=2132619768]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0.14901961, 0, 1)
+
+[node name="InteriorArt" type="TextureRect" parent="." unique_id=493706725]
+self_modulate = Color(0.40234375, 0.40234375, 0.40234375, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = -240.0
+offset_right = 964.25
+offset_bottom = 280.0
+grow_vertical = 2
+texture = ExtResource("2_rf2l0")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="WorkLabel" type="RichTextLabel" parent="." unique_id=1081302909]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -366.0
+offset_top = 64.0
+offset_right = -46.0
+offset_bottom = 216.0
+grow_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("3_vcqjc")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Buying at [color=green][wave]the grocery[/wave][/color] ...[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Carrot" parent="." unique_id=1734670431 instance=ExtResource("4_72vtv")]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 514.0
+offset_right = 591.0
+offset_bottom = 631.0
+pivot_offset = Vector2(161.5, 58.5)
+icon = ExtResource("5_vcqjc")
+image = ExtResource("5_vcqjc")
+money_cost = 3.7
+pop_up_content = "Buy a kilo of carrot"
+
+[node name="Cauliflower" parent="." unique_id=185502693 instance=ExtResource("4_72vtv")]
+layout_mode = 0
+offset_left = 466.0
+offset_top = 92.0
+offset_right = 969.0
+offset_bottom = 268.0
+pivot_offset = Vector2(251.5, 88)
+icon = ExtResource("6_72vtv")
+image = ExtResource("6_72vtv")
+money_cost = 4.2
+pop_up_content = "Buy a kilo of cauliflower"
+
+[node name="ChiliPepper" parent="." unique_id=1209162402 instance=ExtResource("4_72vtv")]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 399.0
+offset_right = 508.0
+offset_bottom = 491.0
+pivot_offset = Vector2(117, 46)
+icon = ExtResource("7_7kk27")
+image = ExtResource("7_7kk27")
+money_cost = 4.4
+pop_up_content = "Buy a box of chili pepper"
+
+[node name="Garlic" parent="." unique_id=1744803590 instance=ExtResource("4_72vtv")]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 331.0
+offset_right = 664.0
+offset_bottom = 418.0
+pivot_offset = Vector2(83, 43.5)
+icon = ExtResource("8_p7evw")
+image = ExtResource("8_p7evw")
+money_cost = 3.1
+pop_up_content = "Buy a box of garlic"

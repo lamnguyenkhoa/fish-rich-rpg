@@ -49,10 +49,11 @@ var yee_stat: int = 9: # Each point increase movespeed by 2%
 	set(value):
 		yee_stat = value
 		recalculate_stat()
-var money: int = 1000000:
+var money: float = 1000000:
 	set(value):
 		if value < 0:
 			value = 0
+		value = snapped(value, 0.01)
 		money = value
 		GameManager.game_ui.update_money_text(value)
 		GameManager.player_menu.inventory_menu.refresh_stat()

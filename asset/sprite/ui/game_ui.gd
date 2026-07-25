@@ -27,8 +27,8 @@ func update_time_passing_label():
 		time_passing_label.text = "[center]Time is paused. Relax...[/center]"
 
 
-func update_money_text(amount: int):
-	money_label.text = "Money: {0}$".format([amount])
+func update_money_text(amount: float):
+	money_label.text = "Money: %.2f$" % amount
 
 func play_time_passed_transition():
 	anim_player.play("time_passed_transition")

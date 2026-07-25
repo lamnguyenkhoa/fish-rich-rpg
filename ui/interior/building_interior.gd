@@ -9,7 +9,7 @@ func _input(event):
 
 func open_ui():
 	visible = true
-	GameManager.stop_time()
+	# GameManager.stop_time()
 	ui_opened.emit()
 
 func close_ui():

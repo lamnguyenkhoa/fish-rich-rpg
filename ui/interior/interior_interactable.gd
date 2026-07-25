@@ -4,9 +4,13 @@ class_name InteriorInteractable
 
 @export var image: CompressedTexture2D
 @export var time_usage: float = 0
+@export var money_cost: float = 0
 @export var play_time_pass_transition: bool = false
 @export var popup_panel_prefab: PackedScene
-@export var pop_up_content: String
+@export_multiline var pop_up_content: String
+
+@export_group("Player effect")
+
 
 var hover_scale: float = 1.1
 var hover_duration: float = 0.15
@@ -35,8 +39,11 @@ func _process(_delta: float) -> void:
 func _on_pressed() -> void:
 	if GameManager.time_left < time_usage:
 		return
+	if GameManager.player.money < money_cost:
+		return
 
 	GameManager.time_left -= time_usage
+	GameManager.player.money -= money_cost
 	if play_time_pass_transition:
 		GameManager.game_ui.play_time_passed_transition()
 	activate_interior_effect.emit()
@@ -54,7 +61,13 @@ func _on_mouse_entered() -> void:
 	if popup_inst == null:
 		popup_inst = popup_panel_prefab.instantiate()
 		add_child(popup_inst)
-		popup_inst.get_node("RichTextLabel").text = pop_up_content
+		var cost_text = ""
+		if time_usage > 0:
+			cost_text += "Time: %.2f$ |" % time_usage
+		if money_cost > 0:
+			cost_text += "Money: %.2f$" % money_cost
+
+		popup_inst.get_node("RichTextLabel").text = cost_text + "\n" + pop_up_content
 
 
 func _animate_scale(target_scale: Vector2) -> void:

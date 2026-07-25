@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://d1r6umm7ce0ll"]
+
+[ext_resource type="Script" uid="uid://dla1i1jeu5n4s" path="res://entity/building/company_building.gd" id="1_81g78"]
+[ext_resource type="Shader" uid="uid://u25x57qodqev" path="res://shader/topdown_shadow.gdshader" id="2_j3tci"]
+[ext_resource type="Texture2D" uid="uid://6anw3lyp1wv1" path="res://asset/sprite/building/grocery.png" id="3_7ss3s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q5g7b"]
+shader = ExtResource("2_j3tci")
+shader_parameter/deform = Vector2(0.5, 0.5)
+shader_parameter/offset = Vector2(42.795, 19.79)
+shader_parameter/modulate = Color(0, 0, 0, 0.55)
+shader_parameter/x_buffer = 2.0
+shader_parameter/y_buffer = 2.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vha0l"]
+size = Vector2(280, 64)
+
+[node name="Grocery" type="StaticBody2D" unique_id=408316340 node_paths=PackedStringArray("open_interior_ui")]
+script = ExtResource("1_81g78")
+interact_text = "Buy grocery"
+open_interior_ui = NodePath("")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=513331318]
+material = SubResource("ShaderMaterial_q5g7b")
+position = Vector2(0, -57.999996)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_7ss3s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1041342648]
+position = Vector2(-4, -10)
+shape = SubResource("RectangleShape2D_vha0l")
+debug_color = Color(0.701961, 0, 0.0745098, 0.419608)
+
+[node name="RespawnSpot" type="Marker2D" parent="." unique_id=1033260047]
+position = Vector2(16, 78)

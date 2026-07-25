@@ -49,16 +49,15 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -398.0
-offset_top = 40.0
-offset_right = -78.0
-offset_bottom = 192.0
+offset_left = -406.0
+offset_top = 56.0
+offset_right = -86.0
+offset_bottom = 208.0
 grow_horizontal = 0
 theme_override_fonts/normal_font = ExtResource("5_bir3x")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "
-[center]Playing at [color=red][wave]the casino[/wave][/color] ...[/center]"
+text = "[center]Playing at [color=red][wave]the casino[/wave][/color] ...[/center]"
 fit_content = true
 scroll_active = false
 

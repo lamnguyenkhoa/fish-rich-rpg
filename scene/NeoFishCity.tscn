@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cqvjcw8u7cxo5"]
 
 [ext_resource type="Script" uid="uid://cwlywvdd2jqak" path="res://scene/map_manager.gd" id="1_l64ku"]
-[ext_resource type="Texture2D" uid="uid://cts32tvdsnmfx" path="res://asset/sprite/building/sand.png" id="2_rfudk"]
+[ext_resource type="Texture2D" uid="uid://clqfjbmydbhle" path="res://asset/sprite/building/seamless_sand2.png" id="2_wpelm"]
 [ext_resource type="Shader" uid="uid://d1ym82673oeip" path="res://shader/water_effect.gdshader" id="3_lyuoh"]
 [ext_resource type="Texture2D" uid="uid://p73ulmivegfh" path="res://asset/sprite/ui/square.png" id="4_uvjsd"]
 [ext_resource type="Shader" uid="uid://d4l6043knsi2q" path="res://shader/2d_wind.gdshader" id="5_3kgtk"]
@@ -12,9 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://cuo5yqknjvw01" path="res://entity/building/YourApartment.tscn" id="8_0yw4d"]
 [ext_resource type="Shader" uid="uid://b015rtpnnsq6f" path="res://shader/windwalker_water.gdshader" id="8_q5g7b"]
 [ext_resource type="PackedScene" uid="uid://b4pa1fvvkcpu3" path="res://entity/building/Casino.tscn" id="9_y4yca"]
+[ext_resource type="PackedScene" uid="uid://d1r6umm7ce0ll" path="res://entity/building/GroceryStore.tscn" id="10_3kgtk"]
 [ext_resource type="PackedScene" uid="uid://bp15f55hjcc0f" path="res://ui/interior/CasinoInterior.tscn" id="14_wpelm"]
+[ext_resource type="PackedScene" uid="uid://d3nnr4ap3ib24" path="res://ui/interior/GroceryStoreInterior.tscn" id="16_d6et2"]
 [ext_resource type="PackedScene" uid="uid://bogjm4kvh8nx5" path="res://ui/interior/ApartmentInterior.tscn" id="21_0yw4d"]
 [ext_resource type="Script" uid="uid://b5lrxhsf7hpvl" path="res://scene/camera_follow.gd" id="27_081fe"]
+
+[sub_resource type="TileSet" id="TileSet_ys074"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_nutr2"]
 noise_type = 0
@@ -97,11 +101,15 @@ shader_parameter/offset = Vector2(0, 0)
 script = ExtResource("1_l64ku")
 
 [node name="Environment" type="Sprite2D" parent="." unique_id=174758916]
+self_modulate = Color(0.42779183, 0.52027184, 0.59375, 1)
 texture_repeat = 2
 position = Vector2(496, 280)
-texture = ExtResource("2_rfudk")
+texture = ExtResource("2_wpelm")
 region_enabled = true
-region_rect = Rect2(0, 0, 5000, 2500)
+region_rect = Rect2(0, 0, 7500, 5000)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1187406957]
+tile_set = SubResource("TileSet_ys074")
 
 [node name="WaterShader" type="Sprite2D" parent="." unique_id=1403652862]
 visible = false
@@ -140,11 +148,15 @@ position = Vector2(608, -152)
 interact_text = "Go gamble"
 open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/CasinoInterior")
 
+[node name="Grocery" parent="YSortGroup" unique_id=408316340 node_paths=PackedStringArray("open_interior_ui") instance=ExtResource("10_3kgtk")]
+position = Vector2(824, 496)
+open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/GroceryStoreInterior")
+
 [node name="WorldBorderBotAndSide" type="StaticBody2D" parent="." unique_id=493320393]
 collision_mask = 7
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBorderBotAndSide" unique_id=2096810947]
-position = Vector2(600, -480)
+position = Vector2(600, 1096)
 shape = SubResource("RectangleShape2D_qh2f3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorderBotAndSide" unique_id=1701684049]
@@ -208,6 +220,10 @@ visible = false
 layout_mode = 1
 
 [node name="CasinoInterior" parent="CanvasLayer/InteriorUI" unique_id=755305693 instance=ExtResource("14_wpelm")]
+visible = false
+layout_mode = 1
+
+[node name="GroceryStoreInterior" parent="CanvasLayer/InteriorUI" unique_id=1178219086 instance=ExtResource("16_d6et2")]
 visible = false
 layout_mode = 1
 
