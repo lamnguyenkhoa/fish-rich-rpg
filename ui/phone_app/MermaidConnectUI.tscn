@@ -1,0 +1,248 @@
+[gd_scene format=3 uid="uid://cjn0etsjn5ej8"]
+
+[ext_resource type="Script" uid="uid://c54smhskisudu" path="res://ui/phone_app/phone_app_ui.gd" id="1_4ggln"]
+[ext_resource type="Texture2D" uid="uid://cvfh3wvlp41xj" path="res://asset/sprite/ui/phone/sky_background.png" id="3_7w6t2"]
+[ext_resource type="Texture2D" uid="uid://b7nxocs8iuryn" path="res://asset/sprite/ui/phone/mermaid_titlescreen.png" id="3_iok8n"]
+[ext_resource type="Texture2D" uid="uid://blxl51twjjxd8" path="res://asset/sprite/ui/phone/mermaid_gacha_char.png" id="3_qq5fw"]
+[ext_resource type="Texture2D" uid="uid://dl0nquvkmyikg" path="res://asset/sprite/ui/phone/grass_background.png" id="3_sok8a"]
+
+[node name="MermaidConnectUI" type="Control" unique_id=832048966 node_paths=PackedStringArray("draw_one_button", "draw_ten_button")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -683.0
+offset_top = -384.0
+offset_right = -427.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5707964
+script = ExtResource("1_4ggln")
+draw_one_button = NodePath("TabContainer/GachaScreen/DrawOne")
+draw_ten_button = NodePath("TabContainer/GachaScreen/DrawTen")
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=45745263]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 1
+tabs_visible = false
+
+[node name="MainMenu" type="Control" parent="TabContainer" unique_id=478631646]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Background" type="TextureRect" parent="TabContainer/MainMenu" unique_id=759115307]
+custom_minimum_size = Vector2(30, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.3429304e-05
+offset_top = 536.0
+offset_right = 280.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+texture = ExtResource("3_iok8n")
+expand_mode = 1
+
+[node name="Label" type="RichTextLabel" parent="TabContainer/MainMenu" unique_id=1683339230]
+layout_mode = 0
+offset_left = 8.000021
+offset_top = 464.0
+offset_right = 408.00003
+offset_bottom = 536.0
+rotation = -1.5707964
+theme_override_colors/default_color = Color(1, 0, 0.39988708, 1)
+theme_override_colors/font_outline_color = Color(9.080031, 9.080031, 9.080031, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Mermaid Connect"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="TabContainer/MainMenu" unique_id=2006258775]
+layout_mode = 0
+offset_left = 136.00002
+offset_top = 344.0
+offset_right = 288.0
+offset_bottom = 397.0
+rotation = -1.5707964
+theme_override_font_sizes/font_size = 32
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="TabContainer/MainMenu" unique_id=2064877687]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 344.0
+offset_right = 347.0
+offset_bottom = 386.0
+rotation = -1.5707964
+theme_override_font_sizes/font_size = 24
+text = "Quit"
+
+[node name="GameMain" type="Control" parent="TabContainer" unique_id=1932306379]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Background" type="TextureRect" parent="TabContainer/GameMain" unique_id=43115495]
+custom_minimum_size = Vector2(30, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.3429304e-05
+offset_top = 536.0
+offset_right = 280.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+texture = ExtResource("3_sok8a")
+expand_mode = 1
+
+[node name="Label" type="RichTextLabel" parent="TabContainer/GameMain" unique_id=2053596444]
+layout_mode = 0
+offset_left = -15.999976
+offset_top = 544.0
+offset_right = 240.23154
+offset_bottom = 640.0
+rotation = -1.5707964
+theme_override_colors/default_color = Color(1, 0, 0.39988708, 1)
+theme_override_colors/font_outline_color = Color(9.080031, 9.080031, 9.080031, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "
+[center][wave]Mermaid Connect[/wave][center]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="TabContainer/GameMain" unique_id=2099953360]
+layout_mode = 0
+offset_left = 186.00002
+offset_top = 456.0
+offset_right = 322.0
+offset_bottom = 509.0
+rotation = -1.5707964
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="GachaButton" type="Button" parent="TabContainer/GameMain" unique_id=483311097]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 240.0
+offset_right = 320.0
+offset_bottom = 293.0
+rotation = -1.5707964
+theme_override_colors/font_color = Color(0.8745098, 0.80205667, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Gacha"
+
+[node name="GachaScreen" type="Control" parent="TabContainer" unique_id=1848159862]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Background" type="TextureRect" parent="TabContainer/GachaScreen" unique_id=1791915575]
+custom_minimum_size = Vector2(30, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7w6t2")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/GachaScreen" unique_id=458279522]
+layout_mode = 0
+offset_left = 56.000023
+offset_top = 520.0
+offset_right = 312.00003
+offset_bottom = 712.0
+rotation = -1.5707964
+texture = ExtResource("3_qq5fw")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="RichTextLabel" parent="TabContainer/GachaScreen" unique_id=1886395177]
+layout_mode = 0
+offset_left = -15.999977
+offset_top = 544.0
+offset_right = 240.23154
+offset_bottom = 640.0
+rotation = -1.5707964
+theme_override_colors/default_color = Color(1, 0, 0.39988708, 1)
+theme_override_colors/font_outline_color = Color(9.080031, 9.080031, 9.080031, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "
+[center][wave]Mermaid Connect[/wave][center]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="RichTextLabel" parent="TabContainer/GachaScreen" unique_id=944478083]
+layout_mode = 0
+offset_left = 24.000008
+offset_top = 248.0
+offset_right = 232.2315
+offset_bottom = 344.0
+rotation = -1.5707964
+theme_override_colors/font_outline_color = Color(0.41562498, 0.2495646, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[color=yellow]Premium Gacha[/color]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DrawOne" type="Button" parent="TabContainer/GachaScreen" unique_id=1834127107]
+layout_mode = 0
+offset_left = 176.00002
+offset_top = 248.0
+offset_right = 272.0
+offset_bottom = 295.0
+rotation = -1.5707964
+theme_override_colors/font_outline_color = Color(0, 0, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 22
+text = "Draw 1
+($2,99)"
+
+[node name="DrawTen" type="Button" parent="TabContainer/GachaScreen" unique_id=942456815]
+layout_mode = 0
+offset_left = 176.00002
+offset_top = 135.99998
+offset_right = 272.0
+offset_bottom = 187.99998
+rotation = -1.5707964
+theme_override_colors/font_outline_color = Color(0, 0, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 22
+text = "Draw 10
+($29,9)"
+
+[connection signal="pressed" from="TabContainer/MainMenu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="TabContainer/GameMain/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="TabContainer/GameMain/GachaButton" to="." method="_on_gacha_button_pressed"]
+[connection signal="pressed" from="TabContainer/GachaScreen/DrawOne" to="." method="_on_draw_one_pressed"]
+[connection signal="pressed" from="TabContainer/GachaScreen/DrawTen" to="." method="_on_draw_ten_pressed"]

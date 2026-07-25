@@ -1,6 +1,9 @@
 extends Control
 class_name PhoneUI
 
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var mermaid_connect_ui: PhoneAppUI = $PhonePortrait/MermaidConnectUI
+
 func _ready() -> void:
 	GameManager.phone_ui = self
 
@@ -19,3 +22,11 @@ func close_phone():
 
 func _on_close_button_pressed() -> void:
 	close_phone()
+
+
+func _on_phone_app_app_opened(app_name: String) -> void:
+	anim_player.play("rotate_phone")
+	await anim_player.animation_finished
+	match (app_name):
+		"Mermaid Connect":
+			mermaid_connect_ui.open_app_ui()

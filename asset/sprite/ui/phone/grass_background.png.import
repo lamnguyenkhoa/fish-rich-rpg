@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csns6getpnnwr"
-path="res://.godot/imported/mermaid_connect.png-de4a7a5ab9999f469ab5832cca2e587f.ctex"
+uid="uid://dl0nquvkmyikg"
+path="res://.godot/imported/grass_background.png-21b30a28822e9304b16d6e2c22a58b1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/sprite/ui/mermaid_connect.png"
-dest_files=["res://.godot/imported/mermaid_connect.png-de4a7a5ab9999f469ab5832cca2e587f.ctex"]
+source_file="res://asset/sprite/ui/phone/grass_background.png"
+dest_files=["res://.godot/imported/grass_background.png-21b30a28822e9304b16d6e2c22a58b1b.ctex"]
 
 [params]
 
