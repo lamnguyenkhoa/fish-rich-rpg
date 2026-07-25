@@ -7,18 +7,12 @@
 [ext_resource type="Shader" uid="uid://d4l6043knsi2q" path="res://shader/2d_wind.gdshader" id="5_3kgtk"]
 [ext_resource type="PackedScene" uid="uid://075cq1jo2r0u" path="res://ui/GameUI.tscn" id="5_prwo3"]
 [ext_resource type="Texture2D" uid="uid://bncvi8074qve1" path="res://asset/sprite/building/seaweed_tiled_hotizontal.png" id="6_d6et2"]
-[ext_resource type="PackedScene" uid="uid://dq1lf15wa51dl" path="res://ui/company/SharkSolutionWork.tscn" id="6_wpelm"]
-[ext_resource type="PackedScene" uid="uid://dwus0dorc3abk" path="res://ui/company/OctopusRestaurantVisit.tscn" id="7_3kgtk"]
 [ext_resource type="Texture2D" uid="uid://b0ofcfywvrxa4" path="res://asset/sprite/building/seaweed_tiled_vertical.png" id="7_d6et2"]
 [ext_resource type="PackedScene" uid="uid://dtxmmajk5ntsw" path="res://entity/player/PlayerEviota.tscn" id="7_hg2kh"]
 [ext_resource type="PackedScene" uid="uid://cuo5yqknjvw01" path="res://entity/building/YourApartment.tscn" id="8_0yw4d"]
-[ext_resource type="PackedScene" uid="uid://bob03cyiaxrcu" path="res://ui/company/PrisonUI.tscn" id="8_d6et2"]
 [ext_resource type="Shader" uid="uid://b015rtpnnsq6f" path="res://shader/windwalker_water.gdshader" id="8_q5g7b"]
-[ext_resource type="PackedScene" uid="uid://r1ah7gujb1lr" path="res://ui/company/YourApartmentVisit.tscn" id="9_q5g7b"]
-[ext_resource type="PackedScene" uid="uid://bvjvtbcoje0qb" path="res://ui/company/UniversityUI.tscn" id="10_qh2f3"]
-[ext_resource type="PackedScene" uid="uid://cjyppyoi6jmhg" path="res://ui/company/GymUI.tscn" id="11_ufqq4"]
-[ext_resource type="PackedScene" uid="uid://bdb5te3l6q8ky" path="res://ui/company/HospitalUI.tscn" id="12_0yw4d"]
-[ext_resource type="PackedScene" uid="uid://bkamhjgp5m08g" path="res://ui/company/ChurchUI.tscn" id="13_y4yca"]
+[ext_resource type="PackedScene" uid="uid://b4pa1fvvkcpu3" path="res://entity/building/Casino.tscn" id="9_y4yca"]
+[ext_resource type="PackedScene" uid="uid://bp15f55hjcc0f" path="res://ui/interior/CasinoInterior.tscn" id="14_wpelm"]
 [ext_resource type="PackedScene" uid="uid://bogjm4kvh8nx5" path="res://ui/interior/ApartmentInterior.tscn" id="21_0yw4d"]
 [ext_resource type="Script" uid="uid://b5lrxhsf7hpvl" path="res://scene/camera_follow.gd" id="27_081fe"]
 
@@ -141,6 +135,11 @@ position = Vector2(272, 664)
 position = Vector2(-16, 600)
 open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/ApartmentInterior")
 
+[node name="Casino" parent="YSortGroup" unique_id=271249110 node_paths=PackedStringArray("open_interior_ui") instance=ExtResource("9_y4yca")]
+position = Vector2(608, -152)
+interact_text = "Go gamble"
+open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/CasinoInterior")
+
 [node name="WorldBorderBotAndSide" type="StaticBody2D" parent="." unique_id=493320393]
 collision_mask = 7
 
@@ -208,46 +207,8 @@ mouse_filter = 2
 visible = false
 layout_mode = 1
 
+[node name="CasinoInterior" parent="CanvasLayer/InteriorUI" unique_id=755305693 instance=ExtResource("14_wpelm")]
+visible = false
+layout_mode = 1
+
 [node name="GameUI" parent="CanvasLayer" unique_id=1699789953 instance=ExtResource("5_prwo3")]
-
-[node name="WorkUI" type="Control" parent="CanvasLayer" unique_id=1768518460]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="SharkSolutionUI" parent="CanvasLayer/WorkUI" unique_id=594249489 instance=ExtResource("6_wpelm")]
-visible = false
-layout_mode = 1
-
-[node name="OctopusRestaurantUI" parent="CanvasLayer/WorkUI" unique_id=1411942938 instance=ExtResource("7_3kgtk")]
-visible = false
-layout_mode = 1
-
-[node name="PrisonUI" parent="CanvasLayer/WorkUI" unique_id=211168221 instance=ExtResource("8_d6et2")]
-visible = false
-layout_mode = 1
-
-[node name="YourApartmentUI" parent="CanvasLayer/WorkUI" unique_id=2127617395 instance=ExtResource("9_q5g7b")]
-visible = false
-layout_mode = 1
-
-[node name="UniversityUI" parent="CanvasLayer/WorkUI" unique_id=1482480539 instance=ExtResource("10_qh2f3")]
-visible = false
-layout_mode = 1
-
-[node name="GymUI" parent="CanvasLayer/WorkUI" unique_id=871572492 instance=ExtResource("11_ufqq4")]
-visible = false
-layout_mode = 1
-
-[node name="HospitalUI" parent="CanvasLayer/WorkUI" unique_id=1879102471 instance=ExtResource("12_0yw4d")]
-visible = false
-layout_mode = 1
-
-[node name="ChurchUI" parent="CanvasLayer/WorkUI" unique_id=1650645085 instance=ExtResource("13_y4yca")]
-visible = false
-layout_mode = 1
