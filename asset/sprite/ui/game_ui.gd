@@ -30,8 +30,8 @@ func update_time_passing_label():
 func update_money_text(amount: int):
 	money_label.text = "Money: {0}$".format([amount])
 
-# func play_day_transition():
-# 	anim_player.play("day_transition")
+func play_time_passed_transition():
+	anim_player.play("time_passed_transition")
 
 func _on_close_tutorial_button_pressed() -> void:
 	tutorial_ui.visible = false

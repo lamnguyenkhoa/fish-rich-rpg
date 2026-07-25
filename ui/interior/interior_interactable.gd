@@ -4,7 +4,7 @@ class_name InteriorInteractable
 
 @export var image: CompressedTexture2D
 @export var time_usage: float = 0
-
+@export var play_time_pass_transition: bool = false
 @export var popup_panel_prefab: PackedScene
 @export var pop_up_content: String
 
@@ -17,6 +17,8 @@ var _base_scale: Vector2
 var _hover_tween: Tween
 
 var popup_inst: Control
+
+signal activate_interior_effect
 
 func _ready() -> void:
 	if image != null:
@@ -31,6 +33,13 @@ func _process(_delta: float) -> void:
 
 
 func _on_pressed() -> void:
+	if GameManager.time_left < time_usage:
+		return
+
+	GameManager.time_left -= time_usage
+	if play_time_pass_transition:
+		GameManager.game_ui.play_time_passed_transition()
+	activate_interior_effect.emit()
 	SoundManager.play_button_click_sfx()
 	_squeeze()
 

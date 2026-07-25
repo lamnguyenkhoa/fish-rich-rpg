@@ -195,6 +195,19 @@ follow_target = NodePath("../YSortGroup/PlayerEviota")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1854163621]
 
+[node name="InteriorUI" type="Control" parent="CanvasLayer" unique_id=1211552750]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ApartmentInterior" parent="CanvasLayer/InteriorUI" unique_id=1141240488 instance=ExtResource("21_0yw4d")]
+visible = false
+layout_mode = 1
+
 [node name="GameUI" parent="CanvasLayer" unique_id=1699789953 instance=ExtResource("5_prwo3")]
 
 [node name="WorkUI" type="Control" parent="CanvasLayer" unique_id=1768518460]
@@ -236,18 +249,5 @@ visible = false
 layout_mode = 1
 
 [node name="ChurchUI" parent="CanvasLayer/WorkUI" unique_id=1650645085 instance=ExtResource("13_y4yca")]
-visible = false
-layout_mode = 1
-
-[node name="InteriorUI" type="Control" parent="CanvasLayer" unique_id=1211552750]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="ApartmentInterior" parent="CanvasLayer/InteriorUI" unique_id=1141240488 instance=ExtResource("21_0yw4d")]
 visible = false
 layout_mode = 1
