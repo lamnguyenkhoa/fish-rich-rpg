@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dl0nquvkmyikg" path="res://asset/sprite/ui/phone/grass_background.png" id="3_sok8a"]
 [ext_resource type="PackedScene" uid="uid://7yute4fcss26" path="res://ui/phone_app/MermaidGachaResultPoster.tscn" id="6_sok8a"]
 
-[node name="MermaidConnectUI" type="Control" unique_id=832048966 node_paths=PackedStringArray("draw_one_button", "draw_ten_button", "gacha_result_container")]
+[node name="MermaidConnectUI" type="Control" unique_id=832048966 node_paths=PackedStringArray("draw_one_button", "draw_ten_button", "gacha_result_container", "collection_info_label")]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 3
 anchors_preset = 8
@@ -27,6 +27,7 @@ draw_one_button = NodePath("TabContainer/GachaScreen/DrawOne")
 draw_ten_button = NodePath("TabContainer/GachaScreen/DrawTen")
 gacha_result_container = NodePath("TabContainer/GachaResult/GridContainer")
 gacha_result_prefab = ExtResource("6_sok8a")
+collection_info_label = NodePath("TabContainer/GameMain/CollectionPanel/CollectionInfo")
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=45745263]
 self_modulate = Color(1, 1, 1, 0)
@@ -36,10 +37,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 2
 tabs_visible = false
 
 [node name="MainMenu" type="Control" parent="TabContainer" unique_id=478631646]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -157,18 +159,13 @@ offset_top = 448.0
 offset_right = 552.0
 offset_bottom = 501.0
 rotation = -1.5707964
+alignment = 1
 
 [node name="PlayButton" type="Button" parent="TabContainer/GameMain/HBoxContainer" unique_id=2099953360]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Play"
-
-[node name="CollectionButotn" type="Button" parent="TabContainer/GameMain/HBoxContainer" unique_id=78981450]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Collection"
 
 [node name="GachaButton" type="Button" parent="TabContainer/GameMain/HBoxContainer" unique_id=483311097]
 custom_minimum_size = Vector2(120, 0)
@@ -177,8 +174,35 @@ theme_override_colors/font_color = Color(0.8745098, 0.80205667, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Gacha"
 
+[node name="CollectionPanel" type="Panel" parent="TabContainer/GameMain" unique_id=1421480861]
+layout_mode = 0
+offset_left = 88.000015
+offset_top = 376.0
+offset_right = 304.0
+offset_bottom = 448.0
+rotation = -1.5707964
+
+[node name="CollectionInfo" type="RichTextLabel" parent="TabContainer/GameMain/CollectionPanel" unique_id=1315794294]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -7.9999847
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[color=silver]1 star:[/color] 0
+[color=gold]2 stars:[/color] 0
+[rainbow]3 stars:[/rainbow] 0"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="GachaScreen" type="Control" parent="TabContainer" unique_id=1848159862]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -234,6 +258,23 @@ theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[color=yellow]Premium Gacha[/color]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="RichTextLabel" parent="TabContainer/GachaScreen" unique_id=446767484]
+layout_mode = 0
+offset_left = 96.00001
+offset_top = 248.0
+offset_right = 304.2315
+offset_bottom = 312.0
+rotation = -1.5707964
+theme_override_colors/font_outline_color = Color(0.41562498, 0.2495646, 0, 1)
+theme_override_constants/outline_size = 6
+bbcode_enabled = true
+text = "1 star: 79.5%
+2 stars: 18%
+3 stars: 2.5%"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -7,8 +7,11 @@ class_name PhoneAppUI
 @export var draw_ten_button: Button
 @export var gacha_result_container: Container
 @export var gacha_result_prefab: PackedScene
+@export var collection_info_label: RichTextLabel
 
 @onready var tab_container: TabContainer = $TabContainer
+
+var unit_pulled_count = [0, 0, 0, 0, 0]
 
 signal app_closed
 
@@ -23,6 +26,10 @@ func open_app_ui():
 func close_app_ui():
 	visible = false
 	app_closed.emit()
+
+func update_collection_label():
+	collection_info_label.text = ("[color=silver]1 star:[/color] {0}\n[color=gold]2 stars:[/color] {1}" + \
+		"\n[rainbow]3 stars:[/rainbow] {2}").format([unit_pulled_count[0], unit_pulled_count[1], unit_pulled_count[2]])
 
 func _on_start_button_pressed() -> void:
 	SoundManager.play_button_click_sfx()
@@ -45,10 +52,8 @@ func _on_draw_one_pressed() -> void:
 	GameManager.player.money -= draw_one_cost
 	clear_all_gacha_result()
 	tab_container.current_tab = 3
-	SoundManager.play_button_hover_sfx()
-	var inst = gacha_result_prefab.instantiate()
-	gacha_result_container.add_child(inst)
-
+	pull_gacha()
+	update_collection_label()
 
 func _on_draw_ten_pressed() -> void:
 	if GameManager.player.money < draw_ten_cost:
@@ -58,11 +63,16 @@ func _on_draw_ten_pressed() -> void:
 	clear_all_gacha_result()
 	tab_container.current_tab = 3
 	for i in range(10):
-		SoundManager.play_button_hover_sfx()
+		pull_gacha()
 		await get_tree().create_timer(0.03).timeout
-		var inst = gacha_result_prefab.instantiate()
-		gacha_result_container.add_child(inst)
+	update_collection_label()
 
+
+func pull_gacha():
+	SoundManager.play_button_hover_sfx()
+	var inst = gacha_result_prefab.instantiate()
+	gacha_result_container.add_child(inst)
+	unit_pulled_count[inst.rarity_index] += 1
 
 func clear_all_gacha_result():
 	for child in gacha_result_container.get_children():
