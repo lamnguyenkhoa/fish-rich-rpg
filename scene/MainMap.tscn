@@ -36,7 +36,6 @@
 [ext_resource type="PackedScene" uid="uid://bdb5te3l6q8ky" path="res://ui/company/HospitalUI.tscn" id="22_lt8vf"]
 [ext_resource type="PackedScene" uid="uid://bob03cyiaxrcu" path="res://ui/company/PrisonUI.tscn" id="23_n0m50"]
 [ext_resource type="PackedScene" uid="uid://y0c66svnd50g" path="res://ui/EndgameUI.tscn" id="24_g7740"]
-[ext_resource type="AudioStream" uid="uid://bu831bljee4u8" path="res://asset/bgm/OMORI OST - 102 Room for 4.ogg" id="27_k807w"]
 [ext_resource type="PackedScene" uid="uid://bkamhjgp5m08g" path="res://ui/company/ChurchUI.tscn" id="31_w05yh"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4qfei"]
@@ -155,40 +154,32 @@ y_sort_enabled = true
 [node name="PlayerEviota" parent="YSortGroup" unique_id=392357835 instance=ExtResource("2_0uhqw")]
 position = Vector2(272, 664)
 
-[node name="SharkSolutionBuilding" parent="YSortGroup" unique_id=1824538538 node_paths=PackedStringArray("open_company_ui") instance=ExtResource("3_i16ob")]
+[node name="SharkSolutionBuilding" parent="YSortGroup" unique_id=1824538538 instance=ExtResource("3_i16ob")]
 position = Vector2(1304, 64)
 interact_text = "Work at Shark Solution Corp"
-open_company_ui = NodePath("../../CanvasLayer/WorkUI/SharkSolutionUI")
 
-[node name="OctopusRestaurantBuilding" parent="YSortGroup" unique_id=600098534 node_paths=PackedStringArray("open_company_ui") instance=ExtResource("6_wluxn")]
+[node name="OctopusRestaurantBuilding" parent="YSortGroup" unique_id=600098534 instance=ExtResource("6_wluxn")]
 position = Vector2(496, 416)
-open_company_ui = NodePath("../../CanvasLayer/WorkUI/OctopusRestaurantUI")
 
-[node name="YourApartment" parent="YSortGroup" unique_id=1627524300 node_paths=PackedStringArray("open_company_ui") instance=ExtResource("7_t4meo")]
+[node name="YourApartment" parent="YSortGroup" unique_id=1627524300 instance=ExtResource("7_t4meo")]
 position = Vector2(-16, 600)
-open_company_ui = NodePath("../../CanvasLayer/WorkUI/YourApartmentUI")
 
-[node name="University" parent="YSortGroup" unique_id=1334232825 node_paths=PackedStringArray("open_company_ui") instance=ExtResource("8_w4ucs")]
+[node name="University" parent="YSortGroup" unique_id=1334232825 instance=ExtResource("8_w4ucs")]
 position = Vector2(304, -200)
 interact_text = "Go to universeaty"
-open_company_ui = NodePath("../../CanvasLayer/WorkUI/UniversityUI")
 
-[node name="Gym" parent="YSortGroup" unique_id=32858064 node_paths=PackedStringArray("open_company_ui") instance=ExtResource("9_04awf")]
+[node name="Gym" parent="YSortGroup" unique_id=32858064 instance=ExtResource("9_04awf")]
 position = Vector2(1168, 416)
 interact_text = "Go to gym"
-open_company_ui = NodePath("../../CanvasLayer/WorkUI/GymUI")
 
-[node name="Prison" parent="YSortGroup" unique_id=2012810417 node_paths=PackedStringArray("open_company_ui") instance=ExtResource("13_i5esd")]
+[node name="Prison" parent="YSortGroup" unique_id=2012810417 instance=ExtResource("13_i5esd")]
 position = Vector2(-640, -440)
-open_company_ui = NodePath("../../CanvasLayer/WorkUI/PrisonUI")
 
-[node name="Hospital" parent="YSortGroup" unique_id=795778934 node_paths=PackedStringArray("open_company_ui") instance=ExtResource("10_v3uhw")]
+[node name="Hospital" parent="YSortGroup" unique_id=795778934 instance=ExtResource("10_v3uhw")]
 position = Vector2(856, -376)
-open_company_ui = NodePath("../../CanvasLayer/WorkUI/HospitalUI")
 
-[node name="Church" parent="YSortGroup" unique_id=959247649 node_paths=PackedStringArray("open_company_ui") instance=ExtResource("15_eyqfy")]
+[node name="Church" parent="YSortGroup" unique_id=959247649 instance=ExtResource("15_eyqfy")]
 position = Vector2(1824, -352)
-open_company_ui = NodePath("../../CanvasLayer/WorkUI/ChurchUI")
 
 [node name="ThugBarracuda" parent="YSortGroup" unique_id=99503499 instance=ExtResource("10_yas0d")]
 position = Vector2(-816, 40)
@@ -339,6 +330,5 @@ layout_mode = 1
 [node name="EndgameUI" parent="CanvasLayer" unique_id=1367672118 instance=ExtResource("24_g7740")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=199796989]
-stream = ExtResource("27_k807w")
 autoplay = true
 bus = &"BGM"

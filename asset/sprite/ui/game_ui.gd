@@ -23,7 +23,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(_delta: float) -> void:
-	if GameManager.time_left <= 10.0:
+	if GameManager.time_left <= 100.0:
 		time_left_label.text = "%.2f" % GameManager.time_left
 	else:
 		time_left_label.text = "%d" % GameManager.time_left

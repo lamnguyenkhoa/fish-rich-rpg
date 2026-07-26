@@ -30,6 +30,8 @@
 [ext_resource type="PackedScene" uid="uid://c64wsftmcgtmj" path="res://ui/interior/LuxuryRestaurantInterior.tscn" id="25_lt5u8"]
 [ext_resource type="PackedScene" uid="uid://y0c66svnd50g" path="res://ui/EndgameUI.tscn" id="26_e2y2v"]
 [ext_resource type="Script" uid="uid://b5lrxhsf7hpvl" path="res://scene/camera_follow.gd" id="27_081fe"]
+[ext_resource type="AudioStream" uid="uid://cvpg3737m4idd" path="res://asset/bgm/Nintendo 3DS Internet Settings Theme (High Quality, 2022 Remastered).mp3" id="31_lt5u8"]
+[ext_resource type="AudioStream" uid="uid://bu831bljee4u8" path="res://asset/bgm/OMORI OST - 102 Room for 4.ogg" id="32_jm17w"]
 
 [sub_resource type="TileSet" id="TileSet_ys074"]
 
@@ -109,6 +111,11 @@ shader_parameter/FOAM_COL = Color(0.505882, 0.572549, 0.576471, 1)
 shader_parameter/distortion_speed = 1.0
 shader_parameter/tile = Vector2(1, 1)
 shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jm17w"]
+streams_count = 2
+stream_0/stream = ExtResource("31_lt5u8")
+stream_1/stream = ExtResource("32_jm17w")
 
 [node name="NeoFishCity" type="Node2D" unique_id=1780707661 node_paths=PackedStringArray("player_apartment", "interior_ui", "endgame_ui")]
 script = ExtResource("1_l64ku")
@@ -277,6 +284,7 @@ visible = false
 layout_mode = 1
 
 [node name="LuxuryRestaurantInterior" parent="CanvasLayer/InteriorUI" unique_id=1287942976 instance=ExtResource("25_lt5u8")]
+visible = false
 layout_mode = 1
 
 [node name="CarShowroomInterior" parent="CanvasLayer/InteriorUI" unique_id=1771169365 instance=ExtResource("20_0yw4d")]
@@ -295,3 +303,8 @@ layout_mode = 1
 
 [node name="EndgameUI" parent="CanvasLayer" unique_id=1152065061 instance=ExtResource("26_e2y2v")]
 visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1515139295]
+stream = SubResource("AudioStreamRandomizer_jm17w")
+autoplay = true
+bus = &"BGM"

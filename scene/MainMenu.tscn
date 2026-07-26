@@ -14,9 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://dlwxu05kcs6bm" path="res://asset/sprite/ui/point_up.png" id="10_ca4gs"]
 [ext_resource type="Texture2D" uid="uid://ccop8rmpg7fsa" path="res://asset/sprite/ui/film-border.png" id="12_ca4gs"]
 [ext_resource type="Texture2D" uid="uid://yqp80ogpgbr8" path="res://asset/sprite/ui/point-diagonal.png" id="12_qh5yu"]
-[ext_resource type="AudioStream" uid="uid://bt5rp6gmikkep" path="res://asset/bgm/OMORI OST - 107 Underwater Highway.ogg" id="12_qp0bc"]
 [ext_resource type="Shader" uid="uid://dvlt205uqaou4" path="res://shader/texture_scrolling.gdshader" id="13_avmkl"]
 [ext_resource type="Texture2D" uid="uid://dfgijvecgklle" path="res://asset/sprite/ui/eviota_avatar.png" id="13_r2dmy"]
+[ext_resource type="AudioStream" uid="uid://dc16qyo15txlq" path="res://asset/bgm/Life Could Be A Dream.mp3" id="17_r2dmy"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_g4jp6"]
 
@@ -552,7 +552,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=238733114]
-stream = ExtResource("12_qp0bc")
+stream = ExtResource("17_r2dmy")
 autoplay = true
 bus = &"BGM"
 
