@@ -81,6 +81,7 @@ func _on_pressed() -> void:
 	if limited_stock:
 		current_service_stock -= 1
 	update_interactable_button()
+	update_popup_text()
 
 
 func update_interactable_button():
@@ -125,18 +126,23 @@ func _on_mouse_entered() -> void:
 	if popup_inst == null:
 		popup_inst = popup_panel_prefab.instantiate()
 		get_parent().add_child(popup_inst)
-		var cost_text = ""
-		var current_cost = get_current_cost()
-		if time_usage > 0:
-			cost_text += "[color=red]Time: %.2fs[/color] | " % time_usage
-		if current_cost > 0:
-			cost_text += "Money: %.2f$ | " % current_cost
-		if current_cost < 0:
-			cost_text += "[color=green]Money gain: $%.2f[/color] | " % abs(current_cost)
-		if limited_stock:
-			cost_text += "(%s left)" % current_service_stock
-		popup_inst.get_node("RichTextLabel").text = cost_text + "\n" + pop_up_content
+		update_popup_text()
 
+
+func update_popup_text():
+	if popup_inst == null:
+		return
+	var cost_text = ""
+	var current_cost = get_current_cost()
+	if time_usage > 0:
+		cost_text += "[color=red]Time: %.2fs[/color] | " % time_usage
+	if current_cost > 0:
+		cost_text += "Money: %.2f$ | " % current_cost
+	if current_cost < 0:
+		cost_text += "[color=green]Money gain: $%.2f[/color] | " % abs(current_cost)
+	if limited_stock:
+		cost_text += "(%s left)" % current_service_stock
+	popup_inst.get_node("RichTextLabel").text = cost_text + "\n" + pop_up_content
 
 func _animate_scale(target_scale: Vector2) -> void:
 	if disabled:

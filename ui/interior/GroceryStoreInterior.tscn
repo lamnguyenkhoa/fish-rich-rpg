@@ -73,8 +73,9 @@ offset_bottom = 631.0
 pivot_offset = Vector2(161.5, 58.5)
 icon = ExtResource("5_vcqjc")
 image = ExtResource("5_vcqjc")
-money_cost = 3.7
+money_cost = 1.0
 pop_up_content = "Buy a kilo of carrot"
+give_item_id = 1005
 
 [node name="Cauliflower" parent="." unique_id=185502693 instance=ExtResource("4_72vtv")]
 layout_mode = 0
@@ -87,6 +88,7 @@ icon = ExtResource("6_72vtv")
 image = ExtResource("6_72vtv")
 money_cost = 4.2
 pop_up_content = "Buy a kilo of cauliflower"
+give_item_id = 1003
 
 [node name="ChiliPepper" parent="." unique_id=1209162402 instance=ExtResource("4_72vtv")]
 layout_mode = 0
@@ -97,8 +99,9 @@ offset_bottom = 491.0
 pivot_offset = Vector2(117, 46)
 icon = ExtResource("7_7kk27")
 image = ExtResource("7_7kk27")
-money_cost = 4.4
+money_cost = 4.5
 pop_up_content = "Buy a box of chili pepper"
+give_item_id = 1004
 
 [node name="Garlic" parent="." unique_id=1744803590 instance=ExtResource("4_72vtv")]
 layout_mode = 0
@@ -111,6 +114,7 @@ icon = ExtResource("8_p7evw")
 image = ExtResource("8_p7evw")
 money_cost = 3.1
 pop_up_content = "Buy a box of garlic"
+give_item_id = 1006
 
 [node name="Character" type="TextureRect" parent="." unique_id=1289883409]
 layout_mode = 1

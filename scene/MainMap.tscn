@@ -203,7 +203,7 @@ flip_sprite = true
 position = Vector2(-664, 840)
 
 [node name="Shark" parent="YSortGroup" unique_id=1717676907 instance=ExtResource("19_f0oh7")]
-position = Vector2(1496, 168)
+position = Vector2(1864, 400)
 
 [node name="BossBarracuda" parent="YSortGroup" unique_id=30630380 instance=ExtResource("15_qjv23")]
 position = Vector2(-840, 360)
@@ -328,6 +328,7 @@ visible = false
 layout_mode = 1
 
 [node name="EndgameUI" parent="CanvasLayer" unique_id=1367672118 instance=ExtResource("24_g7740")]
+visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=199796989]
 autoplay = true
