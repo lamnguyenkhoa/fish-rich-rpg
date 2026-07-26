@@ -16,12 +16,14 @@
 [ext_resource type="PackedScene" uid="uid://biqxju6alq3qq" path="res://entity/building/HospitalBuilding.tscn" id="11_q5g7b"]
 [ext_resource type="PackedScene" uid="uid://06r7w5hu3nnt" path="res://entity/building/CarShowroom.tscn" id="12_is0m5"]
 [ext_resource type="PackedScene" uid="uid://d2h4xf4hosb65" path="res://entity/building/PremiumCarShowroom.tscn" id="13_y4yca"]
+[ext_resource type="PackedScene" uid="uid://diu4mttqq2xvb" path="res://entity/building/OldManMansion.tscn" id="14_se6rf"]
 [ext_resource type="PackedScene" uid="uid://bp15f55hjcc0f" path="res://ui/interior/CasinoInterior.tscn" id="14_wpelm"]
 [ext_resource type="PackedScene" uid="uid://d3nnr4ap3ib24" path="res://ui/interior/GroceryStoreInterior.tscn" id="16_d6et2"]
 [ext_resource type="PackedScene" uid="uid://dtjs4ahqerl1i" path="res://ui/interior/HospitalInterior.tscn" id="18_qh2f3"]
 [ext_resource type="PackedScene" uid="uid://cqfmtivabqwjy" path="res://ui/interior/CarShowroomInterior.tscn" id="20_0yw4d"]
 [ext_resource type="PackedScene" uid="uid://bogjm4kvh8nx5" path="res://ui/interior/ApartmentInterior.tscn" id="21_0yw4d"]
 [ext_resource type="PackedScene" uid="uid://dvaeh2m7hhcuh" path="res://ui/interior/PremiumCarShowroomInterior.tscn" id="22_dly5b"]
+[ext_resource type="PackedScene" uid="uid://bnx4cr04wjlcw" path="res://ui/interior/OldManMansionInterior.tscn" id="24_e2y2v"]
 [ext_resource type="Script" uid="uid://b5lrxhsf7hpvl" path="res://scene/camera_follow.gd" id="27_081fe"]
 
 [sub_resource type="TileSet" id="TileSet_ys074"]
@@ -170,6 +172,10 @@ open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/CarShowroomInterior")
 position = Vector2(2456, 800)
 open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/PremiumCarShowroomInterior")
 
+[node name="OldManMansion" parent="YSortGroup" unique_id=1279427708 node_paths=PackedStringArray("open_interior_ui") instance=ExtResource("14_se6rf")]
+position = Vector2(2624, -280)
+open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/OldManMansionInterior")
+
 [node name="WorldBorderBotAndSide" type="StaticBody2D" parent="." unique_id=493320393]
 collision_mask = 7
 
@@ -212,8 +218,8 @@ region_rect = Rect2(0, 0, 245, 3500)
 [node name="WaterTop" type="Sprite2D" parent="." unique_id=322842692]
 self_modulate = Color(1, 1, 1, 0.243137)
 material = SubResource("ShaderMaterial_ufqq4")
-position = Vector2(464, 296)
-scale = Vector2(74.25, 36.25)
+position = Vector2(1032.0001, 296)
+scale = Vector2(92.00001, 36.25)
 texture = ExtResource("4_uvjsd")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1781293882 node_paths=PackedStringArray("follow_target")]
@@ -254,6 +260,10 @@ visible = false
 layout_mode = 1
 
 [node name="PremiumCarShowroomInterior" parent="CanvasLayer/InteriorUI" unique_id=1746951372 instance=ExtResource("22_dly5b")]
+visible = false
+layout_mode = 1
+
+[node name="OldManMansionInterior" parent="CanvasLayer/InteriorUI" unique_id=1817109804 instance=ExtResource("24_e2y2v")]
 visible = false
 layout_mode = 1
 

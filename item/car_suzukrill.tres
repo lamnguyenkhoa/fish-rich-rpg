@@ -6,6 +6,6 @@
 script = ExtResource("1_8hf8g")
 item_id = 10000
 name = "Suzukrill Belano"
-description = "A red Suzukrill car."
+description = "A Suzukrill car."
 type = 2
 not_consumable = true

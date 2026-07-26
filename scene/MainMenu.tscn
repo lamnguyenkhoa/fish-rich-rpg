@@ -10,12 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://b82dkci5vbaob" path="res://asset/sprite/item/tophat.png" id="8_ee4am"]
 [ext_resource type="Texture2D" uid="uid://bo7il2j3ld2vg" path="res://asset/sprite/item/moneybag.png" id="8_qh5yu"]
 [ext_resource type="Texture2D" uid="uid://s1mu3i6uehp7" path="res://asset/sprite/ui/eviota_face_front.png" id="9_f2och"]
+[ext_resource type="Texture2D" uid="uid://ur6c6neynl5g" path="res://asset/sprite/fish/sign_eviota.png" id="9_r2dmy"]
 [ext_resource type="Texture2D" uid="uid://dlwxu05kcs6bm" path="res://asset/sprite/ui/point_up.png" id="10_ca4gs"]
-[ext_resource type="Texture2D" uid="uid://dwi4nv5kbn55b" path="res://asset/sprite/ui/eviota_sideway.png" id="11_1pt2h"]
 [ext_resource type="Texture2D" uid="uid://ccop8rmpg7fsa" path="res://asset/sprite/ui/film-border.png" id="12_ca4gs"]
 [ext_resource type="Texture2D" uid="uid://yqp80ogpgbr8" path="res://asset/sprite/ui/point-diagonal.png" id="12_qh5yu"]
 [ext_resource type="AudioStream" uid="uid://bt5rp6gmikkep" path="res://asset/bgm/OMORI OST - 107 Underwater Highway.ogg" id="12_qp0bc"]
 [ext_resource type="Shader" uid="uid://dvlt205uqaou4" path="res://shader/texture_scrolling.gdshader" id="13_avmkl"]
+[ext_resource type="Texture2D" uid="uid://dfgijvecgklle" path="res://asset/sprite/ui/eviota_avatar.png" id="13_r2dmy"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_g4jp6"]
 
@@ -252,8 +253,9 @@ offset_right = -331.0
 offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_581fk")
+texture = ExtResource("9_r2dmy")
 expand_mode = 1
+flip_h = true
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/IntroCutscene/Inheritance" unique_id=405712960]
 layout_mode = 1
@@ -450,7 +452,7 @@ offset_right = 397.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("11_1pt2h")
+texture = ExtResource("13_r2dmy")
 expand_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="CanvasLayer/IntroCutscene/Inheritance3" unique_id=401551759]
@@ -489,7 +491,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/line_separation = 4
 theme_override_font_sizes/normal_font_size = 28
-text = "old fish billionaire clears throat
+text = "Old fish billionaire clears throat
 
 \"You must spend $1,000,000 within 5 minutes.\"
 \"You cannot give it away.\"

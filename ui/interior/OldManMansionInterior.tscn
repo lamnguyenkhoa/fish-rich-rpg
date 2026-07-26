@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://bnx4cr04wjlcw"]
+
+[ext_resource type="Script" uid="uid://ctlbquygas2fk" path="res://ui/interior/building_interior.gd" id="1_1qq8q"]
+[ext_resource type="Texture2D" uid="uid://dinv5xrlxwg7o" path="res://asset/sprite/interior/mansion_interior.png" id="2_1qq8q"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="3_r5u1e"]
+[ext_resource type="PackedScene" uid="uid://slk6ug7rqxnh" path="res://ui/interior/InteriorInteractable.tscn" id="4_r5u1e"]
+[ext_resource type="Texture2D" uid="uid://ur6c6neynl5g" path="res://asset/sprite/fish/sign_eviota.png" id="5_ncyqs"]
+[ext_resource type="Texture2D" uid="uid://b82dkci5vbaob" path="res://asset/sprite/item/tophat.png" id="6_ncyqs"]
+
+[node name="OldManMansionInterior" type="Control" unique_id=1817109804]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_1qq8q")
+
+[node name="Background" type="ColorRect" parent="." unique_id=336755729]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_right = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.41015625, 0.2455818, 0.048391435, 1)
+
+[node name="InteriorArt" type="TextureRect" parent="." unique_id=2093613006]
+self_modulate = Color(0.40234375, 0.40234375, 0.40234375, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 256.0
+offset_top = -272.0
+offset_right = 1107.5842
+offset_bottom = 296.0
+grow_vertical = 2
+texture = ExtResource("2_1qq8q")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="WorkLabel" type="RichTextLabel" parent="." unique_id=1744466361]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1134.0
+offset_top = 80.0
+offset_right = -222.0
+offset_bottom = 232.0
+grow_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("3_r5u1e")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Meeting [color=gold][wave]the rich old man[/wave][/color] ...[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="OldMan" parent="." unique_id=1734670431 instance=ExtResource("4_r5u1e")]
+layout_mode = 0
+offset_left = 680.0
+offset_top = 312.0
+offset_right = 973.0
+offset_bottom = 493.0
+pivot_offset = Vector2(146.5, 90.5)
+icon = ExtResource("5_ncyqs")
+image = ExtResource("5_ncyqs")
+money_cost = 0.0
+pop_up_content = "Finish the challenge"
+special_case = 1000
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=546318037]
+layout_mode = 0
+offset_left = 704.00006
+offset_top = 328.0
+offset_right = 792.00006
+offset_bottom = 392.0
+rotation = 0.12142459
+texture = ExtResource("6_ncyqs")
+expand_mode = 3
+stretch_mode = 4

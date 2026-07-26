@@ -28,6 +28,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 53.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_osxo0")
@@ -196,11 +199,15 @@ Indicate fish's resistance, both mentally and physically."
 autowrap_mode = 2
 
 [node name="MoneyLabel" type="Label" parent="TabContainer/Inventory" unique_id=1009818998]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
 offset_left = 13.0
-offset_top = 443.0
+offset_top = -40.0
 offset_right = 173.0
-offset_bottom = 471.0
+offset_bottom = -12.0
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_osxo0")
 theme_override_font_sizes/font_size = 20
 text = "Money: 100$"
@@ -209,32 +216,51 @@ text = "Money: 100$"
 layout_mode = 0
 offset_left = 373.0
 offset_top = 35.0
-offset_right = 685.0
-offset_bottom = 291.0
+offset_right = 733.0
+offset_bottom = 555.0
 color = Color(0.380392, 0.380392, 0.380392, 0.509804)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Inventory" unique_id=980041196]
 layout_mode = 0
 offset_left = 381.0
 offset_top = 43.0
-offset_right = 677.0
-offset_bottom = 283.0
+offset_right = 725.0
+offset_bottom = 539.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Inventory/ScrollContainer" unique_id=1698377118]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="ItemDesc" type="RichTextLabel" parent="TabContainer/Inventory" unique_id=1616035]
-layout_mode = 0
-offset_left = 373.0
-offset_top = 307.0
-offset_right = 685.0
-offset_bottom = 475.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -256.0
+offset_right = -29.5
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "[font_size=24][Item name][/font_size]
 
 Recover 25% of your HP."
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Inventory" unique_id=636195455]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 21.0
+offset_top = 9.5
+offset_right = 349.0
+offset_bottom = 17.5
+grow_vertical = 2
+color = Color(0.5234375, 0.5234375, 0.5234375, 1)
 
 [node name="Option" type="Control" parent="TabContainer" unique_id=1579921567]
 visible = false
@@ -343,9 +369,10 @@ text = "Quit game"
 
 [node name="CloseButton" type="Button" parent="." unique_id=1391769272]
 layout_mode = 0
-offset_left = 669.0
-offset_right = 695.0
-offset_bottom = 24.0
+offset_left = 725.0
+offset_top = -48.0
+offset_right = 751.0
+offset_bottom = -17.0
 text = "X"
 
 [connection signal="tab_clicked" from="TabContainer" to="." method="_on_tab_container_tab_clicked"]

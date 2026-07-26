@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://b2s3dv7fluji8"]
+
+[ext_resource type="Script" uid="uid://brrb6re60es8q" path="res://item/item_resource.gd" id="1_4p4sk"]
+
+[resource]
+script = ExtResource("1_4p4sk")
+item_id = 10003
+name = "Finvrolet Corvette CX"
+description = "A Finvrolet Corvette CX car."
+type = 2
+not_consumable = true

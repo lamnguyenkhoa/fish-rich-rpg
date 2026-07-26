@@ -108,6 +108,10 @@ func resolve_special_case():
 	match special_case:
 		EnumAutoload.ServiceSpecialCase.HOSPITAL_HELP_DESK:
 			GameManager.player.recover("hp", GameManager.player.max_hp, false)
+		EnumAutoload.ServiceSpecialCase.FINISH_THE_CHALLENGE:
+			GameManager.finish_the_challenge()
+			disabled = true
+		
 
 func _on_mouse_exited() -> void:
 	_animate_scale(_base_scale)

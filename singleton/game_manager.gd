@@ -38,6 +38,9 @@ func change_time_speed(new_speed: float):
 	time_speed = new_speed
 	time_status_changed.emit()
 
+func finish_the_challenge():
+	pass
+
 
 func load_item_database():
 	var directory_path = "res://item/"

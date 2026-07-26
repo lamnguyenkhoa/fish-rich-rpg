@@ -6,6 +6,6 @@
 script = ExtResource("1_wg0kv")
 item_id = 10001
 name = "Fincedes Benth EQS"
-description = "A blue Fincedes Benth car."
+description = "A Fincedes Benth car."
 type = 2
 not_consumable = true

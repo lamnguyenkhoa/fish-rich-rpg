@@ -38,6 +38,7 @@ enum ServiceSpecialCase {
     SMUGGLE = 105,
     PAY_DEBT = 200,
     HOSPITAL_HELP_DESK = 300,
+    FINISH_THE_CHALLENGE = 1000,
 }
 
 
