@@ -77,6 +77,7 @@ money_cost = 21000.0
 limited_stock = true
 pop_up_content = "Buy the Suzukrill Baleno-26"
 give_item_id = 10000
+gain_stat = Array[int]([0, 0, 0, 0, 10])
 
 [node name="CarBlue" parent="." unique_id=751027678 instance=ExtResource("4_hl1l0")]
 layout_mode = 0
@@ -91,6 +92,7 @@ money_cost = 84000.0
 limited_stock = true
 pop_up_content = "Buy the Fincedes-Benth EQS"
 give_item_id = 10001
+gain_stat = Array[int]([0, 0, 0, 0, 10])
 
 [node name="Character" type="TextureRect" parent="." unique_id=360742441]
 layout_mode = 1
