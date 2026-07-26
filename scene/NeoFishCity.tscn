@@ -15,11 +15,13 @@
 [ext_resource type="PackedScene" uid="uid://d1r6umm7ce0ll" path="res://entity/building/GroceryStore.tscn" id="10_3kgtk"]
 [ext_resource type="PackedScene" uid="uid://biqxju6alq3qq" path="res://entity/building/HospitalBuilding.tscn" id="11_q5g7b"]
 [ext_resource type="PackedScene" uid="uid://06r7w5hu3nnt" path="res://entity/building/CarShowroom.tscn" id="12_is0m5"]
+[ext_resource type="PackedScene" uid="uid://d2h4xf4hosb65" path="res://entity/building/PremiumCarShowroom.tscn" id="13_y4yca"]
 [ext_resource type="PackedScene" uid="uid://bp15f55hjcc0f" path="res://ui/interior/CasinoInterior.tscn" id="14_wpelm"]
 [ext_resource type="PackedScene" uid="uid://d3nnr4ap3ib24" path="res://ui/interior/GroceryStoreInterior.tscn" id="16_d6et2"]
 [ext_resource type="PackedScene" uid="uid://dtjs4ahqerl1i" path="res://ui/interior/HospitalInterior.tscn" id="18_qh2f3"]
 [ext_resource type="PackedScene" uid="uid://cqfmtivabqwjy" path="res://ui/interior/CarShowroomInterior.tscn" id="20_0yw4d"]
 [ext_resource type="PackedScene" uid="uid://bogjm4kvh8nx5" path="res://ui/interior/ApartmentInterior.tscn" id="21_0yw4d"]
+[ext_resource type="PackedScene" uid="uid://dvaeh2m7hhcuh" path="res://ui/interior/PremiumCarShowroomInterior.tscn" id="22_dly5b"]
 [ext_resource type="Script" uid="uid://b5lrxhsf7hpvl" path="res://scene/camera_follow.gd" id="27_081fe"]
 
 [sub_resource type="TileSet" id="TileSet_ys074"]
@@ -40,7 +42,7 @@ shader_parameter/water_tint = Color(0.2, 0.6, 1, 0)
 shader_parameter/speed = 0.02
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5g7b"]
-size = Vector2(3520, 60)
+size = Vector2(4304, 60)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qh2f3"]
 shader = ExtResource("5_3kgtk")
@@ -54,7 +56,7 @@ shader_parameter/heightOffset = 0.0
 shader_parameter/offset = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qh2f3"]
-size = Vector2(3520, 60)
+size = Vector2(4352, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ufqq4"]
 size = Vector2(64, 1728)
@@ -126,16 +128,16 @@ texture = ExtResource("4_uvjsd")
 collision_mask = 7
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBorderTop" unique_id=1162600889]
-position = Vector2(600, -480)
+position = Vector2(992, -480)
 shape = SubResource("RectangleShape2D_q5g7b")
 
 [node name="Sprite2D3" type="Sprite2D" parent="WorldBorderTop" unique_id=1127945910]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_qh2f3")
-position = Vector2(488, -656)
+position = Vector2(912, -656)
 texture = ExtResource("6_d6et2")
 region_enabled = true
-region_rect = Rect2(0, 0, 5000, 390)
+region_rect = Rect2(0, 0, 6000, 390)
 
 [node name="YSortGroup" type="Node2D" parent="." unique_id=1319963158]
 y_sort_enabled = true
@@ -161,14 +163,18 @@ position = Vector2(1344, 528)
 open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/HospitalInterior")
 
 [node name="Carshowroom" parent="YSortGroup" unique_id=1254775797 node_paths=PackedStringArray("open_interior_ui") instance=ExtResource("12_is0m5")]
-position = Vector2(696, 744)
+position = Vector2(-664, -120)
 open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/CarShowroomInterior")
+
+[node name="PremiumCarshowroom2" parent="YSortGroup" unique_id=282218504 node_paths=PackedStringArray("open_interior_ui") instance=ExtResource("13_y4yca")]
+position = Vector2(2456, 800)
+open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/PremiumCarShowroomInterior")
 
 [node name="WorldBorderBotAndSide" type="StaticBody2D" parent="." unique_id=493320393]
 collision_mask = 7
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBorderBotAndSide" unique_id=2096810947]
-position = Vector2(600, 1096)
+position = Vector2(1016, 1096)
 shape = SubResource("RectangleShape2D_qh2f3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorderBotAndSide" unique_id=1701684049]
@@ -176,16 +182,16 @@ position = Vector2(-1056, 288)
 shape = SubResource("RectangleShape2D_ufqq4")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBorderBotAndSide" unique_id=431657790]
-position = Vector2(2272, 300)
+position = Vector2(3176, 300)
 shape = SubResource("RectangleShape2D_ufqq4")
 
 [node name="Sprite2D4" type="Sprite2D" parent="WorldBorderBotAndSide" unique_id=1047257764]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_0yw4d")
-position = Vector2(520, 1040)
+position = Vector2(928, 1040)
 texture = ExtResource("6_d6et2")
 region_enabled = true
-region_rect = Rect2(0, 0, 5000, 390)
+region_rect = Rect2(0, 0, 6000, 390)
 
 [node name="Sprite2D" type="Sprite2D" parent="WorldBorderBotAndSide" unique_id=345954143]
 texture_repeat = 2
@@ -198,7 +204,7 @@ region_rect = Rect2(0, 0, 245, 3500)
 [node name="Sprite2D2" type="Sprite2D" parent="WorldBorderBotAndSide" unique_id=462973851]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_dly5b")
-position = Vector2(2368, 248)
+position = Vector2(3248, 248)
 texture = ExtResource("7_d6et2")
 region_enabled = true
 region_rect = Rect2(0, 0, 245, 3500)
@@ -244,6 +250,10 @@ visible = false
 layout_mode = 1
 
 [node name="CarShowroomInterior" parent="CanvasLayer/InteriorUI" unique_id=1771169365 instance=ExtResource("20_0yw4d")]
+visible = false
+layout_mode = 1
+
+[node name="PremiumCarShowroomInterior" parent="CanvasLayer/InteriorUI" unique_id=1746951372 instance=ExtResource("22_dly5b")]
 visible = false
 layout_mode = 1
 

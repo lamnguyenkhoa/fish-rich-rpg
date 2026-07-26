@@ -15,20 +15,19 @@ shader_parameter/y_buffer = 2.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_se6rf"]
 size = Vector2(496, 64)
 
-[node name="Carshowroom" type="StaticBody2D" unique_id=1254775797 node_paths=PackedStringArray("open_interior_ui")]
+[node name="Carshowroom" type="StaticBody2D" unique_id=1254775797]
 script = ExtResource("1_jgm5a")
 interact_text = "Checkout car showroom"
-open_interior_ui = NodePath("")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1674065562]
 material = SubResource("ShaderMaterial_pakef")
-position = Vector2(0, -144)
+position = Vector2(0, -59)
 texture = ExtResource("3_1hk6t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=408854462]
-position = Vector2(-8, -96)
+position = Vector2(-8, -11)
 shape = SubResource("RectangleShape2D_se6rf")
 debug_color = Color(0.701961, 0, 0.0745098, 0.419608)
 
 [node name="RespawnSpot" type="Marker2D" parent="." unique_id=1022924294]
-position = Vector2(16, 78)
+position = Vector2(0, 72)

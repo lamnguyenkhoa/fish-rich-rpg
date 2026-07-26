@@ -25,7 +25,10 @@ enum ItemId {
     # CARS
     CAR_SUZUKRILL = 10000,
     CAR_FINCEDES_BENTH = 10001,
-    
+    CAR_PORSHARK = 10002,
+    CAR_FINVROLET = 10003,
+    CAR_MCKRAKEN = 10004,
+
 
 }
 

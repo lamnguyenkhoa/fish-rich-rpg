@@ -21,14 +21,14 @@ interact_text = "Go to hospital"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1818161238]
 material = SubResource("ShaderMaterial_jua5p")
-position = Vector2(0, -144)
+position = Vector2(0, -98)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_p5w2h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=711740112]
-position = Vector2(8, -44)
+position = Vector2(8, 2)
 shape = SubResource("RectangleShape2D_psa7f")
 debug_color = Color(0.701961, 0, 0.0745098, 0.419608)
 
 [node name="RespawnSpot" type="Marker2D" parent="." unique_id=645956084]
-position = Vector2(16, 78)
+position = Vector2(-8, 72)

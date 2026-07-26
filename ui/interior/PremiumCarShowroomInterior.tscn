@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://dvaeh2m7hhcuh"]
+
+[ext_resource type="Script" uid="uid://ctlbquygas2fk" path="res://ui/interior/building_interior.gd" id="1_hdhxe"]
+[ext_resource type="Texture2D" uid="uid://dgbcoqk4stpmj" path="res://asset/sprite/interior/premium_car_showroom_interior.png" id="2_qonmy"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="3_rsdmn"]
+[ext_resource type="PackedScene" uid="uid://slk6ug7rqxnh" path="res://ui/interior/InteriorInteractable.tscn" id="4_mcppi"]
+[ext_resource type="Texture2D" uid="uid://c2sa2gt7clxr1" path="res://asset/sprite/interior/car_3.png" id="6_mcppi"]
+[ext_resource type="Texture2D" uid="uid://dx4dptim84o58" path="res://asset/sprite/interior/car_4.png" id="8_tbytc"]
+[ext_resource type="Texture2D" uid="uid://qjyhqh63e10o" path="res://asset/sprite/interior/car_5.png" id="9_qyyjf"]
+
+[node name="PremiumCarShowroomInterior2" type="Control" unique_id=1746951372]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hdhxe")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1953316423]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_right = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.28235295, 0.28107828, 0.09054263, 1)
+
+[node name="InteriorArt" type="TextureRect" parent="." unique_id=131722549]
+self_modulate = Color(0.40234375, 0.40234375, 0.40234375, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = -272.0
+offset_right = 1314.3035
+offset_bottom = 296.0
+grow_vertical = 2
+texture = ExtResource("2_qonmy")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="WorkLabel" type="RichTextLabel" parent="." unique_id=41179902]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1134.0
+offset_top = 80.0
+offset_right = -222.0
+offset_bottom = 232.0
+grow_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("3_rsdmn")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Checking out [color=gold][wave]the premium car showroom[/wave][/color] ...[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="CarA" parent="." unique_id=1734670431 instance=ExtResource("4_mcppi")]
+layout_mode = 0
+offset_left = 856.0
+offset_top = 280.0
+offset_right = 1280.0
+offset_bottom = 488.0
+pivot_offset = Vector2(212, 104)
+icon = ExtResource("6_mcppi")
+image = ExtResource("6_mcppi")
+money_cost = 225000.0
+limited_stock = true
+pop_up_content = "Buy the Porshark Parabellum"
+give_item_id = 10002
+
+[node name="CarC" parent="." unique_id=1932320752 instance=ExtResource("4_mcppi")]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 296.0
+offset_right = 416.0
+offset_bottom = 408.0
+pivot_offset = Vector2(152, 56)
+icon = ExtResource("9_qyyjf")
+image = ExtResource("9_qyyjf")
+money_cost = 160000.0
+limited_stock = true
+pop_up_content = "Buy the Finvrolet Corvette CX"
+give_item_id = 10003
+
+[node name="CarB" parent="." unique_id=727219188 instance=ExtResource("4_mcppi")]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 280.0
+offset_right = 720.0
+offset_bottom = 432.0
+pivot_offset = Vector2(188, 76)
+icon = ExtResource("8_tbytc")
+image = ExtResource("8_tbytc")
+money_cost = 319000.0
+limited_stock = true
+pop_up_content = "Buy the McKraken Eva"
+give_item_id = 10004

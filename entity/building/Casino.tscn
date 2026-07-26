@@ -21,14 +21,14 @@ interact_text = "Go to building"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=583248943]
 material = SubResource("ShaderMaterial_pakef")
-position = Vector2(79.99999, -320)
+position = Vector2(7.5000305, -295.5443)
 scale = Vector2(0.9580001, 0.8411392)
 texture = ExtResource("3_v6mv8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=155546833]
-position = Vector2(80, -64)
+position = Vector2(7.5000305, -39.54431)
 shape = SubResource("RectangleShape2D_vha0l")
 debug_color = Color(0.701961, 0, 0.0745098, 0.419608)
 
 [node name="RespawnSpot" type="Marker2D" parent="." unique_id=226421468]
-position = Vector2(64, 80)
+position = Vector2(16, 72)
