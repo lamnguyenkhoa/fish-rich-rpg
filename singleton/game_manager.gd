@@ -25,6 +25,11 @@ func _ready():
 func _process(delta: float) -> void:
 	if time_is_passing and not is_won:
 		time_left -= delta * time_speed
+		if time_left <= 0:
+			if GameManager.player.money <= 0:
+				finish_the_challenge()
+			else:
+				end_game(false)
 		time_left = max(time_left, 0)
 
 func start_time():
@@ -44,6 +49,7 @@ func finish_the_challenge():
 	game_ui.update_time_passing_label()
 	end_game(true)
 	GameManager.player.money += 300_000_000
+	GameManager.time_left = 999999999
 
 
 func load_item_database():

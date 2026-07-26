@@ -41,7 +41,28 @@ func update_time_passing_label():
 
 
 func update_money_text(amount: float):
-	money_label.text = "Money: %.2f$" % amount
+	money_label.text = "Money: %s$" % _format_money(amount)
+
+func _format_money(amount: float) -> String:
+	var whole := int(floor(amount))
+	var decimals := "%.2f" % (amount - whole)
+	decimals = decimals.substr(1) # drop leading "0", keep ".xx"
+
+	var whole_str := str(whole)
+	var sign_str := ""
+	if whole_str.begins_with("-"):
+		sign_str = "-"
+		whole_str = whole_str.substr(1)
+
+	var formatted := ""
+	var count := 0
+	for i in range(whole_str.length() - 1, -1, -1):
+		formatted = whole_str[i] + formatted
+		count += 1
+		if count % 3 == 0 and i != 0:
+			formatted = "," + formatted
+
+	return sign_str + formatted + decimals
 
 func play_time_passed_transition():
 	anim_player.play("time_passed_transition")

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dm0glmosrefn" path="res://asset/sprite/interior/blackjack.png" id="5_105pm"]
 [ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="5_bir3x"]
 [ext_resource type="Texture2D" uid="uid://b12hbu21xy0t0" path="res://asset/sprite/interior/slot_machine.png" id="6_4t04i"]
+[ext_resource type="Script" uid="uid://bcklsj46cvneg" path="res://ui/interior/playing_card_handler.gd" id="7_4t04i"]
 
 [node name="CasinoInterior" type="Control" unique_id=755305693]
 layout_mode = 3
@@ -63,10 +64,10 @@ scroll_active = false
 
 [node name="Blackjack" parent="." unique_id=1734670431 instance=ExtResource("3_4t04i")]
 layout_mode = 0
-offset_left = 377.0
-offset_top = 493.0
-offset_right = 681.0
-offset_bottom = 602.0
+offset_left = 381.0
+offset_top = 492.0
+offset_right = 685.0
+offset_bottom = 601.0
 pivot_offset = Vector2(152, 54.5)
 icon = ExtResource("5_105pm")
 image = ExtResource("5_105pm")
@@ -82,3 +83,15 @@ pivot_offset = Vector2(84, 29.5)
 icon = ExtResource("6_4t04i")
 image = ExtResource("6_4t04i")
 pop_up_content = "Play the Slot machine"
+
+[node name="PlayingCardHandler" type="ColorRect" parent="." unique_id=1710165634 node_paths=PackedStringArray("trigger_button")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.13333334, 0.07450981, 0.972549)
+script = ExtResource("7_4t04i")
+trigger_button = NodePath("../Blackjack")

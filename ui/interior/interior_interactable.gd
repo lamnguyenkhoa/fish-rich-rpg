@@ -4,7 +4,7 @@ class_name InteriorInteractable
 
 @export var image: CompressedTexture2D
 @export var time_usage: float = 0
-@export var money_cost: float = 40
+@export var money_cost: float = 0
 @export var limited_stock = false
 @export var max_service_stock: int = 1
 @export var play_time_pass_transition: bool = false
@@ -112,7 +112,7 @@ func resolve_special_case():
 			if GameManager.player.money <= 0.001:
 				GameManager.finish_the_challenge()
 				disabled = true
-		
+
 
 func _on_mouse_exited() -> void:
 	_animate_scale(_base_scale)
