@@ -21,7 +21,12 @@ enum ItemId {
     BODY_ENHANCE_DRUG = 2003,
     REFLEX_BOOSTER_DRINK = 2004,
     # INTERACTABLE EQUIPMENT
-    SMARTPHONE = 9000
+    SMARTPHONE = 9000,
+    # CARS
+    CAR_SUZUKRILL = 10000,
+    CAR_FINCEDES_BENTH = 10001,
+    
+
 }
 
 enum ServiceSpecialCase {

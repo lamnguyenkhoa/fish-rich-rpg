@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://06r7w5hu3nnt"]
+
+[ext_resource type="Script" uid="uid://dla1i1jeu5n4s" path="res://entity/building/company_building.gd" id="1_jgm5a"]
+[ext_resource type="Shader" uid="uid://u25x57qodqev" path="res://shader/topdown_shadow.gdshader" id="2_g45l6"]
+[ext_resource type="Texture2D" uid="uid://jje5h7n5q4v6" path="res://asset/sprite/building/car_showroom.png" id="3_1hk6t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pakef"]
+shader = ExtResource("2_g45l6")
+shader_parameter/deform = Vector2(0.5, 0.5)
+shader_parameter/offset = Vector2(51.785, 29.27)
+shader_parameter/modulate = Color(0, 0, 0, 0.55)
+shader_parameter/x_buffer = 2.0
+shader_parameter/y_buffer = 2.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_se6rf"]
+size = Vector2(496, 64)
+
+[node name="Carshowroom" type="StaticBody2D" unique_id=1254775797 node_paths=PackedStringArray("open_interior_ui")]
+script = ExtResource("1_jgm5a")
+interact_text = "Checkout car showroom"
+open_interior_ui = NodePath("")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1674065562]
+material = SubResource("ShaderMaterial_pakef")
+position = Vector2(0, -144)
+texture = ExtResource("3_1hk6t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=408854462]
+position = Vector2(-8, -96)
+shape = SubResource("RectangleShape2D_se6rf")
+debug_color = Color(0.701961, 0, 0.0745098, 0.419608)
+
+[node name="RespawnSpot" type="Marker2D" parent="." unique_id=1022924294]
+position = Vector2(16, 78)

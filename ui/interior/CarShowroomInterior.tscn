@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://cqfmtivabqwjy"]
+
+[ext_resource type="Script" uid="uid://ctlbquygas2fk" path="res://ui/interior/building_interior.gd" id="1_r4r10"]
+[ext_resource type="Texture2D" uid="uid://t5pxli0ku5ao" path="res://asset/sprite/interior/car_showroom_interior.png" id="2_r4r10"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="3_b1l65"]
+[ext_resource type="PackedScene" uid="uid://slk6ug7rqxnh" path="res://ui/interior/InteriorInteractable.tscn" id="4_hl1l0"]
+[ext_resource type="Texture2D" uid="uid://c47brpbbe6t6e" path="res://asset/sprite/interior/car_1.png" id="6_6pn7u"]
+[ext_resource type="Texture2D" uid="uid://bksqflea30rnp" path="res://asset/sprite/interior/car_2.png" id="7_b1l65"]
+
+[node name="CarShowroomInterior" type="Control" unique_id=1771169365]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_r4r10")
+
+[node name="Background" type="ColorRect" parent="." unique_id=856723389]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_right = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.19377233, 0.26434904, 0.28125, 1)
+
+[node name="InteriorArt" type="TextureRect" parent="." unique_id=861645020]
+self_modulate = Color(0.40234375, 0.40234375, 0.40234375, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = -272.0
+offset_right = 936.0
+offset_bottom = 296.0
+grow_vertical = 2
+texture = ExtResource("2_r4r10")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="WorkLabel" type="RichTextLabel" parent="." unique_id=1239359780]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -374.0
+offset_top = 72.0
+offset_right = -30.0
+offset_bottom = 224.0
+grow_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("3_b1l65")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Checking out [color=silver][wave]the car showroom[/wave][/color] ...[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="CarRed" parent="." unique_id=1734670431 instance=ExtResource("4_hl1l0")]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 304.0
+offset_right = 328.0
+offset_bottom = 476.0
+pivot_offset = Vector2(120, 86)
+icon = ExtResource("6_6pn7u")
+image = ExtResource("6_6pn7u")
+money_cost = 21000.0
+limited_stock = true
+pop_up_content = "Buy the Suzukrill Baleno-26"
+give_item_id = 10000
+
+[node name="CarBlue" parent="." unique_id=751027678 instance=ExtResource("4_hl1l0")]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 360.0
+offset_right = 952.0
+offset_bottom = 616.0
+pivot_offset = Vector2(232, 128)
+icon = ExtResource("7_b1l65")
+image = ExtResource("7_b1l65")
+money_cost = 120000.0
+limited_stock = true
+pop_up_content = "Buy the Fincedes-Benth EQS"
+give_item_id = 10001
+recover_hp = null
+recover_sp = null

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://bi1f0efillor5"]
+
+[ext_resource type="Script" uid="uid://brrb6re60es8q" path="res://item/item_resource.gd" id="1_wg0kv"]
+
+[resource]
+script = ExtResource("1_wg0kv")
+item_id = 10001
+name = "Fincedes Benth EQS"
+description = "A blue Fincedes Benth car."
+type = 2
+not_consumable = true

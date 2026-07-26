@@ -19,3 +19,5 @@ grow_vertical = 2
 theme_override_constants/line_separation = 4
 text = "Take a nap (15s). Recover all your HP.
 Really?"
+fit_content = true
+scroll_active = false
