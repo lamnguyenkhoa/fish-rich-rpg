@@ -27,7 +27,6 @@ const STATUS_COLOR_PUSH := Color(0.9, 0.8, 0.3)
 var ultraluck = false
 @export var force_ultraluck: bool = false
 @export var ultraluck_bet_lower_threshold: float = 100_000
-@export var ultraluck_bet_upper_threshold: float = 1_100_000
 
 var _deck: Array[int] = []
 var _player_hand: Array[int] = []
@@ -356,7 +355,7 @@ func _refresh() -> void:
 
 
 func _update_ultraluck() -> void:
-	if (_bet >= ultraluck_bet_lower_threshold and _bet <= ultraluck_bet_upper_threshold) or force_ultraluck:
+	if (_bet >= ultraluck_bet_lower_threshold and GameManager.is_won) or force_ultraluck:
 		ultraluck = true
 	else:
 		ultraluck = false

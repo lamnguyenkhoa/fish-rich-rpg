@@ -75,7 +75,6 @@ const ULTRALUCK_TRIPLE_CHANCE := 0.85
 var ultraluck = false
 @export var force_ultraluck: bool = false
 @export var ultraluck_bet_lower_threshold: float = 100_000
-@export var ultraluck_bet_upper_threshold: float = 1_100_000
 
 var _textures: Array[Texture2D] = []
 var _bet: float = 0.0
@@ -274,7 +273,7 @@ func _refresh() -> void:
 
 
 func _update_ultraluck() -> void:
-	if (_bet >= ultraluck_bet_lower_threshold and _bet <= ultraluck_bet_upper_threshold) or force_ultraluck:
+	if (_bet >= ultraluck_bet_lower_threshold and not GameManager.is_won) or force_ultraluck:
 		ultraluck = true
 	else:
 		ultraluck = false
