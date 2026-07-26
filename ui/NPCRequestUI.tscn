@@ -61,11 +61,10 @@ anchor_bottom = 1.0
 offset_top = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 2
+current_tab = 0
 tabs_visible = false
 
 [node name="Normal" type="Control" parent="TabContainer" unique_id=1705755839]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -309,10 +308,11 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0.65098, 0.65098, 0.65098, 1)
 theme_override_font_sizes/font_size = 14
 text = "Taunt - Provoke them into beating you up and emptying your wallet. Costs 2s.
-They take a flat amount, and get bolder each time - but a strong fish is a harder target.
-Getting patched up at the hospital costs money too. That is the point."
+They take a flat amount and get bolder each time, then swim off for a while.
+You cannot pick a fight on your last point of health - see a doctor first."
 
 [node name="Request" type="Control" parent="TabContainer" unique_id=253841438]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -343,7 +343,7 @@ layout_mode = 1
 offset_left = 32.0
 offset_top = 304.0
 offset_right = 800.0
-offset_bottom = 368.0
+offset_bottom = 384.0
 color = Color(0, 0, 0, 0.588235)
 
 [node name="RequestResult" type="RichTextLabel" parent="TabContainer/Request/ResultBG" unique_id=735915658]
@@ -357,7 +357,7 @@ offset_right = -8.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 scroll_active = false
 

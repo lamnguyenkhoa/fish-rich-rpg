@@ -11,6 +11,10 @@ class_name NPCFish
 @export var defeat_loot: Array[EnumAutoload.ItemId]
 @export var possible_steal_loot: Array[EnumAutoload.ItemId]
 
+# How long a fish swims off for after a job or a scrap, by tier. Bigger fish
+# have better places to be.
+const TIER_AWAY_DURATION := [15.0, 15.0, 30.0, 60.0]
+
 @onready var name_label: Label = $NameLabel
 @onready var fish_sprite: Sprite2D = $Fish
 
@@ -20,6 +24,12 @@ var defeat_money: int
 var steal_awareness = 0
 var taunt_count = 0
 var request_count = 0
+var is_away = false
+var return_at_time_left: float = 0.0
+
+# Interactable is a Node2D, but every fish scene roots at a physics body, so the
+# collision layer is fetched dynamically to switch interaction on and off.
+var _base_collision_layer: int = 1
 
 func _ready() -> void:
 	if flip_sprite:
@@ -27,10 +37,37 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		current_hp = max_hp
 		name_label.text = fish_name
+		if "collision_layer" in self:
+			_base_collision_layer = get("collision_layer")
 		randomly_set_defeat_money()
 
+func _process(_delta: float) -> void:
+	if Engine.is_editor_hint() or not is_away:
+		return
+	# time_left counts down, so they are back once it drops past the mark.
+	if GameManager.time_left <= return_at_time_left:
+		come_back()
+
 func interact(_player: Player):
+	if dead or is_away:
+		return
 	GameManager.open_npc_request_ui(self)
+
+func away_duration() -> float:
+	if tier < TIER_AWAY_DURATION.size():
+		return TIER_AWAY_DURATION[tier]
+	return TIER_AWAY_DURATION[-1]
+
+func leave_for_a_while():
+	is_away = true
+	return_at_time_left = GameManager.time_left - away_duration()
+	visible = false
+	set_deferred("collision_layer", 0)
+
+func come_back():
+	is_away = false
+	visible = true
+	set_deferred("collision_layer", _base_collision_layer)
 
 func get_interact_text(_player: Player) -> String:
 	return "Interact with {0}".format([fish_name])
@@ -60,6 +97,7 @@ func revive():
 	dead = false
 	visible = true
 	process_mode = Node.PROCESS_MODE_INHERIT
+	come_back()
 
 func calculate_steal_success_chance() -> int:
 	# By default, steal chance is equal to HAR plus 50

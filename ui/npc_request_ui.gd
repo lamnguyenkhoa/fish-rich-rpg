@@ -132,9 +132,12 @@ func refresh_normal_tab():
 	info_label.text = "[center]{0} is a [color=yellow]tier {1}[/color] fish.\nChance they take your bait: [color=yellow]{2}%[/color]\nThey would take [color=yellow]{3}$[/color] off you.[/center]".format(
 		[target_npc.fish_name, target_npc.tier, taunt_chance(),
 		GameManager.game_ui._format_money(taunt_loot())])
-	# A dead fish neither fights you nor runs errands.
-	var is_available = not target_npc.dead
-	taunt_button.disabled = not is_available
+	var blocker = taunt_block_reason()
+	if blocker != "":
+		info_label.text += "\n[center][color=red]{0}[/color][/center]".format([blocker])
+	# A dead fish, or one who has swum off, neither fights you nor runs errands.
+	var is_available = not target_npc.dead and not target_npc.is_away
+	taunt_button.disabled = not is_available or blocker != ""
 	request_button.disabled = not is_available
 
 func _on_taunt_button_pressed() -> void:
@@ -170,9 +173,21 @@ func taunt_loot() -> float:
 func taunt_damage() -> int:
 	return int(target_npc.stats[2] * (1.0 + 0.25 * target_npc.taunt_count))
 
+func taunt_block_reason() -> String:
+	# Picking a fight on your last point of health is how fish stop being fish.
+	if GameManager.player.current_hp <= 1:
+		return "You are in no shape for a beating. See a doctor first."
+	if target_npc.is_away:
+		return "{0} is not around right now.".format([target_npc.fish_name])
+	if target_npc.dead:
+		return "{0} is in no state to swing at anyone.".format([target_npc.fish_name])
+	return ""
+
 func _on_taunt_again_button_pressed() -> void:
 	SoundManager.play_button_click_sfx()
 	var player = GameManager.player
+	if taunt_block_reason() != "":
+		return
 	GameManager.pass_time(2.0)
 	if randi() % 100 >= taunt_chance():
 		taunt_log.text += "You insult {0}'s mother. They just [color=gray]laugh at you[/color].\n- - -\n".format(
@@ -196,13 +211,16 @@ func _on_taunt_again_button_pressed() -> void:
 		# Never actually knock the player out - they still have money to burn.
 		player.current_hp = 1
 		taunt_log.text += "[color=red]You can barely swim. Get to a hospital.[/color]\n"
-	taunt_log.text += "- - -\n"
+	# Having made their point, they clear off for a while.
+	target_npc.leave_for_a_while()
+	taunt_log.text += "[color=gray]{0} swims off to spend it. Back in about {1}s.[/color]\n- - -\n".format(
+		[target_npc.fish_name, int(target_npc.away_duration())])
 	update_statbar()
 	update_taunt_button()
 
 func update_taunt_button():
 	taunt_again_button.text = "Taunt ({0}%)".format([taunt_chance()])
-	taunt_again_button.disabled = target_npc.dead
+	taunt_again_button.disabled = taunt_block_reason() != ""
 
 func update_statbar():
 	var player = GameManager.player
@@ -257,7 +275,8 @@ func refresh_request_list():
 		label.text = "{0} - {1}".format([prefix, request["desc"]])
 		button.disabled = (GameManager.player.money < cost
 			or GameManager.time_left < request["time"]
-			or target_npc.dead)
+			or target_npc.dead
+			or target_npc.is_away)
 
 func _on_request_pressed(index: int):
 	SoundManager.play_button_click_sfx()
@@ -265,6 +284,8 @@ func _on_request_pressed(index: int):
 	var cost = request_cost(index)
 	var player = GameManager.player
 	if player.money < cost or GameManager.time_left < request["time"]:
+		return
+	if target_npc.dead or target_npc.is_away:
 		return
 
 	player.money -= cost
@@ -287,7 +308,10 @@ func _on_request_pressed(index: int):
 	if stat_index >= 0:
 		apply_stat_gain(stat_index)
 		request_result.text += " [color=green]+1 {0}[/color]".format([STAT_NAMES[stat_index]])
-	request_result.text += "[/center]"
+	# Work done, they knock off for the rest of the shift.
+	target_npc.leave_for_a_while()
+	request_result.text += "\n[color=gray]{0} heads off. Back in about {1}s.[/color][/center]".format(
+		[target_npc.fish_name, int(target_npc.away_duration())])
 	refresh_request_list()
 
 func apply_stat_gain(stat_index: int):

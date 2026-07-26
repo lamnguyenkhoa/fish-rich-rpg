@@ -229,7 +229,7 @@ flip_sprite = true
 position = Vector2(-664, 840)
 
 [node name="Shark" parent="YSortGroup" unique_id=494967110 instance=ExtResource("23_d82x2")]
-position = Vector2(776, -104)
+position = Vector2(880, 24)
 
 [node name="WorldBorderBotAndSide" type="StaticBody2D" parent="." unique_id=493320393]
 collision_mask = 7
