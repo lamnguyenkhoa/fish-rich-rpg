@@ -142,7 +142,6 @@ offset_right = 349.0
 offset_bottom = 272.0
 
 [node name="PhoneUI" parent="." unique_id=1487221091 instance=ExtResource("5_e78dt")]
-visible = false
 layout_mode = 1
 
 [node name="NPCInteractUI" parent="." unique_id=1079707448 instance=ExtResource("6_w1lfw")]

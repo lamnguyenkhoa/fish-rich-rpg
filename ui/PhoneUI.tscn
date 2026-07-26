@@ -57,7 +57,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.39999998),
 "transitions": PackedFloat32Array(0.5, 0.5, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -60), Vector2(0, 100)]
+"values": [Vector2(0, 0), Vector2(0, -60), Vector2(0, 150)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -91,19 +91,16 @@ _data = {
 }
 
 [node name="PhoneUI" type="Control" unique_id=1487221091]
+visible = false
 custom_minimum_size = Vector2(300, 600)
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -320.0
-offset_right = 150.0
-offset_bottom = 344.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 168.0
+offset_top = -664.0
+offset_right = 468.0
+grow_vertical = 0
 script = ExtResource("1_cjpjw")
 
 [node name="PhonePortrait" type="TextureRect" parent="." unique_id=632522030]
