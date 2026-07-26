@@ -368,13 +368,38 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_osxo0")
 text = "Quit game"
 
+[node name="RetryButton" type="Button" parent="." unique_id=1852308056]
+modulate = Color(1, 0.09021181, 0.042443633, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -67.0
+offset_top = -32.0
+offset_right = 29.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Retry"
+
 [node name="CloseButton" type="Button" parent="." unique_id=1391769272]
-layout_mode = 0
-offset_left = 725.0
-offset_top = -48.0
-offset_right = 751.0
-offset_bottom = -17.0
-text = "X"
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -115.0
+offset_top = 40.0
+offset_right = 149.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Close"
 
 [connection signal="tab_clicked" from="TabContainer" to="." method="_on_tab_container_tab_clicked"]
 [connection signal="tab_hovered" from="TabContainer" to="." method="_on_tab_container_tab_hovered"]
@@ -390,5 +415,7 @@ text = "X"
 [connection signal="pressed" from="TabContainer/Option/BackMenuButton" to="TabContainer/Option" method="_on_back_menu_button_pressed"]
 [connection signal="mouse_entered" from="TabContainer/Option/QuitButton" to="TabContainer/Option" method="_on_quit_button_mouse_entered"]
 [connection signal="pressed" from="TabContainer/Option/QuitButton" to="TabContainer/Option" method="_on_quit_button_pressed"]
+[connection signal="mouse_entered" from="RetryButton" to="." method="_on_close_button_mouse_entered"]
+[connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="mouse_entered" from="CloseButton" to="." method="_on_close_button_mouse_entered"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
