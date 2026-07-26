@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ctlbquygas2fk" path="res://ui/interior/building_interior.gd" id="1_tw6d3"]
 [ext_resource type="PackedScene" uid="uid://slk6ug7rqxnh" path="res://ui/interior/InteriorInteractable.tscn" id="2_tw6d3"]
 [ext_resource type="Texture2D" uid="uid://q6o4mvaqpfpn" path="res://asset/sprite/interior/apartment_bed.png" id="3_34nvb"]
+[ext_resource type="Texture2D" uid="uid://dc1ght824i816" path="res://asset/sprite/interior/apartment_laptop.png" id="5_4jxlk"]
 [ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="5_34nvb"]
 
 [node name="Apartment" type="Control" unique_id=1141240488]
@@ -53,10 +54,22 @@ pivot_offset = Vector2(240, 148)
 icon = ExtResource("3_34nvb")
 image = ExtResource("3_34nvb")
 time_usage = 15.0
-money_cost = 0.0
 play_time_pass_transition = true
 pop_up_content = "Take a nap, recover all your health."
 recover_hp = 10000
+
+[node name="Laptop" parent="." unique_id=266818155 instance=ExtResource("2_tw6d3")]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 312.0
+offset_right = 409.5135
+offset_bottom = 456.0
+pivot_offset = Vector2(116.756744, 72)
+icon = ExtResource("5_4jxlk")
+image = ExtResource("5_4jxlk")
+time_usage = 1.0
+money_cost = -3.11
+pop_up_content = "Do some freelance work"
 
 [node name="WorkLabel" type="RichTextLabel" parent="." unique_id=1005747862]
 layout_mode = 1

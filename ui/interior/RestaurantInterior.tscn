@@ -90,9 +90,9 @@ offset_bottom = 653.0
 pivot_offset = Vector2(160, 82.5)
 icon = ExtResource("6_rfyyl")
 image = ExtResource("6_rfyyl")
-time_usage = 5.0
-money_cost = 300.0
-pop_up_content = "Eat a delicious meal"
+time_usage = 3.0
+money_cost = 550.0
+pop_up_content = "Eat a pretentious meal"
 recover_sp = 30
 
 [node name="Bar" parent="." unique_id=102213447 instance=ExtResource("5_yeybu")]
@@ -104,8 +104,8 @@ offset_bottom = 416.0
 pivot_offset = Vector2(216, 36)
 icon = ExtResource("7_mv8v6")
 image = ExtResource("7_mv8v6")
-time_usage = 2.0
-money_cost = 100.0
-pop_up_content = "Buy a drink"
+time_usage = 1.0
+money_cost = 150.0
+pop_up_content = "Order a vintage drink, with gold leaf."
 recover_hp = 5
 recover_sp = 5

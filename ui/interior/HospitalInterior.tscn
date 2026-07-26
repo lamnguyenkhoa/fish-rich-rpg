@@ -87,10 +87,10 @@ offset_bottom = 592.0
 pivot_offset = Vector2(161.5, 84.5)
 icon = ExtResource("6_4v8ec")
 image = ExtResource("6_4v8ec")
-time_usage = 10.0
-money_cost = 500.0
+time_usage = 5.0
+money_cost = 1000.0
 play_time_pass_transition = true
-pop_up_content = "Take a regularly health check"
+pop_up_content = "Take a VIP and fast health check"
 
 [node name="DoctorRoom" parent="." unique_id=1061637373 instance=ExtResource("4_2ulcu")]
 layout_mode = 0
@@ -102,10 +102,10 @@ pivot_offset = Vector2(45, 102)
 icon = ExtResource("7_4v8ec")
 image = ExtResource("7_4v8ec")
 time_usage = 15.0
-money_cost = 1500.0
+money_cost = 5500.0
 play_time_pass_transition = true
-pop_up_content = "Consult the doctor and improve body health. VIP package with skip waiting queue."
-gain_stat = Array[int]([10, 0, 10, 0, 0])
+pop_up_content = "Consult with the hospital director and improve body health. VIP package with waiting queue skip ."
+gain_stat = Array[int]([10, 5, 10, 0, 0])
 
 [node name="Character" type="TextureRect" parent="." unique_id=1578356539]
 layout_mode = 1
