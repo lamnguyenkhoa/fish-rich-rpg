@@ -1,0 +1,394 @@
+[gd_scene format=3 uid="uid://mj7ybrndxt6f"]
+
+[ext_resource type="Script" uid="uid://difmeju7g5r48" path="res://ui/npc_request_ui.gd" id="1_4dx8a"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="2_nskku"]
+[ext_resource type="Texture2D" uid="uid://p73ulmivegfh" path="res://asset/sprite/ui/square.png" id="3_61gq5"]
+
+[node name="NPCRequestUI" type="Control" unique_id=58538250]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -427.0
+offset_top = -256.0
+offset_right = 405.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4dx8a")
+
+[node name="BG" type="ColorRect" parent="." unique_id=1167046781]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 512.0
+grow_horizontal = 2
+color = Color(0.121569, 0.121569, 0.121569, 0.827451)
+
+[node name="PlayerName" type="Label" parent="." unique_id=1512714214]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 8.0
+offset_right = 205.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("2_nskku")
+theme_override_font_sizes/font_size = 20
+text = "Eviota (You)"
+
+[node name="NPCName" type="Label" parent="." unique_id=1314853644]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -227.0
+offset_top = 8.0
+offset_right = -11.0
+offset_bottom = 65.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_nskku")
+theme_override_font_sizes/font_size = 20
+text = "Evil barracuda"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=238402198]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 2
+tabs_visible = false
+
+[node name="Normal" type="Control" parent="TabContainer" unique_id=1705755839]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="PlayerStat" type="Label" parent="TabContainer/Normal" unique_id=1644445229]
+layout_mode = 1
+offset_left = 13.0
+offset_top = 16.0
+offset_right = 168.0
+offset_bottom = 138.0
+theme_override_fonts/font = ExtResource("2_nskku")
+theme_override_font_sizes/font_size = 20
+text = "FOR: 10
+INT: 10
+STR: 10
+HAR: 10
+YEE: 10"
+
+[node name="EnemyStat" type="Label" parent="TabContainer/Normal" unique_id=408481472]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -171.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 138.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_nskku")
+theme_override_font_sizes/font_size = 20
+text = "FOR: 10
+INT: 10
+STR: 10
+HAR: 10
+YEE: 10"
+horizontal_alignment = 2
+
+[node name="InfoBG" type="ColorRect" parent="TabContainer/Normal" unique_id=2126540052]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -352.0
+offset_top = -184.0
+offset_right = 352.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 0.588235)
+
+[node name="InfoLabel" type="RichTextLabel" parent="TabContainer/Normal/InfoBG" unique_id=91939248]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Evil barracuda is a [color=yellow]tier 1[/color] fish.
+Chance they take your bait: [color=yellow]50%[/color]
+They would take [color=yellow]80.00$[/color] off you.[/center]"
+scroll_active = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Normal" unique_id=684263798]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -163.0
+offset_top = -56.0
+offset_right = 155.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 40
+
+[node name="TauntButton" type="Button" parent="TabContainer/Normal/HBoxContainer" unique_id=2099893519]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_nskku")
+theme_override_font_sizes/font_size = 20
+text = "Taunt"
+
+[node name="RequestButton" type="Button" parent="TabContainer/Normal/HBoxContainer" unique_id=1726129840]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_nskku")
+theme_override_font_sizes/font_size = 20
+text = "Request"
+
+[node name="LeaveButton" type="Button" parent="TabContainer/Normal/HBoxContainer" unique_id=1767525343]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_nskku")
+theme_override_font_sizes/font_size = 20
+text = "Leave"
+
+[node name="Taunt" type="Control" parent="TabContainer" unique_id=612044973]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="PlayerHPBar" type="TextureProgressBar" parent="TabContainer/Taunt" unique_id=618376940]
+layout_mode = 1
+offset_left = 29.0
+offset_top = 8.0
+offset_right = 221.0
+offset_bottom = 24.0
+value = 75.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_61gq5")
+texture_progress = ExtResource("3_61gq5")
+tint_progress = Color(0.0705882, 1, 0, 1)
+
+[node name="Label" type="Label" parent="TabContainer/Taunt/PlayerHPBar" unique_id=1130499694]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -8.0
+offset_right = 17.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "100/100"
+
+[node name="PlayerSPBar" type="TextureProgressBar" parent="TabContainer/Taunt" unique_id=1598950281]
+layout_mode = 1
+offset_left = 29.0
+offset_top = 32.0
+offset_right = 221.0
+offset_bottom = 48.0
+value = 75.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_61gq5")
+texture_progress = ExtResource("3_61gq5")
+tint_progress = Color(1, 0.968627, 0.0588235, 1)
+
+[node name="Label" type="Label" parent="TabContainer/Taunt/PlayerSPBar" unique_id=243920968]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -8.0
+offset_right = 17.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "100/100"
+
+[node name="TauntLogArea" type="ColorRect" parent="TabContainer/Taunt" unique_id=272043074]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -352.0
+offset_top = -120.0
+offset_right = 352.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="TauntLog" type="RichTextLabel" parent="TabContainer/Taunt/TauntLogArea" unique_id=889041048]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 8.0
+offset_right = -7.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Evil barracuda beats you up for [color=yellow]10[/color] damage.
+They rifle through your pockets and take [color=green]1,000.00$[/color]!
+"
+scroll_following = true
+
+[node name="TauntActions" type="HBoxContainer" parent="TabContainer/Taunt" unique_id=1473176535]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -190.0
+offset_top = -128.0
+offset_right = 190.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 40
+
+[node name="TauntAgainButton" type="Button" parent="TabContainer/Taunt/TauntActions" unique_id=12383803]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_nskku")
+theme_override_font_sizes/font_size = 20
+text = "Taunt (50%)"
+clip_text = true
+
+[node name="TauntBackButton" type="Button" parent="TabContainer/Taunt/TauntActions" unique_id=1846488312]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_nskku")
+theme_override_font_sizes/font_size = 20
+text = "Back"
+clip_text = true
+
+[node name="TauntDesc" type="Label" parent="TabContainer/Taunt" unique_id=1913503750]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -235.0
+offset_top = -72.0
+offset_right = 237.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.65098, 0.65098, 0.65098, 1)
+theme_override_font_sizes/font_size = 14
+text = "Taunt - Provoke them into beating you up and emptying your wallet. Costs 2s.
+They take a flat amount, and get bolder each time - but a strong fish is a harder target.
+Getting patched up at the hospital costs money too. That is the point."
+
+[node name="Request" type="Control" parent="TabContainer" unique_id=253841438]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="RequestHeader" type="Label" parent="TabContainer/Request" unique_id=1635588935]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 400.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("2_nskku")
+theme_override_font_sizes/font_size = 20
+text = "Hire them for honest work"
+
+[node name="RequestScroll" type="ScrollContainer" parent="TabContainer/Request" unique_id=1485522901]
+layout_mode = 1
+offset_left = 32.0
+offset_top = 44.0
+offset_right = 800.0
+offset_bottom = 288.0
+
+[node name="RequestList" type="VBoxContainer" parent="TabContainer/Request/RequestScroll" unique_id=1199692532]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="ResultBG" type="ColorRect" parent="TabContainer/Request" unique_id=1196579669]
+layout_mode = 1
+offset_left = 32.0
+offset_top = 304.0
+offset_right = 800.0
+offset_bottom = 368.0
+color = Color(0, 0, 0, 0.588235)
+
+[node name="RequestResult" type="RichTextLabel" parent="TabContainer/Request/ResultBG" unique_id=735915658]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = -8.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+scroll_active = false
+
+[node name="RequestBackButton" type="Button" parent="TabContainer/Request" unique_id=614273798]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -56.0
+offset_right = 85.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_nskku")
+theme_override_font_sizes/font_size = 20
+text = "Back"
+clip_text = true
+
+[connection signal="mouse_entered" from="TabContainer/Normal/HBoxContainer/TauntButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="TabContainer/Normal/HBoxContainer/TauntButton" to="." method="_on_taunt_button_pressed"]
+[connection signal="mouse_entered" from="TabContainer/Normal/HBoxContainer/RequestButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="TabContainer/Normal/HBoxContainer/RequestButton" to="." method="_on_request_button_pressed"]
+[connection signal="mouse_entered" from="TabContainer/Normal/HBoxContainer/LeaveButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="TabContainer/Normal/HBoxContainer/LeaveButton" to="." method="_on_leave_button_pressed"]
+[connection signal="mouse_entered" from="TabContainer/Taunt/TauntActions/TauntAgainButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="TabContainer/Taunt/TauntActions/TauntAgainButton" to="." method="_on_taunt_again_button_pressed"]
+[connection signal="mouse_entered" from="TabContainer/Taunt/TauntActions/TauntBackButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="TabContainer/Taunt/TauntActions/TauntBackButton" to="." method="_on_taunt_back_button_pressed"]
+[connection signal="mouse_entered" from="TabContainer/Request/RequestBackButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="TabContainer/Request/RequestBackButton" to="." method="_on_request_back_button_pressed"]

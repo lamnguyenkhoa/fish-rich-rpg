@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://mf0qldclxjpr" path="res://ui/PlayerMenu.tscn" id="5_lvtvn"]
 [ext_resource type="PackedScene" uid="uid://dqxthbc3g0l2v" path="res://ui/NPCInteractUI.tscn" id="6_w1lfw"]
 [ext_resource type="Script" uid="uid://beherv7nmw88t" path="res://ui/notification_ui.gd" id="7_kxei4"]
+[ext_resource type="PackedScene" uid="uid://mj7ybrndxt6f" path="res://ui/NPCRequestUI.tscn" id="7_rn3fg"]
 
 [sub_resource type="Animation" id="Animation_1m6t5"]
 resource_name = "time_passed_transition"
@@ -145,6 +146,10 @@ offset_bottom = 272.0
 layout_mode = 1
 
 [node name="NPCInteractUI" parent="." unique_id=1079707448 instance=ExtResource("6_w1lfw")]
+visible = false
+layout_mode = 1
+
+[node name="NPCRequestUI" parent="." unique_id=58538250 instance=ExtResource("7_rn3fg")]
 visible = false
 layout_mode = 1
 

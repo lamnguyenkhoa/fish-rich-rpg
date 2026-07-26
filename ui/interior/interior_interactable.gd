@@ -18,9 +18,9 @@ class_name InteriorInteractable
 @export var recover_hp: int = 0
 @export var recover_sp: int = 0
 
-var hp_cost_base_fee: float = 20.0
-var hp_cost_per_point: float = 15.0
-var hp_cost_severity_multiplier: float = 1.5
+var hp_cost_base_fee: float = 250.0
+var hp_cost_per_point: float = 60.0
+var hp_cost_severity_multiplier: float = 3.0
 
 var hover_scale: float = 1.1
 var hover_duration: float = 0.15

@@ -22,10 +22,16 @@
 [ext_resource type="PackedScene" uid="uid://diu4mttqq2xvb" path="res://entity/building/OldManMansion.tscn" id="14_se6rf"]
 [ext_resource type="PackedScene" uid="uid://bp15f55hjcc0f" path="res://ui/interior/CasinoInterior.tscn" id="14_wpelm"]
 [ext_resource type="PackedScene" uid="uid://d3nnr4ap3ib24" path="res://ui/interior/GroceryStoreInterior.tscn" id="16_d6et2"]
+[ext_resource type="PackedScene" uid="uid://o7mtseircyj4" path="res://entity/fish/PopeFish.tscn" id="18_7yuf0"]
 [ext_resource type="PackedScene" uid="uid://dtjs4ahqerl1i" path="res://ui/interior/HospitalInterior.tscn" id="18_qh2f3"]
+[ext_resource type="PackedScene" uid="uid://dn0e5wy7w8n2b" path="res://entity/fish/Octopus.tscn" id="19_igtmp"]
 [ext_resource type="PackedScene" uid="uid://cqfmtivabqwjy" path="res://ui/interior/CarShowroomInterior.tscn" id="20_0yw4d"]
+[ext_resource type="PackedScene" uid="uid://c2ihbm08ukep4" path="res://entity/fish/DoctorFish.tscn" id="20_18y8o"]
 [ext_resource type="PackedScene" uid="uid://bogjm4kvh8nx5" path="res://ui/interior/ApartmentInterior.tscn" id="21_0yw4d"]
+[ext_resource type="PackedScene" uid="uid://bql645p037mxa" path="res://entity/fish/Clownfish.tscn" id="21_3mvp2"]
 [ext_resource type="PackedScene" uid="uid://dvaeh2m7hhcuh" path="res://ui/interior/PremiumCarShowroomInterior.tscn" id="22_dly5b"]
+[ext_resource type="PackedScene" uid="uid://cirnhtavxhmn7" path="res://entity/fish/BlueTangFish.tscn" id="22_gwd47"]
+[ext_resource type="PackedScene" uid="uid://m0v4pmr67utb" path="res://entity/fish/Shark.tscn" id="23_d82x2"]
 [ext_resource type="PackedScene" uid="uid://dmp2i6ku3swct" path="res://ui/interior/RestaurantInterior.tscn" id="23_rygvj"]
 [ext_resource type="PackedScene" uid="uid://bnx4cr04wjlcw" path="res://ui/interior/OldManMansionInterior.tscn" id="24_e2y2v"]
 [ext_resource type="PackedScene" uid="uid://e5b0or7l7byh" path="res://ui/interior/PCStoreInterior.tscn" id="24_le21s"]
@@ -205,6 +211,25 @@ open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/PremiumCarShowroomInte
 [node name="OldManMansion" parent="YSortGroup" unique_id=1279427708 node_paths=PackedStringArray("open_interior_ui") instance=ExtResource("14_se6rf")]
 position = Vector2(2624, -280)
 open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/OldManMansionInterior")
+
+[node name="PopeFish" parent="YSortGroup" unique_id=1275578763 instance=ExtResource("18_7yuf0")]
+position = Vector2(2440, 120)
+
+[node name="Octopus" parent="YSortGroup" unique_id=1335753386 instance=ExtResource("19_igtmp")]
+position = Vector2(-496, 320)
+
+[node name="Doctorfish" parent="YSortGroup" unique_id=1525145442 instance=ExtResource("20_18y8o")]
+position = Vector2(1304, 752)
+
+[node name="Clownfish" parent="YSortGroup" unique_id=1872611453 instance=ExtResource("21_3mvp2")]
+position = Vector2(1888, 840)
+flip_sprite = true
+
+[node name="BlueTangFish" parent="YSortGroup" unique_id=538942683 instance=ExtResource("22_gwd47")]
+position = Vector2(-664, 840)
+
+[node name="Shark" parent="YSortGroup" unique_id=494967110 instance=ExtResource("23_d82x2")]
+position = Vector2(776, -104)
 
 [node name="WorldBorderBotAndSide" type="StaticBody2D" parent="." unique_id=493320393]
 collision_mask = 7

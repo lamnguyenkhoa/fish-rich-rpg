@@ -6,6 +6,7 @@ class_name GameUI
 @onready var time_passing_label: RichTextLabel = $TopBanner/TimePassing
 @onready var notification_ui: NotificationUI = $NotificationUI
 @onready var npc_interact_ui: NPCInteractUI = $NPCInteractUI
+@onready var npc_request_ui: NPCRequestUI = $NPCRequestUI
 @onready var tutorial_ui = $TutorialUI
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 

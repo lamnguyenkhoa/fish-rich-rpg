@@ -83,6 +83,9 @@ func load_item_database():
 func open_npc_interact_ui(target_npc: NPCFish):
 	game_ui.npc_interact_ui.open_ui(target_npc)
 
+func open_npc_request_ui(target_npc: NPCFish):
+	game_ui.npc_request_ui.open_ui(target_npc)
+
 func pass_time(time: float):
 	time_left = clamp(time_left - time, 0, time_left)
 	time_passed.emit()
@@ -101,6 +104,7 @@ func close_all_windows():
 		child.close_ui()
 	game_ui.notification_ui.close_ui()
 	game_ui.npc_interact_ui.close_ui()
+	game_ui.npc_request_ui.close_ui()
 
 func reset():
 	is_won = false

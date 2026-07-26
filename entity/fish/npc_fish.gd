@@ -18,6 +18,8 @@ var current_hp: int
 var dead = false
 var defeat_money: int
 var steal_awareness = 0
+var taunt_count = 0
+var request_count = 0
 
 func _ready() -> void:
 	if flip_sprite:
@@ -28,7 +30,7 @@ func _ready() -> void:
 		randomly_set_defeat_money()
 
 func interact(_player: Player):
-	GameManager.open_npc_interact_ui(self)
+	GameManager.open_npc_request_ui(self)
 
 func get_interact_text(_player: Player) -> String:
 	return "Interact with {0}".format([fish_name])
@@ -51,6 +53,8 @@ func death():
 
 func revive():
 	steal_awareness = 0
+	taunt_count = 0
+	request_count = 0
 	randomly_set_defeat_money()
 	current_hp = max_hp
 	dead = false
