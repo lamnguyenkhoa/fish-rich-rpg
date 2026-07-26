@@ -64,10 +64,13 @@ const SYMBOLS := [
 
 ## Ultraluck outcome mix. The remainder lands as a near miss - two matching
 ## reels, which pays nothing but reads as "so close" rather than a flat loss.
-const ULTRALUCK_TRIPLE_CHANCE := 0.85
+const ULTRALUCK_TRIPLE_CHANCE := 0.99
 
 @export var trigger_button: Button
 @export var bet_step: float = 100.0
+## House limit. The player can never wager more than this in a single spin,
+## no matter how rich they are.
+@export var max_bet: float = 200_000.0
 @export var time_cost_per_spin: float = 0.0
 ## Prank mode: rigs which symbols the reels land on instead of touching the
 ## payout after the fact. The reels still settle one at a time on ordinary
@@ -257,7 +260,7 @@ func _set_status(text: String, status_color: Color = STATUS_COLOR_NEUTRAL) -> vo
 func _refresh() -> void:
 	var idle := not _busy
 
-	_bet = clampf(_bet, bet_step, maxf(bet_step, GameManager.player.money))
+	_bet = clampf(_bet, bet_step, _max_allowed_bet())
 	# Recomputed here rather than in the bet handlers, so it always reflects the
 	# clamped bet that will actually be wagered - including the opening bet.
 	_update_ultraluck()
@@ -267,9 +270,15 @@ func _refresh() -> void:
 
 	_bet_input.editable = idle
 	_bet_down_button.disabled = not idle or _bet <= bet_step
-	_bet_up_button.disabled = not idle or _bet + bet_step > GameManager.player.money
+	_bet_up_button.disabled = not idle or _bet + bet_step > _max_allowed_bet()
 	_spin_button.disabled = not idle or GameManager.player.money < _bet
 	_leave_button.disabled = not idle
+
+
+## Highest legal wager right now: whichever is smaller of the player's money and
+## the house limit, but never below one bet step so the clamp range stays valid.
+func _max_allowed_bet() -> float:
+	return maxf(bet_step, minf(GameManager.player.money, max_bet))
 
 
 func _update_ultraluck() -> void:
@@ -286,7 +295,7 @@ func _change_bet(delta: float) -> void:
 
 func _on_bet_input_committed(text: String) -> void:
 	if text.is_valid_float():
-		_bet = clampf(text.to_float(), bet_step, maxf(bet_step, GameManager.player.money))
+		_bet = clampf(text.to_float(), bet_step, _max_allowed_bet())
 	_refresh()
 
 
@@ -338,6 +347,10 @@ func _build_ui() -> void:
 	_bet_label = _make_label("Bet", 24)
 	root.add_child(_bet_label)
 
+	var hint := _make_label("Type any amount in the box below (max %s$), or use - / +" % _format_money(max_bet), 16)
+	hint.modulate = Color(1, 1, 1, 0.7)
+	root.add_child(hint)
+
 	var controls := HBoxContainer.new()
 	controls.alignment = BoxContainer.ALIGNMENT_CENTER
 	controls.add_theme_constant_override("separation", 16)
@@ -346,9 +359,12 @@ func _build_ui() -> void:
 	_bet_down_button = _make_button("- Bet", controls)
 
 	_bet_input = LineEdit.new()
-	_bet_input.custom_minimum_size = Vector2(100, 48)
+	_bet_input.custom_minimum_size = Vector2(180, 48)
 	_bet_input.alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_bet_input.max_length = 12
+	_bet_input.placeholder_text = "Bet amount"
+	_bet_input.tooltip_text = "Type your bet and press Enter (max %s$)" % _format_money(max_bet)
+	_bet_input.select_all_on_focus = true
 	controls.add_child(_bet_input)
 
 	_bet_up_button = _make_button("+ Bet", controls)
@@ -392,10 +408,22 @@ func _make_rules_panel() -> PanelContainer:
 			+ paytable \
 			+"\nAnything else  —  you lose your bet\n\n" \
 			+"• Only a full three-of-a-kind pays - two matching is still a loss\n" \
-			+"• Every spin is independent - the reels have no memory"
+			+"• Every spin is independent - the reels have no memory\n" \
+			+"• House limit: %s$ per spin" % _format_money(max_bet)
 	margin.add_child(rules)
 
 	return panel
+
+
+## Thousands separated, no decimals - for limits shown in hint text.
+func _format_money(amount: float) -> String:
+	var digits := "%d" % int(amount)
+	var out := ""
+	for i in digits.length():
+		if i > 0 and (digits.length() - i) % 3 == 0:
+			out += ","
+		out += digits[i]
+	return out
 
 
 func _make_label(text: String, font_size: int) -> Label:

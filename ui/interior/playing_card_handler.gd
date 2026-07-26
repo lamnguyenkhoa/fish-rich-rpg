@@ -8,6 +8,15 @@ class_name PlayingCardHandler
 const CARD_DISPLAY_SIZE := Vector2(112, 156)
 const DEAL_DELAY := 0.35
 const CHARLIE_CARD_COUNT := 5
+## Table rule for player and dealer alike - nobody may stand below this.
+## Doubles as the anti-throw guard: the player cannot stand on a deliberate 11.
+const MIN_STAND_TOTAL := 17
+## Share of ultraluck rounds that get rigged. The rest play honestly, which is
+## where the occasional real loss comes from.
+const ULTRALUCK_WIN_CHANCE := 0.99
+## Dealer's rigged opening hand never exceeds this, so the "hit below 17" rule
+## always forces them into at least one bust-seeking draw.
+const ULTRALUCK_DEALER_START_CAP := 11
 
 const STATUS_COLOR_NEUTRAL := Color(1, 1, 1)
 const STATUS_COLOR_WIN := Color(0.35, 0.85, 0.35)
@@ -17,6 +26,9 @@ const STATUS_COLOR_PUSH := Color(0.9, 0.8, 0.3)
 @export var trigger_button: Button
 @export var card_back_style: int = 0
 @export var bet_step: float = 100.0
+## House limit. The player can never wager more than this in a single round,
+## no matter how rich they are.
+@export var max_bet: float = 200_000.0
 @export var time_cost_per_round: float = 0.0
 ## Prank mode: rigs which card comes off the deck instead of touching the
 ## outcome after the fact. Player draws are steered toward a strong hand,
@@ -34,6 +46,9 @@ var _dealer_hand: Array[int] = []
 var _bet: float = 0.0
 var _round_active := false
 var _busy := false
+## Decided once per round, so a rigged round stays rigged all the way through
+## instead of re-rolling the dice on every single draw.
+var _rig_round := false
 
 var _status_label: Label
 var _dealer_row: HBoxContainer
@@ -96,6 +111,7 @@ func _deal() -> void:
 	_clear_table()
 	_round_active = true
 	_busy = true
+	_rig_round = ultraluck and randf() < ULTRALUCK_WIN_CHANCE
 	_refresh()
 
 	_draw_card(_player_hand, _player_row, false, _DrawBias.PLAYER)
@@ -135,6 +151,9 @@ func _hit() -> void:
 
 func _stand() -> void:
 	if not _round_active or _busy:
+		return
+	if PlayingCard.hand_value(_player_hand) < MIN_STAND_TOTAL:
+		_set_status("Table rule: you must hit below %d." % MIN_STAND_TOTAL, STATUS_COLOR_PUSH)
 		return
 	_round_active = false
 	_busy = true
@@ -210,7 +229,7 @@ func _draw_card(hand: Array[int], row: HBoxContainer, face_down: bool = false, b
 		_deck = PlayingCard.new_shuffled_deck()
 
 	var index := _deck.size() - 1
-	if ultraluck and bias != _DrawBias.NONE:
+	if _rig_round and bias != _DrawBias.NONE:
 		index = _rigged_index(hand, bias)
 	var card: int = _deck[index]
 	_deck.remove_at(index)
@@ -234,61 +253,73 @@ func _draw_card(hand: Array[int], row: HBoxContainer, face_down: bool = false, b
 ## Picks which deck index gets drawn next under ultraluck. Scans the whole
 ## remaining deck rather than the literal top card, since the deck is just an
 ## in-memory array and nothing else observes draw order.
+## Total `hand` would reach if it drew the card sitting at `deck_index`.
+func _total_with(hand: Array[int], deck_index: int) -> int:
+	var test_hand := hand.duplicate()
+	test_hand.append(_deck[deck_index])
+	return PlayingCard.hand_value(test_hand)
+
+
 func _rigged_index(hand: Array[int], bias: _DrawBias) -> int:
 	match bias:
 		_DrawBias.PLAYER:
-			# Prefer landing in 17-21 (picked at random among ties so it's not
-			# always a flat 21); otherwise take the highest total that doesn't bust.
+			# Land in 17-21 whenever possible. Failing that, take a near-best
+			# total picked at random rather than the single highest card, or the
+			# opening card would be a giveaway Ace every single hand.
 			var strong_hits: Array[int] = []
-			var best_index := -1
 			var best_total := -1
 			for i in _deck.size():
-				var test_hand := hand.duplicate()
-				test_hand.append(_deck[i])
-				var total := PlayingCard.hand_value(test_hand)
-				if total > 21:
-					continue
-				if total >= 17:
-					strong_hits.append(i)
-				if total > best_total:
-					best_total = total
-					best_index = i
+				var total := _total_with(hand, i)
+				if total <= 21:
+					best_total = maxi(best_total, total)
+					if total >= MIN_STAND_TOTAL:
+						strong_hits.append(i)
 			if not strong_hits.is_empty():
 				return strong_hits[randi() % strong_hits.size()]
-			return best_index if best_index != -1 else _deck.size() - 1
+
+			var near_best: Array[int] = []
+			for i in _deck.size():
+				var total := _total_with(hand, i)
+				if total <= 21 and total >= best_total - 2:
+					near_best.append(i)
+			if not near_best.is_empty():
+				return near_best[randi() % near_best.size()]
+			return _deck.size() - 1
 
 		_DrawBias.DEALER_WEAK:
-			# Keep the dealer's total as low as possible, so the standard
-			# "must hit below 17" rule forces more of these rigged draws.
+			# Any weak opening will do, so pick at random under the cap instead
+			# of the strict minimum - otherwise the dealer always shows a 2.
+			var weak_hits: Array[int] = []
 			var low_index := _deck.size() - 1
 			var low_total := 9999
 			for i in _deck.size():
-				var test_hand := hand.duplicate()
-				test_hand.append(_deck[i])
-				var total := PlayingCard.hand_value(test_hand)
+				var total := _total_with(hand, i)
+				if total <= ULTRALUCK_DEALER_START_CAP:
+					weak_hits.append(i)
 				if total < low_total:
 					low_total = total
 					low_index = i
+			if not weak_hits.is_empty():
+				return weak_hits[randi() % weak_hits.size()]
 			return low_index
 
 		_DrawBias.DEALER_RISKY:
-			# Bust if at all possible; otherwise push as close to 21 as
-			# possible so the next mandatory hit is even more likely to bust.
+			# Bust if at all possible. Otherwise stay *below* 17 so the dealer is
+			# forced to draw again and gets another chance to bust - drawing as
+			# high as possible would let them stand on a strong hand instead.
 			var bust_hits: Array[int] = []
-			var high_index := -1
-			var high_total := -1
+			var stuck_hits: Array[int] = []
 			for i in _deck.size():
-				var test_hand := hand.duplicate()
-				test_hand.append(_deck[i])
-				var total := PlayingCard.hand_value(test_hand)
+				var total := _total_with(hand, i)
 				if total > 21:
 					bust_hits.append(i)
-				elif total > high_total:
-					high_total = total
-					high_index = i
+				elif total < MIN_STAND_TOTAL:
+					stuck_hits.append(i)
 			if not bust_hits.is_empty():
 				return bust_hits[randi() % bust_hits.size()]
-			return high_index if high_index != -1 else _deck.size() - 1
+			if not stuck_hits.is_empty():
+				return stuck_hits[randi() % stuck_hits.size()]
+			return _deck.size() - 1
 
 		_:
 			return _deck.size() - 1
@@ -337,7 +368,7 @@ func _refresh() -> void:
 	else:
 		_dealer_label.text = "Dealer  —  %d" % PlayingCard.hand_value(_dealer_hand)
 
-	_bet = clampf(_bet, bet_step, maxf(bet_step, GameManager.player.money))
+	_bet = clampf(_bet, bet_step, _max_allowed_bet())
 	# Recomputed here rather than in the bet handlers, so it always reflects the
 	# clamped bet that will actually be wagered - including the opening bet.
 	_update_ultraluck()
@@ -347,15 +378,24 @@ func _refresh() -> void:
 
 	_bet_input.editable = idle
 	_bet_down_button.disabled = not idle or _bet <= bet_step
-	_bet_up_button.disabled = not idle or _bet + bet_step > GameManager.player.money
+	_bet_up_button.disabled = not idle or _bet + bet_step > _max_allowed_bet()
 	_deal_button.disabled = not idle or GameManager.player.money < _bet
 	_leave_button.disabled = not idle
 	_hit_button.disabled = not _round_active or _busy
-	_stand_button.disabled = not _round_active or _busy
+	# Nobody stands below 17 at this table, which also stops the player from
+	# deliberately throwing a hand by standing on a low total.
+	_stand_button.disabled = not _round_active or _busy \
+			or PlayingCard.hand_value(_player_hand) < MIN_STAND_TOTAL
+
+
+## Highest legal wager right now: whichever is smaller of the player's money and
+## the house limit, but never below one bet step so the clamp range stays valid.
+func _max_allowed_bet() -> float:
+	return maxf(bet_step, minf(GameManager.player.money, max_bet))
 
 
 func _update_ultraluck() -> void:
-	if (_bet >= ultraluck_bet_lower_threshold and GameManager.is_won) or force_ultraluck:
+	if (_bet >= ultraluck_bet_lower_threshold and not GameManager.is_won) or force_ultraluck:
 		ultraluck = true
 	else:
 		ultraluck = false
@@ -368,7 +408,7 @@ func _change_bet(delta: float) -> void:
 
 func _on_bet_input_committed(text: String) -> void:
 	if text.is_valid_float():
-		_bet = clampf(text.to_float(), bet_step, maxf(bet_step, GameManager.player.money))
+		_bet = clampf(text.to_float(), bet_step, _max_allowed_bet())
 	_refresh()
 
 
@@ -411,6 +451,10 @@ func _build_ui() -> void:
 	_bet_label = _make_label("Bet", 24)
 	root.add_child(_bet_label)
 
+	var hint := _make_label("Type any amount in the box below (max %s$), or use - / +" % _format_money(max_bet), 16)
+	hint.modulate = Color(1, 1, 1, 0.7)
+	root.add_child(hint)
+
 	var controls := HBoxContainer.new()
 	controls.alignment = BoxContainer.ALIGNMENT_CENTER
 	controls.add_theme_constant_override("separation", 16)
@@ -419,9 +463,12 @@ func _build_ui() -> void:
 	_bet_down_button = _make_button("- Bet", controls)
 
 	_bet_input = LineEdit.new()
-	_bet_input.custom_minimum_size = Vector2(100, 48)
+	_bet_input.custom_minimum_size = Vector2(180, 48)
 	_bet_input.alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_bet_input.max_length = 12
+	_bet_input.placeholder_text = "Bet amount"
+	_bet_input.tooltip_text = "Type your bet and press Enter (max %s$)" % _format_money(max_bet)
+	_bet_input.select_all_on_focus = true
 	controls.add_child(_bet_input)
 
 	_bet_up_button = _make_button("+ Bet", controls)
@@ -464,13 +511,26 @@ func _make_rules_panel() -> PanelContainer:
 			+"• Face cards count as 10\n" \
 			+"• Blackjack (21 on 2 cards) pays 3:2\n" \
 			+"• 21 on any hand, or 5 cards without busting (5-card Charlie), wins instantly\n" \
-			+"• Dealer must hit below 17, and stand on 17+\n" \
+			+"• Nobody stands below 17 - you and the dealer alike must keep hitting\n" \
+			+"• Dealer stands on 17+\n" \
 			+"• Bust (over 21) loses your bet\n" \
 			+"• A tied total is a push - your bet comes back\n" \
-			+"• Every hand is dealt from a freshly shuffled single deck - no card counting here"
+			+"• Every hand is dealt from a freshly shuffled single deck - no card counting here\n" \
+			+"• House limit: %s$ per hand" % _format_money(max_bet)
 	margin.add_child(rules)
 
 	return panel
+
+
+## Thousands separated, no decimals - for limits shown in hint text.
+func _format_money(amount: float) -> String:
+	var digits := "%d" % int(amount)
+	var out := ""
+	for i in digits.length():
+		if i > 0 and (digits.length() - i) % 3 == 0:
+			out += ","
+		out += digits[i]
+	return out
 
 
 func _make_label(text: String, font_size: int) -> Label:
