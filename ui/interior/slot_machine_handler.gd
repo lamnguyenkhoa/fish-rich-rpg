@@ -167,12 +167,12 @@ func _resolve(result: Array[int], wager: float) -> void:
 
 	if result[0] == result[1] and result[1] == result[2]:
 		multiplier = SYMBOLS[result[0]]["payout"]
-		message = "%s x3! You win %.2f$." % [SYMBOLS[result[0]]["name"], wager * multiplier]
+		message = "%s x3! You win $%.2f." % [SYMBOLS[result[0]]["name"], wager * multiplier]
 		status_color = STATUS_COLOR_JACKPOT
 	elif result[0] == result[1] or result[1] == result[2] or result[0] == result[2]:
-		message = "So close! You lose %.2f$." % wager
+		message = "So close! You lose $%.2f." % wager
 	else:
-		message = "No match. You lose %.2f$." % wager
+		message = "No match. You lose $%.2f." % wager
 
 	if multiplier > 0:
 		GameManager.player.money += wager * multiplier
@@ -264,7 +264,7 @@ func _refresh() -> void:
 	# Recomputed here rather than in the bet handlers, so it always reflects the
 	# clamped bet that will actually be wagered - including the opening bet.
 	_update_ultraluck()
-	_bet_label.text = "Bet: %.2f$" % _bet
+	_bet_label.text = "Bet: $%.2f" % _bet
 	if not _bet_input.has_focus():
 		_bet_input.text = "%.2f" % _bet
 
@@ -347,7 +347,7 @@ func _build_ui() -> void:
 	_bet_label = _make_label("Bet", 24)
 	root.add_child(_bet_label)
 
-	var hint := _make_label("Type any amount in the box below (max %s$), or use - / +" % _format_money(max_bet), 16)
+	var hint := _make_label("Type any amount in the box below (max $%s), or use - / +" % _format_money(max_bet), 16)
 	hint.modulate = Color(1, 1, 1, 0.7)
 	root.add_child(hint)
 
@@ -363,7 +363,7 @@ func _build_ui() -> void:
 	_bet_input.alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_bet_input.max_length = 12
 	_bet_input.placeholder_text = "Bet amount"
-	_bet_input.tooltip_text = "Type your bet and press Enter (max %s$)" % _format_money(max_bet)
+	_bet_input.tooltip_text = "Type your bet and press Enter (max $%s)" % _format_money(max_bet)
 	_bet_input.select_all_on_focus = true
 	controls.add_child(_bet_input)
 
@@ -409,7 +409,7 @@ func _make_rules_panel() -> PanelContainer:
 			+"\nAnything else  —  you lose your bet\n\n" \
 			+"• Only a full three-of-a-kind pays - two matching is still a loss\n" \
 			+"• Every spin is independent - the reels have no memory\n" \
-			+"• House limit: %s$ per spin" % _format_money(max_bet)
+			+"• House limit: $%s per spin" % _format_money(max_bet)
 	margin.add_child(rules)
 
 	return panel

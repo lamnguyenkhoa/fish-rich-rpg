@@ -290,7 +290,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 1, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 22
 text = "Draw 1
-($2,99)"
+($5,99)"
 
 [node name="DrawTen" type="Button" parent="TabContainer/GachaScreen" unique_id=942456815]
 layout_mode = 0
@@ -303,7 +303,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 1, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 22
 text = "Draw 10
-($29,9)"
+($59,9)"
 
 [node name="BackButton" type="Button" parent="TabContainer/GachaScreen" unique_id=1412770983]
 layout_mode = 0

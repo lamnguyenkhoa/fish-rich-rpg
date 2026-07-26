@@ -174,7 +174,7 @@ func _auto_win(reason: String) -> void:
 	_round_active = false
 	_reveal_hole_card()
 	GameManager.player.money += _bet * 2.0
-	_set_status("%s You win %.2f$ automatically." % [reason, _bet], STATUS_COLOR_WIN)
+	_set_status("%s You win $%.2f automatically." % [reason, _bet], STATUS_COLOR_WIN)
 	_refresh()
 
 
@@ -188,20 +188,20 @@ func _resolve() -> void:
 	var message := ""
 
 	if player_total > 21:
-		message = "Bust! You lose %.2f$." % _bet
+		message = "Bust! You lose $%.2f." % _bet
 	elif player_natural and not dealer_natural:
 		payout = _bet * 2.5 # blackjack pays 3:2
-		message = "Blackjack! You win %.2f$." % (_bet * 1.5)
+		message = "Blackjack! You win $%.2f." % (_bet * 1.5)
 	elif dealer_natural and not player_natural:
-		message = "Dealer has blackjack. You lose %.2f$." % _bet
+		message = "Dealer has blackjack. You lose $%.2f." % _bet
 	elif dealer_total > 21:
 		payout = _bet * 2.0
-		message = "Dealer busts! You win %.2f$." % _bet
+		message = "Dealer busts! You win $%.2f." % _bet
 	elif player_total > dealer_total:
 		payout = _bet * 2.0
-		message = "%d beats %d. You win %.2f$." % [player_total, dealer_total, _bet]
+		message = "%d beats %d. You win $%.2f." % [player_total, dealer_total, _bet]
 	elif player_total < dealer_total:
-		message = "%d loses to %d. You lose %.2f$." % [player_total, dealer_total, _bet]
+		message = "%d loses to %d. You lose $%.2f." % [player_total, dealer_total, _bet]
 	else:
 		payout = _bet
 		message = "Push at %d. Your bet comes back." % player_total
@@ -372,7 +372,7 @@ func _refresh() -> void:
 	# Recomputed here rather than in the bet handlers, so it always reflects the
 	# clamped bet that will actually be wagered - including the opening bet.
 	_update_ultraluck()
-	_bet_label.text = "Bet: %.2f$" % _bet
+	_bet_label.text = "Bet: $%.2f" % _bet
 	if not _bet_input.has_focus():
 		_bet_input.text = "%.2f" % _bet
 
@@ -451,7 +451,7 @@ func _build_ui() -> void:
 	_bet_label = _make_label("Bet", 24)
 	root.add_child(_bet_label)
 
-	var hint := _make_label("Type any amount in the box below (max %s$), or use - / +" % _format_money(max_bet), 16)
+	var hint := _make_label("Type any amount in the box below (max $%s), or use - / +" % _format_money(max_bet), 16)
 	hint.modulate = Color(1, 1, 1, 0.7)
 	root.add_child(hint)
 
@@ -467,7 +467,7 @@ func _build_ui() -> void:
 	_bet_input.alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_bet_input.max_length = 12
 	_bet_input.placeholder_text = "Bet amount"
-	_bet_input.tooltip_text = "Type your bet and press Enter (max %s$)" % _format_money(max_bet)
+	_bet_input.tooltip_text = "Type your bet and press Enter (max $%s)" % _format_money(max_bet)
 	_bet_input.select_all_on_focus = true
 	controls.add_child(_bet_input)
 
@@ -516,7 +516,7 @@ func _make_rules_panel() -> PanelContainer:
 			+"• Bust (over 21) loses your bet\n" \
 			+"• A tied total is a push - your bet comes back\n" \
 			+"• Every hand is dealt from a freshly shuffled single deck - no card counting here\n" \
-			+"• House limit: %s$ per hand" % _format_money(max_bet)
+			+"• House limit: $%s per hand" % _format_money(max_bet)
 	margin.add_child(rules)
 
 	return panel
