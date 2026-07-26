@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://e5b0or7l7byh"]
+
+[ext_resource type="Script" uid="uid://ctlbquygas2fk" path="res://ui/interior/building_interior.gd" id="1_vt35s"]
+[ext_resource type="Texture2D" uid="uid://df151biqer0yt" path="res://asset/sprite/interior/pc_store_interior.png" id="2_vt35s"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="3_yfxg4"]
+[ext_resource type="PackedScene" uid="uid://slk6ug7rqxnh" path="res://ui/interior/InteriorInteractable.tscn" id="4_u0dcd"]
+[ext_resource type="Texture2D" uid="uid://cp3gi5460lph6" path="res://asset/sprite/interior/pc_store_graphic_card.png" id="6_oe715"]
+[ext_resource type="Texture2D" uid="uid://cjsrubtgluv7m" path="res://asset/sprite/interior/pc_store_ram.png" id="7_vt35s"]
+[ext_resource type="Texture2D" uid="uid://cc2f7pgxr8pvv" path="res://asset/sprite/fish/clownfish.png" id="9_0e3du"]
+
+[node name="PCStoreInterior" type="Control" unique_id=1778544443]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_vt35s")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1724945157]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.14901961, 0.14470306, 0.09888961, 1)
+
+[node name="InteriorArt" type="TextureRect" parent="." unique_id=1713435364]
+self_modulate = Color(0.40234375, 0.40234375, 0.40234375, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = -240.0
+offset_right = 1001.76697
+offset_bottom = 280.0
+grow_vertical = 2
+texture = ExtResource("2_vt35s")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="WorkLabel" type="RichTextLabel" parent="." unique_id=312894742]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -342.0
+offset_top = 80.0
+offset_right = -22.0
+offset_bottom = 232.0
+grow_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("3_yfxg4")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Buying stuff at [color=yellow][wave]the PC store[/wave][/color] ...[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="GraphicCard" parent="." unique_id=1734670431 instance=ExtResource("4_u0dcd")]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 432.0
+offset_right = 992.0
+offset_bottom = 549.0
+pivot_offset = Vector2(64, 58.5)
+icon = ExtResource("6_oe715")
+image = ExtResource("6_oe715")
+money_cost = 5599.0
+limited_stock = true
+max_service_stock = 8
+pop_up_content = "Buy a powerful graphic card"
+
+[node name="RAMStick" parent="." unique_id=1613992084 instance=ExtResource("4_u0dcd")]
+layout_mode = 0
+offset_left = 880.0
+offset_top = 208.0
+offset_right = 988.0
+offset_bottom = 279.0
+pivot_offset = Vector2(54, 35.5)
+icon = ExtResource("7_vt35s")
+image = ExtResource("7_vt35s")
+money_cost = 1099.0
+limited_stock = true
+max_service_stock = 12
+pop_up_content = "Buy a pair of latest RAM stick"
+
+[node name="Character" type="TextureRect" parent="." unique_id=638636719]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -352.0
+offset_top = -218.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("9_0e3du")
+stretch_mode = 4
