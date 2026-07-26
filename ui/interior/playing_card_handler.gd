@@ -1,17 +1,33 @@
 extends ColorRect
 class_name PlayingCardHandler
+## Mostly self-contained, only need PlayingCard
+
 ## Blackjack table for the casino. Stays hidden until `trigger_button` is
 ## pressed, then plays a normal round against the dealer using the player's money.
 
 const CARD_DISPLAY_SIZE := Vector2(112, 156)
 const DEAL_DELAY := 0.35
-const RESHUFFLE_BELOW := 15
+const CHARLIE_CARD_COUNT := 5
+
+const STATUS_COLOR_NEUTRAL := Color(1, 1, 1)
+const STATUS_COLOR_WIN := Color(0.35, 0.85, 0.35)
+const STATUS_COLOR_LOSE := Color(0.9, 0.3, 0.3)
+const STATUS_COLOR_PUSH := Color(0.9, 0.8, 0.3)
 
 @export var trigger_button: Button
 @export var card_back_style: int = 0
 @export var bet_step: float = 100.0
-@export var deck_count: int = 4
-@export var time_cost_per_round: float = 5.0
+@export var time_cost_per_round: float = 0.0
+## Prank mode: rigs which card comes off the deck instead of touching the
+## outcome after the fact. Player draws are steered toward a strong hand,
+## the dealer's starting hand is steered weak so the normal "hit below 17"
+## rule forces more draws, and those forced draws are steered toward busting.
+## The player can still lose - a card that satisfies the bias just isn't
+## always left in the deck - so it plays like a bad-beat streak, not a switch.
+var ultraluck = false
+@export var force_ultraluck: bool = false
+@export var ultraluck_bet_lower_threshold: float = 100_000
+@export var ultraluck_bet_upper_threshold: float = 1_100_000
 
 var _deck: Array[int] = []
 var _player_hand: Array[int] = []
@@ -26,6 +42,7 @@ var _player_row: HBoxContainer
 var _dealer_label: Label
 var _player_label: Label
 var _bet_label: Label
+var _bet_input: LineEdit
 var _bet_down_button: Button
 var _bet_up_button: Button
 var _deal_button: Button
@@ -51,7 +68,7 @@ func _input(event: InputEvent) -> void:
 
 func open_table() -> void:
 	visible = true
-	_deck = PlayingCard.new_shuffled_deck(deck_count)
+	_deck = PlayingCard.new_shuffled_deck()
 	_bet = bet_step
 	_clear_table()
 	_set_status("Place your bet and deal.")
@@ -74,21 +91,21 @@ func _deal() -> void:
 	GameManager.player.money -= _bet
 	if time_cost_per_round > 0:
 		GameManager.pass_time(time_cost_per_round)
-	if _deck.size() < RESHUFFLE_BELOW:
-		_deck = PlayingCard.new_shuffled_deck(deck_count)
+	# No shoe carried between rounds - every deal is a brand new 52-card deck.
+	_deck = PlayingCard.new_shuffled_deck()
 
 	_clear_table()
 	_round_active = true
 	_busy = true
 	_refresh()
 
-	_draw_card(_player_hand, _player_row)
+	_draw_card(_player_hand, _player_row, false, _DrawBias.PLAYER)
 	await _pause()
-	_draw_card(_dealer_hand, _dealer_row)
+	_draw_card(_dealer_hand, _dealer_row, false, _DrawBias.DEALER_WEAK)
 	await _pause()
-	_draw_card(_player_hand, _player_row)
+	_draw_card(_player_hand, _player_row, false, _DrawBias.PLAYER)
 	await _pause()
-	_draw_card(_dealer_hand, _dealer_row, true)
+	_draw_card(_dealer_hand, _dealer_row, true, _DrawBias.DEALER_WEAK)
 	_busy = false
 
 	if PlayingCard.is_natural_blackjack(_player_hand) or PlayingCard.is_natural_blackjack(_dealer_hand):
@@ -105,7 +122,7 @@ func _deal() -> void:
 func _hit() -> void:
 	if not _round_active or _busy:
 		return
-	_draw_card(_player_hand, _player_row)
+	_draw_card(_player_hand, _player_row, false, _DrawBias.PLAYER)
 	_refresh()
 
 	var total := PlayingCard.hand_value(_player_hand)
@@ -113,8 +130,8 @@ func _hit() -> void:
 		_round_active = false
 		_reveal_hole_card()
 		_resolve()
-	elif total == 21:
-		_stand()
+	elif total == 21 or _player_hand.size() >= CHARLIE_CARD_COUNT:
+		_auto_win("21!" if total == 21 else "%d-card Charlie!" % _player_hand.size())
 
 
 func _stand() -> void:
@@ -127,12 +144,20 @@ func _stand() -> void:
 	_reveal_hole_card()
 	await _pause()
 	while PlayingCard.hand_value(_dealer_hand) < 17:
-		_draw_card(_dealer_hand, _dealer_row)
+		_draw_card(_dealer_hand, _dealer_row, false, _DrawBias.DEALER_RISKY)
 		_refresh()
 		await _pause()
 
 	_busy = false
 	_resolve()
+
+
+func _auto_win(reason: String) -> void:
+	_round_active = false
+	_reveal_hole_card()
+	GameManager.player.money += _bet * 2.0
+	_set_status("%s You win %.2f$ automatically." % [reason, _bet], STATUS_COLOR_WIN)
+	_refresh()
 
 
 func _resolve() -> void:
@@ -166,17 +191,30 @@ func _resolve() -> void:
 	if payout > 0:
 		GameManager.player.money += payout
 
+	var status_color := STATUS_COLOR_LOSE
+	if payout > _bet:
+		status_color = STATUS_COLOR_WIN
+	elif payout == _bet:
+		status_color = STATUS_COLOR_PUSH
+
 	_round_active = false
-	_set_status(message)
+	_set_status(message, status_color)
 	_refresh()
 
 
 # ------------------------------------------------------------------- helpers
 
-func _draw_card(hand: Array[int], row: HBoxContainer, face_down: bool = false) -> void:
+enum _DrawBias {NONE, PLAYER, DEALER_WEAK, DEALER_RISKY}
+
+func _draw_card(hand: Array[int], row: HBoxContainer, face_down: bool = false, bias: _DrawBias = _DrawBias.NONE) -> void:
 	if _deck.is_empty():
-		_deck = PlayingCard.new_shuffled_deck(deck_count)
-	var card: int = _deck.pop_back()
+		_deck = PlayingCard.new_shuffled_deck()
+
+	var index := _deck.size() - 1
+	if ultraluck and bias != _DrawBias.NONE:
+		index = _rigged_index(hand, bias)
+	var card: int = _deck[index]
+	_deck.remove_at(index)
 	hand.append(card)
 
 	var rect := TextureRect.new()
@@ -192,6 +230,69 @@ func _draw_card(hand: Array[int], row: HBoxContainer, face_down: bool = false) -
 	var tween := create_tween()
 	tween.tween_property(rect, "modulate:a", 1.0, 0.15)
 	SoundManager.play_button_click_sfx()
+
+
+## Picks which deck index gets drawn next under ultraluck. Scans the whole
+## remaining deck rather than the literal top card, since the deck is just an
+## in-memory array and nothing else observes draw order.
+func _rigged_index(hand: Array[int], bias: _DrawBias) -> int:
+	match bias:
+		_DrawBias.PLAYER:
+			# Prefer landing in 17-21 (picked at random among ties so it's not
+			# always a flat 21); otherwise take the highest total that doesn't bust.
+			var strong_hits: Array[int] = []
+			var best_index := -1
+			var best_total := -1
+			for i in _deck.size():
+				var test_hand := hand.duplicate()
+				test_hand.append(_deck[i])
+				var total := PlayingCard.hand_value(test_hand)
+				if total > 21:
+					continue
+				if total >= 17:
+					strong_hits.append(i)
+				if total > best_total:
+					best_total = total
+					best_index = i
+			if not strong_hits.is_empty():
+				return strong_hits[randi() % strong_hits.size()]
+			return best_index if best_index != -1 else _deck.size() - 1
+
+		_DrawBias.DEALER_WEAK:
+			# Keep the dealer's total as low as possible, so the standard
+			# "must hit below 17" rule forces more of these rigged draws.
+			var low_index := _deck.size() - 1
+			var low_total := 9999
+			for i in _deck.size():
+				var test_hand := hand.duplicate()
+				test_hand.append(_deck[i])
+				var total := PlayingCard.hand_value(test_hand)
+				if total < low_total:
+					low_total = total
+					low_index = i
+			return low_index
+
+		_DrawBias.DEALER_RISKY:
+			# Bust if at all possible; otherwise push as close to 21 as
+			# possible so the next mandatory hit is even more likely to bust.
+			var bust_hits: Array[int] = []
+			var high_index := -1
+			var high_total := -1
+			for i in _deck.size():
+				var test_hand := hand.duplicate()
+				test_hand.append(_deck[i])
+				var total := PlayingCard.hand_value(test_hand)
+				if total > 21:
+					bust_hits.append(i)
+				elif total > high_total:
+					high_total = total
+					high_index = i
+			if not bust_hits.is_empty():
+				return bust_hits[randi() % bust_hits.size()]
+			return high_index if high_index != -1 else _deck.size() - 1
+
+		_:
+			return _deck.size() - 1
 
 
 func _reveal_hole_card() -> void:
@@ -216,8 +317,9 @@ func _pause() -> void:
 	await get_tree().create_timer(DEAL_DELAY).timeout
 
 
-func _set_status(text: String) -> void:
+func _set_status(text: String, status_color: Color = STATUS_COLOR_NEUTRAL) -> void:
 	_status_label.text = text
+	_status_label.add_theme_color_override("font_color", status_color)
 
 
 func _has_hidden_card() -> bool:
@@ -237,8 +339,14 @@ func _refresh() -> void:
 		_dealer_label.text = "Dealer  —  %d" % PlayingCard.hand_value(_dealer_hand)
 
 	_bet = clampf(_bet, bet_step, maxf(bet_step, GameManager.player.money))
+	# Recomputed here rather than in the bet handlers, so it always reflects the
+	# clamped bet that will actually be wagered - including the opening bet.
+	_update_ultraluck()
 	_bet_label.text = "Bet: %.2f$" % _bet
+	if not _bet_input.has_focus():
+		_bet_input.text = "%.2f" % _bet
 
+	_bet_input.editable = idle
 	_bet_down_button.disabled = not idle or _bet <= bet_step
 	_bet_up_button.disabled = not idle or _bet + bet_step > GameManager.player.money
 	_deal_button.disabled = not idle or GameManager.player.money < _bet
@@ -247,8 +355,21 @@ func _refresh() -> void:
 	_stand_button.disabled = not _round_active or _busy
 
 
+func _update_ultraluck() -> void:
+	if (_bet >= ultraluck_bet_lower_threshold and _bet <= ultraluck_bet_upper_threshold) or force_ultraluck:
+		ultraluck = true
+	else:
+		ultraluck = false
+
+
 func _change_bet(delta: float) -> void:
 	_bet += delta
+	_refresh()
+
+
+func _on_bet_input_committed(text: String) -> void:
+	if text.is_valid_float():
+		_bet = clampf(text.to_float(), bet_step, maxf(bet_step, GameManager.player.money))
 	_refresh()
 
 
@@ -263,10 +384,17 @@ func _build_ui() -> void:
 	margin.add_theme_constant_override("margin_bottom", 24)
 	add_child(margin)
 
+	var layout := HBoxContainer.new()
+	layout.add_theme_constant_override("separation", 32)
+	margin.add_child(layout)
+
+	layout.add_child(_make_rules_panel())
+
 	var root := VBoxContainer.new()
 	root.add_theme_constant_override("separation", 12)
 	root.alignment = BoxContainer.ALIGNMENT_CENTER
-	margin.add_child(root)
+	root.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	layout.add_child(root)
 
 	_status_label = _make_label("", 28)
 	root.add_child(_status_label)
@@ -290,18 +418,60 @@ func _build_ui() -> void:
 	root.add_child(controls)
 
 	_bet_down_button = _make_button("- Bet", controls)
+
+	_bet_input = LineEdit.new()
+	_bet_input.custom_minimum_size = Vector2(100, 48)
+	_bet_input.alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_bet_input.max_length = 12
+	controls.add_child(_bet_input)
+
 	_bet_up_button = _make_button("+ Bet", controls)
 	_deal_button = _make_button("Deal", controls)
 	_hit_button = _make_button("Hit", controls)
 	_stand_button = _make_button("Stand", controls)
 	_leave_button = _make_button("Leave table", controls)
 
+	_bet_input.text_submitted.connect(_on_bet_input_committed)
+	_bet_input.focus_exited.connect(func(): _on_bet_input_committed(_bet_input.text))
 	_bet_down_button.pressed.connect(_change_bet.bind(-bet_step))
 	_bet_up_button.pressed.connect(_change_bet.bind(bet_step))
 	_deal_button.pressed.connect(_deal)
 	_hit_button.pressed.connect(_hit)
 	_stand_button.pressed.connect(_stand)
 	_leave_button.pressed.connect(close_table)
+
+
+func _make_rules_panel() -> PanelContainer:
+	var panel := PanelContainer.new()
+	panel.custom_minimum_size = Vector2(260, 0)
+	panel.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+
+	var margin := MarginContainer.new()
+	margin.add_theme_constant_override("margin_left", 16)
+	margin.add_theme_constant_override("margin_right", 16)
+	margin.add_theme_constant_override("margin_top", 16)
+	margin.add_theme_constant_override("margin_bottom", 16)
+	panel.add_child(margin)
+
+	var rules := RichTextLabel.new()
+	rules.bbcode_enabled = true
+	rules.fit_content = true
+	rules.scroll_active = false
+	rules.add_theme_font_size_override("normal_font_size", 18)
+	rules.add_theme_font_size_override("bold_font_size", 20)
+	rules.text = "[b]Blackjack Rules[/b]\n\n" \
+			+"Get closer to 21 than the dealer without going over.\n\n" \
+			+"• Aces count as 11 or 1\n" \
+			+"• Face cards count as 10\n" \
+			+"• Blackjack (21 on 2 cards) pays 3:2\n" \
+			+"• 21 on any hand, or 5 cards without busting (5-card Charlie), wins instantly\n" \
+			+"• Dealer must hit below 17, and stand on 17+\n" \
+			+"• Bust (over 21) loses your bet\n" \
+			+"• A tied total is a push - your bet comes back\n" \
+			+"• Every hand is dealt from a freshly shuffled single deck - no card counting here"
+	margin.add_child(rules)
+
+	return panel
 
 
 func _make_label(text: String, font_size: int) -> Label:

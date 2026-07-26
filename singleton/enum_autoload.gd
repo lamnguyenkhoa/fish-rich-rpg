@@ -48,5 +48,6 @@ enum ServiceSpecialCase {
 
 enum ItemSpecialCase {
     NONE,
-    SMARTPHONE = 100
+    SMARTPHONE = 100,
+    CAR = 200,
 }

@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cbbboxirg8tej" path="res://asset/sprite/interior/cauliflower.png" id="6_72vtv"]
 [ext_resource type="Texture2D" uid="uid://c1jhap0kp4cro" path="res://asset/sprite/interior/chili_pepper.png" id="7_7kk27"]
 [ext_resource type="Texture2D" uid="uid://gcg88nbiuy3v" path="res://asset/sprite/interior/garlic.png" id="8_p7evw"]
+[ext_resource type="Texture2D" uid="uid://cc2f7pgxr8pvv" path="res://asset/sprite/fish/clownfish.png" id="9_72vtv"]
 
 [node name="GroceryStoreInterior" type="Control" unique_id=1178219086]
 layout_mode = 3
@@ -110,3 +111,17 @@ icon = ExtResource("8_p7evw")
 image = ExtResource("8_p7evw")
 money_cost = 3.1
 pop_up_content = "Buy a box of garlic"
+
+[node name="Character" type="TextureRect" parent="." unique_id=1289883409]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -352.0
+offset_top = -218.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("9_72vtv")
+stretch_mode = 4

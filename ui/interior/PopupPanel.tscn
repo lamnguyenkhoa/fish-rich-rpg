@@ -17,6 +17,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/line_separation = 4
+bbcode_enabled = true
 text = "Take a nap (15s). Recover all your HP.
 Really?"
 fit_content = true

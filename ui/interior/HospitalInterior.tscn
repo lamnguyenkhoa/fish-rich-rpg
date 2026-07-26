@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c36vaj044cwif" path="res://asset/sprite/interior/hospital_helpdesk.png" id="5_4th2i"]
 [ext_resource type="Texture2D" uid="uid://b20b6wgjg20wh" path="res://asset/sprite/interior/hospital_seat.png" id="6_4v8ec"]
 [ext_resource type="Texture2D" uid="uid://djccx6bmtxwep" path="res://asset/sprite/interior/hospital_doctor_room.png" id="7_4v8ec"]
+[ext_resource type="Texture2D" uid="uid://dk4g8ofabo2pp" path="res://asset/sprite/fish/doctorfish_doctor.png" id="8_5dggp"]
 
 [node name="HospitalInterior" type="Control" unique_id=1605184919]
 layout_mode = 3
@@ -105,3 +106,20 @@ money_cost = 1500.0
 play_time_pass_transition = true
 pop_up_content = "Consult the doctor and improve body health. VIP package with skip waiting queue."
 gain_stat = Array[int]([10, 0, 10, 0, 0])
+
+[node name="Character" type="TextureRect" parent="." unique_id=1578356539]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -461.0
+offset_top = -312.0
+offset_right = -51.5
+offset_bottom = -39.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_5dggp")
+expand_mode = 3
+stretch_mode = 4

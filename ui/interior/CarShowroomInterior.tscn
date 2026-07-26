@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://slk6ug7rqxnh" path="res://ui/interior/InteriorInteractable.tscn" id="4_hl1l0"]
 [ext_resource type="Texture2D" uid="uid://c47brpbbe6t6e" path="res://asset/sprite/interior/car_1.png" id="6_6pn7u"]
 [ext_resource type="Texture2D" uid="uid://bksqflea30rnp" path="res://asset/sprite/interior/car_2.png" id="7_b1l65"]
+[ext_resource type="Texture2D" uid="uid://bp7jc5fb0ymxu" path="res://asset/sprite/fish/electric_eel_warden.png" id="7_r4r10"]
 
 [node name="CarShowroomInterior" type="Control" unique_id=1771169365]
 layout_mode = 3
@@ -90,3 +91,18 @@ money_cost = 84000.0
 limited_stock = true
 pop_up_content = "Buy the Fincedes-Benth EQS"
 give_item_id = 10001
+
+[node name="Character" type="TextureRect" parent="." unique_id=360742441]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -255.2185
+offset_top = -272.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("7_r4r10")
+expand_mode = 3
+stretch_mode = 4

@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://d1r6umm7ce0ll" path="res://entity/building/GroceryStore.tscn" id="10_3kgtk"]
 [ext_resource type="PackedScene" uid="uid://biqxju6alq3qq" path="res://entity/building/HospitalBuilding.tscn" id="11_q5g7b"]
 [ext_resource type="PackedScene" uid="uid://06r7w5hu3nnt" path="res://entity/building/CarShowroom.tscn" id="12_is0m5"]
+[ext_resource type="PackedScene" uid="uid://dltutvs2p4gmi" path="res://entity/building/Restaurant.tscn" id="12_rygvj"]
+[ext_resource type="PackedScene" uid="uid://ditxfjlbknrk4" path="res://entity/building/LuxuryRestaurant.tscn" id="13_0nshr"]
 [ext_resource type="PackedScene" uid="uid://d2h4xf4hosb65" path="res://entity/building/PremiumCarShowroom.tscn" id="13_y4yca"]
 [ext_resource type="PackedScene" uid="uid://diu4mttqq2xvb" path="res://entity/building/OldManMansion.tscn" id="14_se6rf"]
 [ext_resource type="PackedScene" uid="uid://bp15f55hjcc0f" path="res://ui/interior/CasinoInterior.tscn" id="14_wpelm"]
@@ -23,7 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://cqfmtivabqwjy" path="res://ui/interior/CarShowroomInterior.tscn" id="20_0yw4d"]
 [ext_resource type="PackedScene" uid="uid://bogjm4kvh8nx5" path="res://ui/interior/ApartmentInterior.tscn" id="21_0yw4d"]
 [ext_resource type="PackedScene" uid="uid://dvaeh2m7hhcuh" path="res://ui/interior/PremiumCarShowroomInterior.tscn" id="22_dly5b"]
+[ext_resource type="PackedScene" uid="uid://dmp2i6ku3swct" path="res://ui/interior/RestaurantInterior.tscn" id="23_rygvj"]
 [ext_resource type="PackedScene" uid="uid://bnx4cr04wjlcw" path="res://ui/interior/OldManMansionInterior.tscn" id="24_e2y2v"]
+[ext_resource type="PackedScene" uid="uid://c64wsftmcgtmj" path="res://ui/interior/LuxuryRestaurantInterior.tscn" id="25_lt5u8"]
 [ext_resource type="PackedScene" uid="uid://y0c66svnd50g" path="res://ui/EndgameUI.tscn" id="26_e2y2v"]
 [ext_resource type="Script" uid="uid://b5lrxhsf7hpvl" path="res://scene/camera_follow.gd" id="27_081fe"]
 
@@ -168,6 +172,15 @@ open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/GroceryStoreInterior")
 position = Vector2(1344, 528)
 open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/HospitalInterior")
 
+[node name="Restaurant" parent="YSortGroup" unique_id=1345442268 node_paths=PackedStringArray("open_interior_ui") instance=ExtResource("12_rygvj")]
+position = Vector2(1256, -144)
+interact_text = "Go in restaurant"
+open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/RestaurantInterior")
+
+[node name="LuxuryRestaurant" parent="YSortGroup" unique_id=545662412 node_paths=PackedStringArray("open_interior_ui") instance=ExtResource("13_0nshr")]
+position = Vector2(-712, 240)
+open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/LuxuryRestaurantInterior")
+
 [node name="Carshowroom" parent="YSortGroup" unique_id=1254775797 node_paths=PackedStringArray("open_interior_ui") instance=ExtResource("12_is0m5")]
 position = Vector2(-664, -120)
 open_interior_ui = NodePath("../../CanvasLayer/InteriorUI/CarShowroomInterior")
@@ -257,6 +270,13 @@ layout_mode = 1
 
 [node name="HospitalInterior" parent="CanvasLayer/InteriorUI" unique_id=1605184919 instance=ExtResource("18_qh2f3")]
 visible = false
+layout_mode = 1
+
+[node name="RestaurantInterior" parent="CanvasLayer/InteriorUI" unique_id=1980854527 instance=ExtResource("23_rygvj")]
+visible = false
+layout_mode = 1
+
+[node name="LuxuryRestaurantInterior" parent="CanvasLayer/InteriorUI" unique_id=1287942976 instance=ExtResource("25_lt5u8")]
 layout_mode = 1
 
 [node name="CarShowroomInterior" parent="CanvasLayer/InteriorUI" unique_id=1771169365 instance=ExtResource("20_0yw4d")]

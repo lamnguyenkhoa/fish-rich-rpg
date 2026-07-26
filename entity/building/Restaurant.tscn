@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dltutvs2p4gmi"]
+
+[ext_resource type="Script" uid="uid://dla1i1jeu5n4s" path="res://entity/building/company_building.gd" id="1_q5tql"]
+[ext_resource type="Shader" uid="uid://u25x57qodqev" path="res://shader/topdown_shadow.gdshader" id="2_mctsh"]
+[ext_resource type="Texture2D" uid="uid://cp6bx0122i4tg" path="res://asset/sprite/building/restaurant.png" id="3_0t1ns"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jua5p"]
+shader = ExtResource("2_mctsh")
+shader_parameter/deform = Vector2(0.4, 0.425)
+shader_parameter/offset = Vector2(15.555, 12.32)
+shader_parameter/modulate = Color(0, 0, 0, 0.55)
+shader_parameter/x_buffer = 2.0
+shader_parameter/y_buffer = 2.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psa7f"]
+size = Vector2(320, 60)
+
+[node name="Restaurant" type="StaticBody2D" unique_id=1345442268 node_paths=PackedStringArray("open_interior_ui")]
+script = ExtResource("1_q5tql")
+interact_text = "Go to hospital"
+open_interior_ui = NodePath("")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1472321567]
+material = SubResource("ShaderMaterial_jua5p")
+position = Vector2(0, -82.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0t1ns")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1501738360]
+position = Vector2(0, -22.75)
+shape = SubResource("RectangleShape2D_psa7f")
+debug_color = Color(0.701961, 0, 0.0745098, 0.419608)
+
+[node name="RespawnSpot" type="Marker2D" parent="." unique_id=2123656600]
+position = Vector2(-8, 87.25)

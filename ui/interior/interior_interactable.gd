@@ -128,7 +128,7 @@ func _on_mouse_entered() -> void:
 		var cost_text = ""
 		var current_cost = get_current_cost()
 		if time_usage > 0:
-			cost_text += "Time: %.2fs | " % time_usage
+			cost_text += "[color=red]Time: %.2fs [/color] | " % time_usage
 		if current_cost > 0:
 			cost_text += "Money: %.2f$ | " % current_cost
 		if limited_stock:

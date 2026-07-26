@@ -7,6 +7,8 @@
 [ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="5_bir3x"]
 [ext_resource type="Texture2D" uid="uid://b12hbu21xy0t0" path="res://asset/sprite/interior/slot_machine.png" id="6_4t04i"]
 [ext_resource type="Script" uid="uid://bcklsj46cvneg" path="res://ui/interior/playing_card_handler.gd" id="7_4t04i"]
+[ext_resource type="Texture2D" uid="uid://bbky62fetqw8r" path="res://asset/sprite/fish/shark_boss.png" id="8_hy8u5"]
+[ext_resource type="Script" uid="uid://dm3lc0pme5wa0" path="res://ui/interior/slot_machine_handler.gd" id="9_bir3x"]
 
 [node name="CasinoInterior" type="Control" unique_id=755305693]
 layout_mode = 3
@@ -29,6 +31,21 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.22745098, 0.023529412, 0, 1)
+
+[node name="Character" type="TextureRect" parent="." unique_id=1826880416]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -247.0
+offset_top = -331.03088
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_hy8u5")
+expand_mode = 3
+stretch_mode = 4
 
 [node name="InteriorArt" type="TextureRect" parent="." unique_id=2090250048]
 self_modulate = Color(0.40234375, 0.40234375, 0.40234375, 1)
@@ -95,3 +112,17 @@ grow_vertical = 2
 color = Color(0.043137256, 0.13333334, 0.07450981, 0.972549)
 script = ExtResource("7_4t04i")
 trigger_button = NodePath("../Blackjack")
+time_cost_per_round = 0.0
+
+[node name="SlotMachineHandler" type="ColorRect" parent="." unique_id=1093200233 node_paths=PackedStringArray("trigger_button")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13333334, 0.043137256, 0.09019608, 0.972549)
+script = ExtResource("9_bir3x")
+trigger_button = NodePath("../SlotMachine")
+time_cost_per_spin = 0.0

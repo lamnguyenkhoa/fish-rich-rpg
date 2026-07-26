@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://dmp2i6ku3swct"]
+
+[ext_resource type="Script" uid="uid://ctlbquygas2fk" path="res://ui/interior/building_interior.gd" id="1_s1cbp"]
+[ext_resource type="Texture2D" uid="uid://b10c4rjm1v1dj" path="res://asset/sprite/interior/restaurant_interior.png" id="2_s1cbp"]
+[ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="3_mv7r8"]
+[ext_resource type="Texture2D" uid="uid://cd5dyv51pdnbi" path="res://asset/sprite/fish/octopus_headchef.png" id="4_gdamd"]
+[ext_resource type="PackedScene" uid="uid://slk6ug7rqxnh" path="res://ui/interior/InteriorInteractable.tscn" id="5_yeybu"]
+[ext_resource type="Texture2D" uid="uid://dawnfnswijmlq" path="res://asset/sprite/interior/restaurant_table.png" id="6_rfyyl"]
+[ext_resource type="Texture2D" uid="uid://y7j7wojbgb3m" path="res://asset/sprite/interior/restaurant_bar.png" id="7_mv8v6"]
+
+[node name="RestaurantInterior" type="Control" unique_id=1980854527]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_s1cbp")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1636909513]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_right = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.077394694, 0.34116843, 0.36328125, 1)
+
+[node name="InteriorArt" type="TextureRect" parent="." unique_id=280673452]
+self_modulate = Color(0.40234375, 0.40234375, 0.40234375, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 56.0
+offset_top = -264.0
+offset_right = 1021.4242
+offset_bottom = 304.0
+grow_vertical = 2
+texture = ExtResource("2_s1cbp")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="WorkLabel" type="RichTextLabel" parent="." unique_id=796847770]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -342.0
+offset_top = 72.0
+offset_right = -22.0
+offset_bottom = 224.0
+grow_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("3_mv7r8")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Eating in [color=lightblue][wave]the restaurant[/wave][/color] ...[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Character" type="TextureRect" parent="." unique_id=1855314626]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -294.0
+offset_top = -344.0
+offset_right = -4.489502
+offset_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("4_gdamd")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Table" parent="." unique_id=1734670431 instance=ExtResource("5_yeybu")]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 488.0
+offset_right = 1024.0
+offset_bottom = 653.0
+pivot_offset = Vector2(160, 82.5)
+icon = ExtResource("6_rfyyl")
+image = ExtResource("6_rfyyl")
+time_usage = 5.0
+money_cost = 300.0
+pop_up_content = "Eat a delicious meal"
+recover_sp = 30
+
+[node name="Bar" parent="." unique_id=102213447 instance=ExtResource("5_yeybu")]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 344.0
+offset_right = 488.0
+offset_bottom = 416.0
+pivot_offset = Vector2(216, 36)
+icon = ExtResource("7_mv8v6")
+image = ExtResource("7_mv8v6")
+time_usage = 2.0
+money_cost = 100.0
+pop_up_content = "Buy a drink"
+recover_hp = 5
+recover_sp = 5
