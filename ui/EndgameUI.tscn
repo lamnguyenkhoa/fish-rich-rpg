@@ -1,16 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://y0c66svnd50g"]
+[gd_scene format=3 uid="uid://y0c66svnd50g"]
 
-[ext_resource type="Script" path="res://ui/endgame_ui.gd" id="1_qgopn"]
+[ext_resource type="Script" uid="uid://c6cr2vrn688vy" path="res://ui/endgame_ui.gd" id="1_qgopn"]
 [ext_resource type="FontFile" uid="uid://sj6nlgwd3wm0" path="res://asset/font/AquinoDemo-511lj.ttf" id="2_6405c"]
-[ext_resource type="Texture2D" uid="uid://ur6c6neynl5g" path="res://asset/sprite/fish/sign_eviota.png" id="3_v8pip"]
-[ext_resource type="Texture2D" uid="uid://3j8gltdbyfh5" path="res://asset/sprite/fish/satan_fish.png" id="4_txaba"]
+[ext_resource type="Texture2D" uid="uid://bo7il2j3ld2vg" path="res://asset/sprite/item/moneybag.png" id="3_tl6gy"]
+[ext_resource type="Texture2D" uid="uid://b0154alq27j5v" path="res://asset/sprite/fish/eviota.png" id="3_vaula"]
+[ext_resource type="Texture2D" uid="uid://b82dkci5vbaob" path="res://asset/sprite/item/tophat.png" id="4_bllvw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84dbo"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2egw7"]
 
-[node name="EndgameUI" type="Control"]
-visible = false
+[node name="EndgameUI" type="Control" unique_id=34465303]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qgopn")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1513724556]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,41 +30,115 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.768627)
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="TabContainer" type="TabContainer" parent="." unique_id=1116057832]
 layout_mode = 0
 offset_right = 1368.0
 offset_bottom = 672.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_84dbo")
 theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_2egw7")
+current_tab = 1
 tabs_visible = false
 
-[node name="Win" type="Control" parent="TabContainer"]
+[node name="Win" type="Control" parent="TabContainer" unique_id=272740332]
+visible = false
 layout_mode = 2
+metadata/_tab_index = 0
 
-[node name="WinLabel" type="RichTextLabel" parent="TabContainer/Win"]
+[node name="WinLabel" type="RichTextLabel" parent="TabContainer/Win" unique_id=1212569349]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -384.0
-offset_top = 8.0
-offset_right = 384.0
-offset_bottom = 104.0
+offset_left = -388.0
+offset_top = 16.0
+offset_right = 380.0
+offset_bottom = 112.0
 grow_horizontal = 2
 theme_override_fonts/normal_font = ExtResource("2_6405c")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "[center][rainbow]DEBT PAID[/rainbow][/center]"
+text = "[center][rainbow]CHALLENGE  COMPELTED[/rainbow][/center]"
 
-[node name="Player" type="TextureRect" parent="TabContainer/Win"]
+[node name="Moneybag" type="TextureRect" parent="TabContainer/Win" unique_id=1510392954]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 160.0
+offset_right = 304.0
+offset_bottom = 384.0
+texture = ExtResource("3_tl6gy")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Moneybag2" type="TextureRect" parent="TabContainer/Win" unique_id=1607007687]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 192.0
+offset_right = 384.0
+offset_bottom = 416.0
+texture = ExtResource("3_tl6gy")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Moneybag3" type="TextureRect" parent="TabContainer/Win" unique_id=91330709]
+layout_mode = 0
+offset_left = 976.0
+offset_top = 96.0
+offset_right = 1144.0
+offset_bottom = 320.0
+texture = ExtResource("3_tl6gy")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Moneybag4" type="TextureRect" parent="TabContainer/Win" unique_id=149180624]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 200.0
+offset_right = 1168.0
+offset_bottom = 424.0
+texture = ExtResource("3_tl6gy")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Moneybag5" type="TextureRect" parent="TabContainer/Win" unique_id=1784169303]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 152.0
+offset_right = 552.0
+offset_bottom = 376.0
+texture = ExtResource("3_tl6gy")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Moneybag6" type="TextureRect" parent="TabContainer/Win" unique_id=553640387]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 112.0
+offset_right = 1008.0
+offset_bottom = 336.0
+texture = ExtResource("3_tl6gy")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Player" type="TextureRect" parent="TabContainer/Win" unique_id=1920918016]
 layout_mode = 0
 offset_left = 400.0
 offset_top = 192.0
 offset_right = 971.0
-offset_bottom = 420.0
-texture = ExtResource("3_v8pip")
+offset_bottom = 446.0
+texture = ExtResource("3_vaula")
 
-[node name="Label" type="Label" parent="TabContainer/Win"]
+[node name="Tophat" type="TextureRect" parent="TabContainer/Win/Player" unique_id=36896661]
+layout_mode = 0
+offset_left = 296.0
+offset_top = -32.0
+offset_right = 501.76746
+offset_bottom = 136.0
+rotation = -0.05710854
+texture = ExtResource("4_bllvw")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="TabContainer/Win" unique_id=1175544741]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -78,64 +152,64 @@ offset_bottom = -128.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 30
-text = "And thus, you paid back all the debt.
-Now you can rest in peace."
+text = "And thus, you finished the challenge.
+Now you can enjoy your inheritance, living lavishly."
 horizontal_alignment = 1
 
-[node name="ContinueButton" type="Button" parent="TabContainer/Win"]
+[node name="ContinueButton" type="Button" parent="TabContainer/Win" unique_id=1304299512]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -372.0
+offset_left = -524.0
 offset_top = -96.0
-offset_right = -11.0
-offset_bottom = -48.0
+offset_right = -38.0
+offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_6405c")
 theme_override_font_sizes/font_size = 30
-text = "Continue playing"
+text = "Continue wasting money"
 
-[node name="BackMenuButton" type="Button" parent="TabContainer/Win"]
+[node name="BackMenuButton" type="Button" parent="TabContainer/Win" unique_id=2032710383]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 52.0
+offset_left = 116.0
 offset_top = -96.0
-offset_right = 413.0
-offset_bottom = -48.0
+offset_right = 477.0
+offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_6405c")
 theme_override_font_sizes/font_size = 30
 text = "Back to main menu"
 
-[node name="Lose" type="Control" parent="TabContainer"]
-visible = false
+[node name="Lose" type="Control" parent="TabContainer" unique_id=387496979]
 layout_mode = 2
+metadata/_tab_index = 1
 
-[node name="LostLabel" type="RichTextLabel" parent="TabContainer/Lose"]
+[node name="LostLabel" type="RichTextLabel" parent="TabContainer/Lose" unique_id=445153367]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -384.0
-offset_top = 8.0
-offset_right = 384.0
-offset_bottom = 104.0
+offset_left = -380.0
+offset_top = 24.0
+offset_right = 388.0
+offset_bottom = 120.0
 grow_horizontal = 2
 theme_override_fonts/normal_font = ExtResource("2_6405c")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "[center][color=red][tornado]SOUL  TAKEN[/tornado][/color][/center]"
+text = "[center][color=red][tornado]WASTED[/tornado][/color][/center]"
 
-[node name="SatanFish" type="TextureRect" parent="TabContainer/Lose"]
+[node name="SatanFish" type="TextureRect" parent="TabContainer/Lose" unique_id=1189592973]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -148,9 +222,11 @@ offset_right = 287.0
 offset_bottom = 76.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_txaba")
+texture = ExtResource("3_vaula")
+flip_h = true
+flip_v = true
 
-[node name="Label" type="Label" parent="TabContainer/Lose"]
+[node name="Label" type="Label" parent="TabContainer/Lose" unique_id=484466309]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -164,12 +240,12 @@ offset_bottom = -128.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 30
-text = "You unable to pay back the debt in time.
-You soul belong to the devil.
-Forever tormented in hell..."
+text = "You unable to waste all the money...
+Now you have no more money to waste
+Forever poor...."
 horizontal_alignment = 1
 
-[node name="BackMenuButton" type="Button" parent="TabContainer/Lose"]
+[node name="BackMenuButton" type="Button" parent="TabContainer/Lose" unique_id=1796812333]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

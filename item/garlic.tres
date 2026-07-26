@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://b6efu3aj15lwf"]
+
+[ext_resource type="Script" uid="uid://brrb6re60es8q" path="res://item/item_resource.gd" id="1_3n63j"]
+
+[resource]
+script = ExtResource("1_3n63j")
+item_id = 1006
+name = "Garlic"
+description = "Spicy garlic. Stimulate appetite. Increase FOR by 1."
+type = 1
+gain_stat = Array[int]([1, 0, 0, 0, 0])

@@ -3,6 +3,7 @@ extends Node
 var time_left: float = 300.0
 var time_is_passing = false
 var time_speed = 1.0
+var is_won = false
 var item_database_dict: Dictionary = {}
 
 var player: Player
@@ -22,7 +23,7 @@ func _ready():
 	load_item_database()
 
 func _process(delta: float) -> void:
-	if time_is_passing:
+	if time_is_passing and not is_won:
 		time_left -= delta * time_speed
 		time_left = max(time_left, 0)
 
@@ -39,7 +40,10 @@ func change_time_speed(new_speed: float):
 	time_status_changed.emit()
 
 func finish_the_challenge():
-	pass
+	is_won = true
+	game_ui.update_time_passing_label()
+	end_game(true)
+	GameManager.player.money += 300_000_000
 
 
 func load_item_database():
@@ -87,7 +91,7 @@ func end_game(is_win):
 
 func close_all_windows():
 	player_menu.close_menu()
-	for child: CompanyWork in map_manager.work_ui.get_children():
+	for child: BuildingInterior in map_manager.interior_ui.get_children():
 		child.close_ui()
 	game_ui.notification_ui.close_ui()
 	game_ui.npc_interact_ui.close_ui()

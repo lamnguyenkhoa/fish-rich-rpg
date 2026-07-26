@@ -486,18 +486,21 @@ anchor_bottom = 0.5
 offset_left = -603.0
 offset_top = -128.0
 offset_right = -107.0
-offset_bottom = 232.0
+offset_bottom = 304.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/line_separation = 4
 theme_override_font_sizes/normal_font_size = 28
 text = "Old fish billionaire clears throat
 
-\"You must spend $1,000,000 within 5 minutes.\"
+\"You must spend a millions within 5 minutes.\"
 \"You cannot give it away.\"
 \"You cannot intentionally damage or destroy anything of value that you buy.\"
 \"You cannot tell anyone about this challenge.\"
+\"You cannot leave the city\"
+
 \"Fail mean no money\"
+\"Victory mean 300 millions\"
 
 mfw speedrunning capitalism%"
 autowrap_mode = 2

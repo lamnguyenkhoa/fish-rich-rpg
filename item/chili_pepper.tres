@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://k0rn1wrtyn34"]
+
+[ext_resource type="Script" uid="uid://brrb6re60es8q" path="res://item/item_resource.gd" id="1_dvy83"]
+
+[resource]
+script = ExtResource("1_dvy83")
+item_id = 1004
+name = "Chili pepper"
+description = "So so spicy chili pepper. Bad for fish. Lose 10 HP."
+type = 1
+recover_hp = -10

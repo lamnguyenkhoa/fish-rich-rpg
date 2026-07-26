@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://g8y5esvdtmb3"]
+
+[ext_resource type="Script" uid="uid://brrb6re60es8q" path="res://item/item_resource.gd" id="1_lyvaj"]
+
+[resource]
+script = ExtResource("1_lyvaj")
+item_id = 1005
+name = "Carrot"
+description = "Orange, crunchy and sweet. Recover 7HP."
+type = 1
+recover_hp = 7

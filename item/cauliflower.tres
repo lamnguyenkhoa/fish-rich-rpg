@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://fc5gqthqryel"]
+
+[ext_resource type="Script" uid="uid://brrb6re60es8q" path="res://item/item_resource.gd" id="1_563h5"]
+
+[resource]
+script = ExtResource("1_563h5")
+item_id = 1003
+name = "Cauliflower"
+description = "White fluffy vegetable. Recover 10 HP."
+type = 1
+recover_hp = 10

@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://bogjm4kvh8nx5" path="res://ui/interior/ApartmentInterior.tscn" id="21_0yw4d"]
 [ext_resource type="PackedScene" uid="uid://dvaeh2m7hhcuh" path="res://ui/interior/PremiumCarShowroomInterior.tscn" id="22_dly5b"]
 [ext_resource type="PackedScene" uid="uid://bnx4cr04wjlcw" path="res://ui/interior/OldManMansionInterior.tscn" id="24_e2y2v"]
+[ext_resource type="PackedScene" uid="uid://y0c66svnd50g" path="res://ui/EndgameUI.tscn" id="26_e2y2v"]
 [ext_resource type="Script" uid="uid://b5lrxhsf7hpvl" path="res://scene/camera_follow.gd" id="27_081fe"]
 
 [sub_resource type="TileSet" id="TileSet_ys074"]
@@ -105,8 +106,11 @@ shader_parameter/distortion_speed = 1.0
 shader_parameter/tile = Vector2(1, 1)
 shader_parameter/offset = Vector2(0, 0)
 
-[node name="NeoFishCity" type="Node2D" unique_id=1780707661]
+[node name="NeoFishCity" type="Node2D" unique_id=1780707661 node_paths=PackedStringArray("player_apartment", "interior_ui", "endgame_ui")]
 script = ExtResource("1_l64ku")
+player_apartment = NodePath("YSortGroup/YourApartment")
+interior_ui = NodePath("CanvasLayer/InteriorUI")
+endgame_ui = NodePath("CanvasLayer/EndgameUI")
 
 [node name="Environment" type="Sprite2D" parent="." unique_id=174758916]
 self_modulate = Color(0.42779183, 0.52027184, 0.59375, 1)
@@ -268,3 +272,6 @@ visible = false
 layout_mode = 1
 
 [node name="GameUI" parent="CanvasLayer" unique_id=1699789953 instance=ExtResource("5_prwo3")]
+
+[node name="EndgameUI" parent="CanvasLayer" unique_id=1152065061 instance=ExtResource("26_e2y2v")]
+visible = false

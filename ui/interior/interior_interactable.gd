@@ -109,8 +109,9 @@ func resolve_special_case():
 		EnumAutoload.ServiceSpecialCase.HOSPITAL_HELP_DESK:
 			GameManager.player.recover("hp", GameManager.player.max_hp, false)
 		EnumAutoload.ServiceSpecialCase.FINISH_THE_CHALLENGE:
-			GameManager.finish_the_challenge()
-			disabled = true
+			if GameManager.player.money <= 0.001:
+				GameManager.finish_the_challenge()
+				disabled = true
 		
 
 func _on_mouse_exited() -> void:

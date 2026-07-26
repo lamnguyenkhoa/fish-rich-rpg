@@ -136,6 +136,10 @@ horizontal_alignment = 2
 [node name="PlayerMenu" parent="." unique_id=1767180463 instance=ExtResource("5_lvtvn")]
 visible = false
 layout_mode = 1
+offset_left = -355.0
+offset_top = -240.0
+offset_right = 349.0
+offset_bottom = 272.0
 
 [node name="PhoneUI" parent="." unique_id=1487221091 instance=ExtResource("5_e78dt")]
 visible = false

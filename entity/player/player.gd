@@ -49,7 +49,7 @@ var yee_stat: int = 9: # Each point increase movespeed by 2%
 	set(value):
 		yee_stat = value
 		recalculate_stat()
-var money: float = 1000000:
+var money: float = 225000:
 	set(value):
 		if value < 0:
 			value = 0

@@ -29,6 +29,11 @@ func _process(_delta: float) -> void:
 		time_left_label.text = "%d" % GameManager.time_left
 
 func update_time_passing_label():
+	if GameManager.is_won:
+		time_passing_label.visible = false
+		time_left_label.visible = false
+		return
+		
 	if GameManager.time_is_passing:
 		time_passing_label.text = "[center][shake]Time is passing[/shake][/center]"
 	else:
