@@ -103,5 +103,6 @@ func close_all_windows():
 	game_ui.npc_interact_ui.close_ui()
 
 func reset():
+	is_won = false
 	player.money = 1000000
 	time_left = 300.0
